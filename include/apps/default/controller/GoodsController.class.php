@@ -32,6 +32,13 @@ class GoodsController extends CommonController {
      */
     public function index() {
 
+        /*liugu-ec添加导航*/
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
+        // end--liugu
+
+
         // 获得商品的信息
         $goods = model('Goods')->get_goods_info($this->goods_id);
         // 如果没有找到任何记录则跳回到首页

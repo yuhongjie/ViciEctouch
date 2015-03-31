@@ -1,16 +1,10 @@
-<!--列表显示-->
 <!--{if $show_asynclist eq 1}-->
-
 {include file='library/category_grid.lbi '}
-
 <!--{else}-->
-
 {include file='library/category_grid.lbi '}
-
 <!--{/if} --> 
 
 <!--筛选开始-->
 
 <!--筛选结束--> 
-
 {include file='library/page.lbi '}

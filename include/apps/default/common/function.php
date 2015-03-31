@@ -35,7 +35,7 @@ function get_page_title($cat = 0, $str = '') {
         if ('category' == $controller_name || 'goods' == $controller_name || 'brand' == $controller_name) {
             if ($cat > 0) {
                 $cat_arr = model('Category')->get_parent_cats($cat);
-                //liugu--test
+                //liugu--test catid 改为id
                 $key = 'id';
                 $type = 'category/index';
             } else {
