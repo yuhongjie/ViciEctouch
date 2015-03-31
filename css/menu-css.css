@@ -1,0 +1,37 @@
+﻿
+.menu ul li {display:block;padding-top:2px; padding-bottom: 5px;padding-left: 0; margin-bottom:5px;list-style:none;overflow:visible;}
+.menu ul li a {display:block;height:26px;margin-top:0px;padding-top:10px;font-size:14px;outline:none;}
+.menu ul li .active {background: #f3f3f3 url(../images/common/drop-downTextBg.png) right -34px no-repeat;}
+.menu a:hover {
+text-decoration: none;
+}
+.menu ul li .inactive {background: #fff url(../images/common/drop-downTextBg.png) right 0px no-repeat;}
+.menu ul li ul {display:none;
+ margin-top:-4px;
+ margin-bottom:20px;
+ padding-bottom: 15px;
+ border: 1px solid #F3F3F3;
+ border-top: none;
+/* padding-left: 12px;*/
+ border-bottom-left-radius: 2px;
+ border-bottom-right-radius: 2px;
+}
+.menu ul li ul li ul {margin-bottom:5px;}
+.menu ul li ul li {display:block;background:none;font-size:12px;list-style:circle;color:#000;margin-bottom:0px;margin-top:0px;padding-top:0px;padding-bottom:0px;padding-left:12px;margin-left:0;}
+.menu ul li ul li:hover {
+background-color: #E5F4F7;	
+}
+.menu ul li ul li a:hover {
+color: #5AB0CB;
+}
+.menu ul li ul li a {background:none;font-size:12px;height:25px;color:#000;padding-left:0px; }
+.father-li>a {
+	border:1px solid #F3F3F3;
+	border-radius: 2px;
+	background: #F7F7F7;
+	padding-left: 12px;
+	color: darkgray;
+}
+.menu ul li ul li.line {
+	border-top: 1px solid #F3F3F3;
+}

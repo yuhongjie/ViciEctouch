@@ -1,0 +1,60 @@
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//////////////////// Purple Skin CSS Rules Start                                                                          */
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+a, p > a {
+	color: #E67A92;
+}
+.shoppingCartWrapper, .mainMenuOuterWrapper {
+	background-color: #E67A92;
+}
+.headerWrapper {
+	background-color: #E67A92;
+}
+.headerDecoration, .footerDecoration {
+	background-image: url(../../images/skins/pink/headerFooterDecoBg.png);
+}
+.sliderControl {
+	background-color: rgba(230,122,146,0.5);
+}
+.sectionTitleLink {
+	color: #E67A92;
+}
+.portfolioMenuWrapper .currentPortfolioFilter {
+	color: #E67A92;
+}
+.portfolioOneExpandButton, .portfolioFilterableExpandButton, .singleProjectExpandButton {
+	background-image: url(../../images/skins/pink/portfolioExpandButtonBg.png);
+}
+.portfolioOneDetailsButton, .portfolioFilterableDetailsButton, .singleProjectDetailsButton {
+	background-image: url(../../images/skins/pink/portfolioDetailsButtonBg.png);
+}
+.smallPostMoreButton {
+	background-image: url(../../images/skins/pink/smallPostReadMoreButtonBg.png);
+}
+.accordionButton .accordionButtonIcon {
+	background-image: url(../../images/skins/pink/accordionButtonBg.png);
+}
+.footerWrapper {
+	background-color: #E67A92;
+}
+@media (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2) {
+.portfolioOneExpandButton, .portfolioFilterableExpandButton, .singleProjectExpandButton {
+	background-image: url(../../images/skins/pink/portfolioExpandButtonBg-x2.png);
+}
+.portfolioOneDetailsButton, .portfolioFilterableDetailsButton, .singleProjectDetailsButton {
+	background-image: url(../../images/skins/pink/portfolioDetailsButtonBg-x2.png);
+}
+.smallPostMoreButton {
+	background-image: url(../../images/skins/pink/smallPostReadMoreButtonBg-x2.png);
+}
+.accordionButton .accordionButtonIcon {
+	background-image: url(../../images/skins/pink/accordionButtonBg-x2.png);
+}
+.headerDecoration, .footerDecoration {
+	background-image: url(../../images/skins/pink/headerFooterDecoBg-x2.png);
+	background-size: 12px 6px;
+}
+}
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//////////////////// Pink Skin CSS Rules End                                                                            */
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
