@@ -32,6 +32,13 @@ class ArticleController extends CommonController {
     //-- 文章分类
     /* ------------------------------------------------------ */
     public function index() {
+
+        /*liugu-ec添加导航*/
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
+        // end--liugu
+
         $cat_id = intval(I('get.id'));
         $this->assign('article_categories', model('Article')->article_categories_tree($cat_id)); //文章分类树
         $this->display('article_cat.dwt');
@@ -79,6 +86,12 @@ class ArticleController extends CommonController {
     //-- 文章详情
     /* ------------------------------------------------------ */
     public function info() {
+            
+        /*liugu-ec添加导航*/
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
+        // end--liugu
         /* 文章详情 */
         $article_id = intval(I('get.aid'));
         $article = model('Article')->get_article_info($article_id);
@@ -86,7 +99,31 @@ class ArticleController extends CommonController {
         $this->display('article_info.dwt');
     }
 
+
     /* ------------------------------------------------------ */
+
+    // liugu--添加FAQ文章列表同时加载文章内容
+    public function article_list_cont() {
+
+        /*liugu-ec添加导航*/
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
+        // end--liugu
+
+        $this->parameter();
+        $this->assign('keywords', $this->keywords);
+        $this->assign('id', $this->cat_id);
+        $artciles_list = model('ArticleBase')->get_cat_articles($this->cat_id, $this->page, $this->size, $this->keywords);
+        $count = model('ArticleBase')->get_article_count($this->cat_id, $this->keywords);
+        $this->pageLimit(url('art_list', array('id' => $this->cat_id)), $this->size);
+        $this->assign('pager', $this->pageShow($count));
+        $this->assign('artciles_list',$artciles_list);
+        $this->display('article_list_cont.dwt'); 
+    }
+
+    // end liugu
+
     //-- 微信图文详情
     /* ------------------------------------------------------ */
     public function wechat_news_info() {

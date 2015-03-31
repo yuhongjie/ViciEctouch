@@ -48,6 +48,10 @@ class CategoryController extends CommonController {
         // 自定义导航栏
         $navigator = model('Common')->get_navigator();
         $this->assign('navigator', $navigator['middle']);
+        // end--liugu
+
+
+        
         $this->assign('best_goods', model('Index')->goods_list('best', C('page_size')));
         $this->assign('new_goods', model('Index')->goods_list('new', C('page_size')));
         $this->assign('hot_goods', model('Index')->goods_list('hot', C('page_size')));
@@ -75,22 +79,13 @@ class CategoryController extends CommonController {
         $this->assign('sort', $this->sort);
         $this->assign('order', $this->order);
         $this->assign('id', $this->cat_id);
-
-        /* 添加type参数 start 2015-3-31 */
-        $this->assign('type', $this->type);
-        /* 添加type参数 end */
-
-
         // 获取分类
         $this->assign('category', model('CategoryBase')->get_top_category());
         $count = model('Category')->category_get_count($this->children, $this->brand, $this->type, $this->price_min, $this->price_max, $this->ext);
 
         $goodslist = $this->category_get_goods();
         $this->assign('goods_list', $goodslist);
-
         $this->pageLimit(url('index', array('id' => $this->cat_id, 'brand' => $this->brand, 'price_max' => $this->price_max, 'price_min' => $this->price_min, 'filter_attr' => $this->filter_attr_str, 'sort' => $this->sort, 'order' => $this->order)), $this->size);
-        
-
         $this->assign('pager', $this->pageShow($count));
 
         /* 页面标题 */
@@ -179,12 +174,7 @@ class CategoryController extends CommonController {
         // 获得分类的相关信息
         $cat = model('Category')->get_cat_info($this->cat_id);
         $this->keywords();
-
-
         $this->assign('show_asynclist', C('show_asynclist'));
-
-
-
         // 初始化分页信息
         $page_size = C('page_size');
         $brand = I('request.brand');
@@ -204,8 +194,6 @@ class CategoryController extends CommonController {
 
         /* 排序、显示方式以及类型 */
         $default_display_type = C('show_order_type') == '0' ? 'list' : (C('show_order_type') == '1' ? 'grid' : 'album');
-
-        
         $default_sort_order_method = C('sort_order_method') == '0' ? 'DESC' : 'ASC';
         $default_sort_order_type = C('sort_order_type') == '0' ? 'goods_id' : (C('sort_order_type') == '1' ? 'shop_price' : 'last_update');
         $this->type = (isset($_REQUEST['type']) && in_array(trim(strtolower($_REQUEST['type'])), array('best', 'hot', 'new', 'promotion'))) ? trim(strtolower($_REQUEST['type'])) : '';

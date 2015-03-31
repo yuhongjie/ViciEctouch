@@ -1,27 +1,15 @@
-<style type="text/css">
-	#test{
-		display: none;
-	}
-	#test2{
-		display: none;
-	}
-</style>
+
 <!-- page numbers start -->
-<div class="pageNumbersOuterWrapper-page">
+<div class="pageNumbersOuterWrapper">
   <div class="pageNumbersWrapper">
     <!-- {if $pager.page_number} -->
       <!-- {foreach from=$pager.page_number key=key item=num} -->
-      <!--{if $pager.page_count == 1}-->
-      <span>共1页</span> 
-      <!--{else}-->
-        <a class="pageNumber {if $pager.page == $key}currentPageNumber{/if}" href="{$num}&type={$type}">{$key}</a> 
-      <!--{/if}-->
+   <a class="pageNumber {if $pager.page == $key}currentPageNumber{/if}" href="{$num}" {if $pager.page == $key}selected{/if} >{$key}</a>
     <!-- {/foreach} -->
     <!-- {/if} -->
-   <a id="{if $pager.page_count > 1} {else}test{/if}" href="{$pager.page_prev|default:#}" class="pageNumber">&laquo;</a> 
-   <a id="{if $pager.page_count >1 } {else}test2{/if}" href="{$pager.page_next|default:#}" class="pageNumber">&raquo;</a> 
+   <span class="pageNumber">...</span>
+   <a href="{$pager.page_prev|default:#}" class="pageNumber">&laquo;</a> 
+   <a href="{$pager.page_next|default:#}" class="pageNumber">&raquo;</a> 
  </div>
 </div>
 <!-- page numbers end -->
-
-
