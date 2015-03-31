@@ -1,0 +1,26 @@
+  <!-- {if $display == 'list'} -->
+    <!-- list -->
+      <!--{foreach name=goods_list from=$goods_list item=goods}-->
+      <div class="portfolioOneItemWrapper"> 
+        <a href="{$goods.url}" class="portfolioOneItemImageWrapper"><img src="{$goods.goods_thumb}" alt=""></a>
+        <div class="portfolioOneItemInfoWrapper">
+          <h4 class="portfolioOneItemTitle"><a href="{$goods.url}">{$goods.name}</a></h4>
+          <p>
+             {$goods.goods_brief|truncate:20:"...":true}...</p>
+             <span class="l-price">{$goods.shop_price}</span>
+        </div>
+      </div>
+      <!--{/foreach}-->
+  <!-- {else} -->
+  <div class="portfolioTwoItemsWrapper"> 
+  <!--{foreach name=goods_list from=$goods_list item=goods}-->
+   <!-- portfolio item starts  -->
+      <div class="portfolioTwoItemWrapper"> <a href="{$goods.url}" class="portfolioTwoItemImageWrapper"><img src="{$goods.goods_thumb}" alt="{$goods.name}"></a>
+        <div class="portfolioTwoItemInfoWrapper">
+          <h4 class="portfolioTwoItemTitle">{$goods.name}[{$goods.shop_price}]</h4>
+        </div>
+      </div>
+    <!-- portfolio item ends -->
+  <!--{/foreach}-->
+  </div>
+<!-- {/if} -->

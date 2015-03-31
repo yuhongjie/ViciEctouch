@@ -1,0 +1,328 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<!-- website wrapper starts -->
+<div class="websiteWrapper"> 
+  <!-- page wrapper starts -->
+  <div class="pageWrapper singleProductPageWrapper"> 
+    <!-- main menu outer wrapper starts -->
+    <div class="mainMenuOuterWrapper"> 
+      <!-- main menu wrapper starts -->
+      <!-- #BeginLibraryItem "/library/page_menu.lbi" --><!-- #EndLibraryItem -->
+    
+      <!-- main menu wrapper ends -->
+      <div class="mainMenuBottomDecoration"></div>
+    </div>
+    <!-- main menu outer wrapper ends --> 
+    
+    <!-- shopping cart wrapper start -->
+    <form id="shoppingCartWrapper" class="shoppingCartWrapper" action="#" method="post">
+      <fieldset>
+        <!-- shopping cart product starts -->
+        <div class="shoppingCartProductWrapper"> <a  href="singleProduct.html" class="shoppingCartProductImageWrapper"><img src="__TPL__/images/content/shoppingCartProductImage-1.jpg" class="shoppingCartProductImage" alt=""></a>
+          <div class="shoppingCartProductInfoWrapper"> <a href="singleProduct.html" class="shoppingCartProductTitle">微茜甜品</a>
+            <div class="shoppingCartProductButtonsWrapper">
+              <input type="text" id="shoppingCartProductNumber-1" class="shoppingCartProductNumber" name="product-1" value="1">
+              <span class="shoppingCartProductPrice">￥25</span><a href="" class="shoppingCartRemoveProductButton"></a> </div>
+          </div>
+        </div>
+        <!-- shopping cart product ends --> 
+        
+        <!-- shopping cart product starts -->
+        <div class="shoppingCartProductWrapper"> <a href="singleProduct.html" class="shoppingCartProductImageWrapper"><img src="__TPL__/images/content/shoppingCartProductImage-2.jpg" class="shoppingCartProductImage" alt=""></a>
+          <div class="shoppingCartProductInfoWrapper"> <a href="singleProduct.html" class="shoppingCartProductTitle">微茜甜品</a>
+            <div class="shoppingCartProductButtonsWrapper">
+              <input type="text" id="shoppingCartProductNumber-2" class="shoppingCartProductNumber" name="product-2" value="2">
+              <span class="shoppingCartProductPrice">￥50</span><a href="" class="shoppingCartRemoveProductButton"></a> </div>
+          </div>
+        </div>
+        <!-- shopping cart product ends --> 
+        
+        <!-- shopping cart product starts -->
+        <div class="shoppingCartProductWrapper"> <a  href="singleProduct.html" class="shoppingCartProductImageWrapper"><img src="__TPL__/images/content/shoppingCartProductImage-3.jpg" class="shoppingCartProductImage" alt=""></a>
+          <div class="shoppingCartProductInfoWrapper"> <a href="singleProduct.html" class="shoppingCartProductTitle">微茜甜品III</a>
+            <div class="shoppingCartProductButtonsWrapper">
+              <input type="text" id="shoppingCartProductNumber-3" class="shoppingCartProductNumber" name="product-3" value="1">
+              <span class="shoppingCartProductPrice">￥110</span><a href="" class="shoppingCartRemoveProductButton"></a> </div>
+          </div>
+        </div>
+        <!-- shopping cart product ends --> 
+        
+        <!-- shopping cart info wrapper starts -->
+        <div class="shoppingCartInfoWrapper"> <span class="shoppingCartProductsNumber">购物车:3件产品</span> <span class="shoppingCartProductsTotal">总共: ￥185</span> </div>
+        <!-- shopping cart info wrapper ends -->
+        
+        <div class="shoppingCartButtonsWrapper"><a href="" class="shoppingCartEmptyButton">清空购物车</a>
+          <a href="" class="shoppingCartEmptyButton">更新购物车</a>
+          <input type="button" value="去付款" onclick="javascript:window.location.href='checkout.html' "  class="shoppingCartCheckoutButton">
+        </div>
+      </fieldset>
+    </form>
+    <!-- shopping cart wrapper ends --> 
+    
+    <!-- header outer wrapper starts -->
+    <div class="headerOuterWrapper">
+      <div class="headerWrapper"> <a href="login.html" class="accountButton"></a><a href="" class="shoppingCartButton"></a><a href="" class="mainMenuButton"></a></div>
+    </div>
+    <!-- header outer wrapper ends --> 
+    
+    <!-- page content wrapper starts -->
+    <div class="pageContentWrapper"> 
+      
+      <!-- page title starts -->
+      <h3 class="pageTitle" style="margin-top:20px;">{$goods.goods_style_name}</h3>
+      <!-- page title ends --> 
+      
+      <!-- product gallery wrapper starts -->
+      <div class="singleProductGalleryWrapper">
+        <div class="singleProductGallery"> 
+          <img src="{$goods.goods_img}" class="singleProductGalleryItem currentSingleProductGalleryItem" alt="{$goods.goods_name}"> 
+          <!--{if $pictures}--> 
+          <!-- {foreach from=$pictures item=picture name=no}--> 
+          <!-- {if $smarty.foreach.no.iteration > 1}  -->
+          <img src="{$picture.img_url}" class="singleProductGalleryItem" alt="{$picture.img_desc}"> 
+          <!-- {/if}--> 
+          <!--{/foreach}--> 
+          <!--{/if}-->
+        </div>
+        <ul class="singleProductGalleryMenu">
+          <li class="currentSingleProductGalleryMenuItem"><a href="{$goods.goods_img}"><img src="{$goods.goods_img}" alt="{$goods.goods_name}"></a></li>
+
+          <!--{if $pictures}--> 
+          <!-- {foreach from=$pictures item=picture name=no}--> 
+          <!-- {if $smarty.foreach.no.iteration > 1}  -->
+          <li><a href="#"><img src="{$picture.img_url}" alt="{$picture.img_desc}" /></a></li>
+          <!-- {/if}--> 
+          <!--{/foreach}--> 
+          <!--{/if}-->
+        </ul>
+      </div>
+      <!-- product gallery wrapper ends -->
+      
+      <div class="pageBreak"></div>
+
+     <!-- test -->
+
+
+     <!--商品属性介绍-->
+       <!--商品描述-->
+       <!--商品评价-->
+       
+       <form action="javascript:addToCart({$goods.goods_id})" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
+ 
+           <!-- <div class="goods-optionc">  -->
+            <div class="drop-downWrapper">
+             <!-- {foreach name=spec from=$specification item=spec key=spec_key} -->
+
+             <!-- {if $spec.name=="口味"} -->
+               <span class="drop-downText" data-label="{$spec.name}">{$spec.name}</span>
+               <div class="drop-downItemsWrapper"> 
+                 <!-- {* 判断属性是复选还是单选 *} --> 
+                 <!-- {if $spec.attr_type eq 1} --> 
+                 <!-- {if $cfg.goodsattr_style eq 1} --> 
+                 <!-- {foreach from=$spec.values item=value key=key} -->
+                 <input type="radio" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}" {if $key eq 0}checked{/if} onclick="changePrice()" />
+                 <label for="spec_value_{$value.id}" class="drop-downItem" data-value="">{$value.label}</label>
+                 <!-- {/foreach} -->
+                 <input type="hidden" name="spec_list" value="{$key}" />
+                 <!-- {else} -->
+                 <select name="spec_{$spec_key}" onchange="changePrice()">
+                   <!-- {foreach from=$spec.values item=value key=key} -->
+                   <option label="{$value.label}" value="{$value.id}">{$value.label} {if $value.price gt 0}{$lang.plus}{elseif $value.price lt 0}{$lang.minus}{/if}{if $value.price neq 0}{$value.format_price}{/if}</option>
+                   <!-- {/foreach} -->
+                 </select>
+                 <input type="hidden" name="spec_list" value="{$key}" />
+                 <!-- {/if} --> 
+                 <!-- {else} --> 
+                 <!-- {foreach from=$spec.values item=value key=key} -->
+                 <input type="checkbox" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}" onclick="changePrice()" />
+                 <label for="spec_value_{$value.id}">{$value.label} [{if $value.price gt 0}{$lang.plus}{elseif $value.price lt 0}{$lang.minus}{/if} {$value.format_price|abs}]</label>
+                 <!-- {/foreach} --> 
+                 <!-- {/if} --> 
+               </div>
+             </div>
+              <!-- {/if} -->
+             <!-- {/foreach} --> 
+
+
+            <div class="drop-downWrapper">
+             <!-- {foreach name=spec from=$specification item=spec key=spec_key} -->
+
+             <!-- {if $spec.name=="数量"} -->
+               <span class="drop-downText" data-label="{$spec.name}">{$spec.name}</span>
+               <div class="drop-downItemsWrapper"> 
+                 <!-- {* 判断属性是复选还是单选 *} --> 
+                 <!-- {if $spec.attr_type eq 1} --> 
+                 <!-- {if $cfg.goodsattr_style eq 1} --> 
+                 <!-- {foreach from=$spec.values item=value key=key} -->
+                 <input type="radio" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}" {if $key eq 0}checked{/if} onclick="changePrice()" />
+                 <label for="spec_value_{$value.id}" class="drop-downItem" data-value="">{$value.label}</label>
+                 <!-- {/foreach} -->
+                 <input type="hidden" name="spec_list" value="{$key}" />
+                 <!-- {else} -->
+                 <select name="spec_{$spec_key}" onchange="changePrice()">
+                   <!-- {foreach from=$spec.values item=value key=key} -->
+                   <option label="{$value.label}" value="{$value.id}">{$value.label} {if $value.price gt 0}{$lang.plus}{elseif $value.price lt 0}{$lang.minus}{/if}{if $value.price neq 0}{$value.format_price}{/if}</option>
+                   <!-- {/foreach} -->
+                 </select>
+                 <input type="hidden" name="spec_list" value="{$key}" />
+                 <!-- {/if} --> 
+                 <!-- {else} --> 
+                 <!-- {foreach from=$spec.values item=value key=key} -->
+                 <input type="checkbox" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}" onclick="changePrice()" />
+                 <label for="spec_value_{$value.id}">{$value.label} [{if $value.price gt 0}{$lang.plus}{elseif $value.price lt 0}{$lang.minus}{/if} {$value.format_price|abs}]</label>
+                 <!-- {/foreach} --> 
+                 <!-- {/if} --> 
+               </div>
+             </div>
+              <!-- {/if} -->
+             <!-- {/foreach} --> 
+            
+
+            <div class="l-good-num goods-num"> 
+              <span class="l-numlabel pull-left">{$lang.number}：</span> 
+              <!-- {if $goods.goods_id gt 0 && $goods.is_gift eq 0 && $goods.parent_id eq 0} 普通商品可修改数量 -->
+              <div class="input-group pull-left wrap">
+                <span class="input-group-addon sup" onClick="changePrice('1')">-</span>
+                <input type="text" class="form-contro form-num"  name="number" id="goods_number" autocomplete="off" value="1" onFocus="back_goods_number()"  onblur="changePrice('2')"/>
+                <span class="input-group-addon plus" onClick="changePrice('3')">+</span>
+              </div>
+              <!-- {else} -->
+              <input type="text" class="form-contro form-num" readonly value="{$goods.goods_number} "/>
+              <!-- {/if} --> 
+            </div>
+
+       </form>
+     </div>
+
+     <!-- test -->
+
+
+
+
+
+        <div class="pageContentWrapper">
+          <a href="javascript:addToCart_quick({$goods.goods_id})" class="singleProductPurchaseButton">(
+                <span id="ECS_GOODS_AMOUNT"></span>
+                ){$lang.buy_now}</a> 
+              <a href="javascript:void(0)" onClick="collect({$goods.goods_id})" id='ECS_COLLECT' class="singleProductPurchaseButton">添加到收藏</a> 
+              <!-- product info accordions start -->
+              <div class="accordionWrapper"> 
+                <!-- accordion item wrapper starts -->
+                <div class="accordionItemWrapper"> <a href="" class="accordionButton"><span class="accordionButtonIcon"></span><span class="accordionButtonTitle">详细信息</span></a>
+                  <div class="accordionContentWrapper">
+                  <p>{$goods.goods_desc}</p>
+                </div>
+                <!-- accordion item wrapper ends --> 
+              </div>
+              <!-- product info accordions end --> 
+            </div>
+            <!-- page content wrapper ends -->
+          </div>
+      
+
+      <div class="footerDecoration"></div>
+        <!-- footer wrapper starts -->
+         <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
+        <!-- footer wrapper ends --> 
+        <!-- page wrapper ends --> 
+      </div>
+</div>
+<!-- website wrapper ends -->
+
+<script type="text/javascript" src="__TPL__/js/lefttime.js"></script> 
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function(){Code.photoSwipe('a', '#Gallery');}, false);
+
+
+/*倒计时*/
+var goods_id = {$goods_id};
+var goodsattr_style = 1;
+var gmt_end_time = 0;
+var day = "天";
+var hour = "小时";
+var minute = "分钟";
+var second = "秒";
+var end = "结束";
+var goodsId = {$goods_id};
+var now_time = {$now_time};
+var use_how_oos = {:C('use_how_oos')};
+onload = function(){
+  changePrice(2);
+  fixpng();
+  try {onload_leftTime();}
+  catch (e) {}
+}
+function back_goods_number(){
+ var goods_number = document.getElementById('goods_number').value;
+  document.getElementById('back_number').value = goods_number;
+}
+/**
+ * 点选可选属性或改变数量时修改商品价格的函数
+ */
+function changePrice(type)
+{
+  var qty = document.forms['ECS_FORMBUY'].elements['number'].value;
+  if(type == 1){qty--; }
+  if(type == 3){qty++; }
+  if(qty <=0 ){ qty=1; }
+  if(!/^[0-9]*$/.test(qty)){ qty = document.getElementById('back_number').value; }
+  document.getElementById('goods_number').value = qty;
+  var attr = getSelectedAttributes(document.forms['ECS_FORMBUY']);
+  $.get('{:url("goods/price")}', {'id':goodsId,'attr':attr,'number':qty}, function(data){
+    changePriceResponse(data);
+  }, 'json');
+}
+
+
+/**
+ * 接收返回的信息
+ */
+function changePriceResponse(res){
+  if (res.err_msg.length > 0){
+    alert(res.err_msg);
+  } else {
+    if (document.getElementById('ECS_GOODS_AMOUNT'))
+      document.getElementById('ECS_GOODS_AMOUNT').innerHTML = res.result;
+  }
+}
+<!-- {/literal} -->
+/**
+ * 接收返回的信息
+ */
+function changePriceResponse(res){
+  if (res.err_msg.length > 0){
+    alert(res.err_msg);
+  } else {
+    if (document.getElementById('ECS_GOODS_AMOUNT'))
+      document.getElementById('ECS_GOODS_AMOUNT').innerHTML = res.result;
+  }
+}
+
+/*判断user-tab是否距顶，距顶悬浮*/
+var nav_tabs_top = $(".user-tab .nav-tabs").offset().top;//获取nav-tabs距离顶部的位
+function func_scroll(){//定义一个事件效果置
+  var documentTop = $(document).scrollTop();//获取滚动条距离顶部距离
+  if(nav_tabs_top <= documentTop){
+    $(".user-tab").addClass("user-tab-fixed");
+    $("#is-nav-tabs").css("display","block");
+  }else{
+    $(".user-tab").removeClass("user-tab-fixed");
+    $("#is-nav-tabs").css("display","none");    
+  }
+}
+
+window.onscroll = function () {
+   func_scroll();
+}
+</script> 
+<script type="text/javascript">
+        TouchSlide({ 
+          slideCell:"#picScroll",
+          titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+          autoPage:"true", //自动分页
+          pnLoop:"false", // 前后按钮不循环
+          switchLoad:"_src" //切换加载，真实图片路径为"_src" 
+        });
+      </script>
+</body>
+</html>
+
