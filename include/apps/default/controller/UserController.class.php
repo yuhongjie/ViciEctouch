@@ -43,6 +43,13 @@ class UserController extends CommonController {
      * 会员中心欢迎页
      */
     public function index() {
+
+        /*liugu-ec添加导航*/
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
+        // end--liugu
+
         // 用户等级
         if ($rank = model('ClipsBase')->get_rank_info()) {
             $this->assign('rank_name', sprintf(L('your_level'), $rank['rank_name']));
@@ -1580,6 +1587,10 @@ class UserController extends CommonController {
      * 登录
      */
     public function login() {
+
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
         // 登录处理
         if (IS_POST) {
             $username = I('post.username');

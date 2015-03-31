@@ -6,18 +6,7 @@
     <!-- main menu outer wrapper starts -->
     <div class="mainMenuOuterWrapper"> 
       <!-- main menu wrapper starts -->
-      <ul class="mainMenuWrapper">
-        <ul class="mainMenuWrapper">
-        <li class="currentPage"><a href="index.php">首页</a></li>
-        <!--{foreach from=$navigator item=nav}--> 
-          <li>
-            <a href="{$nav.url}">
-              {$nav.name}
-            </a>
-          </li>
-        <!--{/foreach}-->
-      </ul>
-      </ul>
+      <!-- #BeginLibraryItem "/library/page_menu.lbi" --><!-- #EndLibraryItem -->
       <!-- main menu wrapper ends -->
       <div class="mainMenuBottomDecoration"></div>
     </div>
@@ -83,56 +72,29 @@
       <div class="headerBreak"></div>
 
       <div class="selectWrapper">
-        <div class="menu">
-           <ul>
-              <li class="father-li"><a class="" href="javascript:void(0)">产品分类</a>
-                <ul>
-                <!--{foreach from=$categories item=cat name=no}-->
-                <!--{if $cat.cat_id}-->
-                  <li>
-                    <a href="{$cat.url}">{$cat.name|escape:html}</a>
-                  </li>
-                <!--{foreach from=$cat.cat_id item=child name=no1}-->
-                  <li>
-                     <a href="{$child.url}">
-                       &nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;{$child.name|escape:html|truncate:5,false} 
-                     </a>
-                  </li>
-                <!--{/foreach}-->
-                  <li class="line"></li>
-                <!--{else}-->
-                  <li><a href="{:url('category/index',array('id'=>$this->_var['cat']['id']))}">
-                    {$cat.name|escape:html}
-                     </a>
-                  </li>
-                <!--{/if}-->
-                <!--{/foreach}-->
-                </ul>
-              </li>
-         </ul> 
-      </div>
+       <!-- #BeginLibraryItem "/library/cat_nav.lbi" --><!-- #EndLibraryItem --> 
       </div>
       <div class="list-title">
         <div class="bread-nav">
-          <!-- #BeginLibraryItem "/library/category_sort.lbi" --><!-- #EndLibraryItem --> 
+          <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem --> 
         </div>
         <div class="view-mode">
-          <a class="list <!-- {if $display == 'list'}  --> active <!-- {/if} -->" href="{:url('category/index', array('id'=>$this->_var['id'],'display'=>'list'))}&type={$type}" > 
-            <i class=" icon-th-list"></i>
-          </a> 
-          <a class="grid <!-- {if $display == 'grid'}  --> active <!-- {/if} -->" href="{:url('category/index', array('id'=>$this->_var['id'],'display'=>'grid'))}&type={$type}">
-            <i class=" icon-th-large"></i>
-          </a>  
+          <a class="list" href="portfolioOneColumn.html"><i class=" icon-th-list"></i></a> 
+          <a class="grid active" href="javascript:void(0)"><i class=" icon-th-large"></i></a>  
         </div> 
       </div>
        
       <!-- portfolio items wrapper starts -->
-      
+      <div class="portfolioTwoItemsWrapper"> 
         <!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem --> 
-      
+      </div>
       <!-- portfolio items wrapper ends --> 
     </div>
     <!-- portfolio wrapper ends --> 
+    
+    <!-- page numbers start -->
+    <!-- #BeginLibraryItem "/library/page.lbi" --><!-- #EndLibraryItem --> 
+    <!-- page numbers end -->
     
     <div class="footerDecoration"></div>
     <!-- footer wrapper starts -->

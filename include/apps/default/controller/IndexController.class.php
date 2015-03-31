@@ -40,6 +40,9 @@ class IndexController extends CommonController {
         $this->assign('categories', model('CategoryBase')->get_categories_tree());
         // 获取品牌
         $this->assign('brand_list', model('Brand')->get_brands($app = 'brand', C('page_size'), 1));
+
+        //liugu--获取文章列表
+        $this->assign('artciles_list', model('ArticleBase')->get_cat_articles(19));
         $this->display('index.dwt');
     }
 

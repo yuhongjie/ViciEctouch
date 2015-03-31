@@ -168,16 +168,6 @@ font-size: 18px;
 
 /*产品详情样式*/
 
-/*.input-group {
-	border: 1px solid #e3e3e3;
-	width: 10em;
+.l-good-num {
+	margin-bottom: 20px;
 }
-
-.input-group-addon {
-width: 2.3em;
-font-size: 1em;
-line-height: 2.3em;
-padding: 0;
-border-radius: 0;
-border: none;
-}*/

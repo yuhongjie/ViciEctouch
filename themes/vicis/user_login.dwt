@@ -1,50 +1,84 @@
-<!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
- <form name="formLogin" action="{:url('user/login')}" method="post" class="validforms">
- <div class="flow-consignee ect-bg-colorf">
-     <section>
-      <ul>
-   		<li>
-    		<div class="input-text"><b>{$lang.username}：</b><span><input placeholder="{$lang.username}/{$lang.mobile}/{$lang.email}" name="username" type="text"  class="inputBg" id="username" datatype="*" ></span></div>
-        </li>
-        <li>
-    		<div class="input-text"><b>{$lang.label_password}：</b><span><input placeholder="{$lang.label_password}"  name="password" type="password" class="inputBg" datatype="*6-16" /></span></div>
-        </li>
-        <!-- 判断是否启用验证码{if $enabled_captcha} -->
-       <li>
-          <div class="input-text code"><b>{$lang.comment_captcha}</b><span>
-             <input name="captcha" type="text" placeholder="{$lang.comment_captcha}">
-             </span><img src="{:url('Public/captcha', array('rand'=>$this->_var['rand']))}" alt="captcha" class="img-yzm pull-right" onClick="this.src='{:url('public/captcha')}&t='+Math.random()" /></div>
-            </li>
-            <!--{/if}-->
-      </ul>
-    </section>
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<!-- website wrapper starts -->
+<div class="websiteWrapper"> 
+  <!-- page wrapper starts -->
+  <div class="pageWrapper blogPageWrapper"> 
+    <!-- main menu outer wrapper starts -->
+    <div class="mainMenuOuterWrapper"> 
+      <!-- main menu wrapper starts -->
+      <!-- #BeginLibraryItem "/library/page_menu.lbi" --><!-- #EndLibraryItem -->
+      <!-- main menu wrapper ends -->
+      <div class="mainMenuBottomDecoration"></div>
+    </div>
+    <!-- main menu outer wrapper ends --> 
+  
+    
+    <!-- header outer wrapper starts -->
+    <div class="headerOuterWrapper">
+      <div class="headerWrapper">
+       <a href="{:url('user/index')}" class="accountButton"></a>
+       <a href="{:url('flow/cart')}" class="shoppingCartButton"></a>
+       <a href="" class="mainMenuButton"></a>
+     </div>
+      <div class="headerDecoration"></div>
+      
+      <!-- main logo starts --> 
+      <a href="" class="mainLogo"><img src="__TPL__/images/common/mainLogo.png" alt="" /></a> 
+      <!-- main logo ends --> 
+    </div>
+    <!-- header outer wrapper ends --> 
+    
+    <!-- page content wrapper starts -->
+    <div class="pageContentWrapper"> 
+      
+     <div class="headerBreak headerBreakTitleBottom"></div>
+      
+      <!-- page title starts -->
+      <h3 class="pageTitle">用户登陆</h3>
+      <!-- page title ends -->
+      
+      <!-- login form wrapper starts -->
+      <div class="loginFormWrapper">
+        <form name="formLogin" action="{:url('user/login')}" method="post" class="validforms">
+          <fieldset>
+            <div class="formFieldWrapper">
+              <label for="loginNameField">{$lang.username}：</label>
+              <input placeholder="{$lang.username}/{$lang.mobile}/{$lang.email}" name="username" type="text"  id="username" datatype="*" class="loginNameField fieldWithIcon userFieldIcon" />
+            </div>
+            <div class="formFieldWrapper">
+              <label for="loginPasswordField">{$lang.label_password}：</label>
+              <input placeholder="{$lang.label_password}"  name="password" type="password"  datatype="*6-16" value="" id="loginPasswordField" class="loginPasswordField fieldWithIcon passwordFieldIcon"  />
+            </div>
+
+             <!-- 判断是否启用验证码{if $enabled_captcha} -->
+           <div class="input-text code"><b>{$lang.comment_captcha}</b><span>
+              <input name="captcha" type="text" placeholder="{$lang.comment_captcha}">
+              </span><img src="{:url('Public/captcha', array('rand'=>$this->_var['rand']))}" alt="captcha" class="img-yzm pull-right" onClick="this.src='{:url('public/captcha')}&t='+Math.random()" />
+           </div>
+             <!--{/if}-->
+            <div class="loginButtonsWrapper"> 
+              <a href="{:url('user/register')}" class="loginRegisterButton">{$lang.free_registered}</a> 
+              <a href="{:url('user/get_password_phone')}" class="loginRecoverButton">{$lang.forgot_password}？</a>
+              <input type="submit" value="{$lang.now_landing}" class="loginButton" id="loginButton">
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      <!-- login form wrapper ends -->
+      
+    </div>
+    <!-- page content wrapper ends -->
+    
+    
+    <div class="footerDecoration"></div>
+    <!-- footer wrapper starts -->
+   <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
+    <!-- footer wrapper ends --> 
+    
   </div>
-  <p class="ect-checkbox ect-padding-tb ect-margin-tb ect-margin-bottom0 ect-padding-lr">
-     <input type="checkbox" value="1" name="remember" id="remember" class="l-checkbox" />
-     <label for="remember">{$lang.remember}<i></i></label>
-      <!-- {if $anonymous_buy eq 1 && $step eq 'flow'} 是否允许未登录用户购物 -->
-      <a href="{:url('flow/consignee',array('direct_shopping'=>1))}" style="float:right;">{$lang.direct_shopping}</a>
-      <!-- {/if} -->
-     
-  </p>
-   <input type="hidden" name="back_act" value="{$back_act}" />
-  <div class="ect-padding-lr ect-padding-tb"> 
-  <input type="submit" class="btn btn-info ect-btn-info ect-bg" value="{$lang.now_landing}" />
-  </div>
-  </form>
-  <p class="ect-padding-lr ect-margin-tb text-right ect-margin-bottom0" style="clear:both">
-	<a href="{:url('user/get_password_phone')}">{$lang.forgot_password}</a>  
-	<a href="{:url('user/register')}">{$lang.free_registered}</a>
-  </p>
-  <div class="ect-padding-lr ect-margin-tb user-hezuo">
-  	{$lang.third_login}
-  	<p>
-    	<a href="{:url('user/third_login',array('type'=>'qq'))}"><img src="__TPL__/images/qq.png"></a>
-        <a href="{:url('user/third_login',array('type'=>'sina'))}"><img src="__TPL__/images/weibo.png"></a>
-    </p>
-  </div>
-  </div>
-<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem -->
-<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+  <!-- page wrapper ends --> 
+</div>
+<!-- website wrapper ends -->
 </body>
 </html>
+

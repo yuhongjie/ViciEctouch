@@ -129,6 +129,17 @@ color:#999;
 }
 .formFieldWrapper {
 	margin-bottom: 23px;
+	position: relative;
+}
+
+.formFieldWrapper i {
+	position: absolute;
+	right: 15px;
+	top: 43px;
+}
+
+.formFieldWrapper input {
+	border-radius: 0;
 }
 .formFieldWrapper label, .formTextareaWrapper label {
 	margin-bottom: 13px;
@@ -136,6 +147,9 @@ color:#999;
 	box-sizing: border-box;
 	height: 18px;
 	line-height: 18px;
+}
+.dis-inline label a {
+	display: inline;
 }
 input.fieldWithIcon {
 	background-position: right center;
@@ -154,13 +168,13 @@ input.fieldWithIcon {
 	padding-right: 40px!important;
 }
 .userFieldIcon {
-	background-image: url(../images/common/userFieldBg.png);
+	background-image: url(../images/common/userFieldBg.png)!important;
 }
 .passwordFieldIcon {
-	background-image: url(../images/common/passwordFieldBg.png);
+	background-image: url(../images/common/passwordFieldBg.png)!important;
 }
 .emailFieldIcon {
-	background-image: url(../images/common/emailFieldBg.png);
+	background-image: url(../images/common/emailFieldBg.png)!important;
 }
 .phoneFieldIcon {
 	background-image: url(../images/common/phoneFieldBg.png);
@@ -650,6 +664,7 @@ a.nivo-prevNav:hover {
 }
 .registerForm input[type="text"], .registerForm input[type="password"] {
 	margin-bottom: 0px;
+	border-radius: 0!important;
 }
 input.registerFirstNameField, input.registerLastNameField, input.registerUserNameField {
 	width: 100%;
@@ -677,7 +692,7 @@ input.registerAddressField, input.registerCountryField, input.registerCityField,
 	height: 36px;
 }
 .registerButtonsWrapper {
-	height: 36px;
+	/*height: 36px;*/
 	padding-top: 4px;
 }
 input.registerButton {
@@ -732,7 +747,6 @@ input.loginPasswordField {
 	margin-bottom: 0px;
 }
 .loginButtonsWrapper {
-	height: 36px;
 	padding-top: 4px;
 }
 input.loginButton {
@@ -1331,7 +1345,6 @@ input.checkoutCheckoutButton {
 	height: 36px;
 }
 .portfolioTwoItemTitle {
-	margin-top: 0px !important;
 	font-size: 12px;
 	margin-bottom: 0px;
 	height: 36px;
@@ -2065,29 +2078,3 @@ input[type=radio], input[type=checkbox] {
 display: none;
 }
 
-/*排序样式*/
-.ect-wrapper {
-  z-index: 2;
-  position: relative;
-  top: 0;
-  background: #fff;
-  width: 100%;
-  max-width: 640px;
-}
-.ect-wrapper div a {
-  padding-right: 10px;
-  display: inline;
-  height: 3em;
-  line-height: 3em;
-  border-right: 1px #e3e3e3 solid;
-  margin-right: 10px;
-}
-
-/*分页*/
-.pageNumbersOuterWrapper-page{
-  margin-left: 0px;
-  margin-right: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
-  background-color: #fff;
-}

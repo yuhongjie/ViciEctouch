@@ -1,9 +1,54 @@
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+
+<div class="websiteWrapper"> 
+  <!-- page wrapper starts -->
+<div class="pageWrapper singleProductPageWrapper"> 
+  <div class="pageContentWrapper">
+ <div class="headerWrapper">
+      <a href="{:url('user/index')}" class="accountButton">
+      </a>
+      <a href="{:url('flow/cart')}" class="shoppingCartButton">
+      </a>
+      <a href="" class="mainMenuButton">
+      </a>
+    </div>
+  <!-- main menu outer wrapper starts -->
+  <div class="mainMenuOuterWrapper">
+    <!-- main menu wrapper starts -->
+    <ul class="mainMenuWrapper">
+      <li class="currentPage">
+        <a href="index.php">
+          首页
+        </a>
+      </li>
+      <!--{foreach from=$navigator item=nav}--> 
+      <li>
+        <a href="{$nav.url}">
+          {$nav.name}
+        </a>
+      </li>
+       <!--{/foreach}-->
+    </ul>
+    <!-- main menu wrapper ends -->
+    <div class="mainMenuBottomDecoration">
+    </div>
+  </div>
+
+  <div id="shoppingCartWrapper" class="shoppingCartWrapper">
+   <!-- #BeginLibraryItem "/library/flow_cart.dwt" --><!-- #EndLibraryItem -->
+  </div>
+
+   
+    <div class="headerDecoration">
+    </div>
+    <!-- main logo starts -->
+    <a href="" class="mainLogo">
+      <img src="__TPL__/images/common/mainLogo.png" alt="" />
+    </a>
+    <!-- main logo ends -->
+
 <div class="con">
-<header class="ect-header ect-margin-tb ect-margin-lr text-center"> <a href="javascript:history.go(-1)" class="pull-left ect-icon ect-icon1 ect-icon-history"></a>
-<span>{$title}</span>
- <a href="javascript:openSearch();" class="pull-right ect-icon ect-icon1 ect-icon-search1"></a>
-</header>
+
 <div class="panel panel-default ect-category-all ect-border-radius0">
     <ul>
      <!--{foreach from=$category item=cat name=no}-->
@@ -54,7 +99,11 @@
     </ul> 
 </div>
 </div>
-<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem -->
+</div>
+
 <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</div>
+</div>
+
 </body>
 </html>

@@ -41,7 +41,8 @@ class ArticleBaseModel extends BaseModel {
             $condition .= ' AND title like \'%' . $requirement . '%\'';
         }
         $limit = ($page - 1) * $size . ',' . $size;
-        $list = $this->select($condition, 'article_id, title, author, add_time, file_url, open_type', ' article_id DESC', $limit);
+        //liugu--添加content
+        $list = $this->select($condition, 'article_id, title, author, add_time,cat_id, content,file_url, open_type', ' article_id DESC', $limit);
 
         $i = 1;
         $arr = array();
@@ -55,6 +56,8 @@ class ArticleBaseModel extends BaseModel {
                 $arr[$article_id]['author'] = empty($vo['author']) || $vo['author'] == '_SHOPHELP' ? C('shop_name') : $vo['author'];
                 $arr[$article_id]['url'] = $vo['open_type'] != 1 ? build_uri('article/info', array('aid' => $article_id)) : trim($vo['file_url']);
                 $arr[$article_id]['add_time'] = date(C('date_format'), $vo['add_time']);
+                $arr[$article_id]['cat_id'] = $vo['cat_id'];//liugu--添加content
+                $arr[$article_id]['content'] = html_out($vo['content']);//liugu--添加content
                 $i++;
             }
         }
