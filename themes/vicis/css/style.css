@@ -2078,3 +2078,33 @@ input[type=radio], input[type=checkbox] {
 display: none;
 }
 
+<<<<<<< HEAD
+=======
+/*排序样式*/
+.ect-wrapper {
+  z-index: 2;
+  position: relative;
+  top: 0;
+  background: #fff;
+  width: 100%;
+  max-width: 640px;
+}
+.ect-wrapper div a {
+  padding-right: 10px;
+  display: inline;
+  height: 3em;
+  line-height: 3em;
+  border-right: 1px #e3e3e3 solid;
+  margin-right: 10px;
+}
+
+/*分页*/
+.pageNumbersOuterWrapper-page{
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: #fff;
+}
+
+>>>>>>> master

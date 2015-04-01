@@ -76,18 +76,35 @@
       </div>
       <div class="list-title">
         <div class="bread-nav">
+<<<<<<< HEAD
           <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem --> 
         </div>
         <div class="view-mode">
           <a class="list" href="portfolioOneColumn.html"><i class=" icon-th-list"></i></a> 
           <a class="grid active" href="javascript:void(0)"><i class=" icon-th-large"></i></a>  
+=======
+        <!-- #BeginLibraryItem "/library/category_sort.lbi" --><!-- #EndLibraryItem --> 
+          <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem --> 
+        </div>
+        <div class="view-mode">
+           <a class="list <!-- {if $display == 'list'}  --> active <!-- {/if} -->" href="{:url('category/index', array('id'=>$this->_var['id'],'display'=>'list'))}&type={$type}" > 
+            <i class=" icon-th-list"></i>
+          </a> 
+          <a class="grid <!-- {if $display == 'grid'}  --> active <!-- {/if} -->" href="{:url('category/index', array('id'=>$this->_var['id'],'display'=>'grid'))}&type={$type}">
+            <i class=" icon-th-large"></i>
+          </a>   
+>>>>>>> master
         </div> 
       </div>
        
       <!-- portfolio items wrapper starts -->
+<<<<<<< HEAD
       <div class="portfolioTwoItemsWrapper"> 
         <!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem --> 
       </div>
+=======
+        <!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem --> 
+>>>>>>> master
       <!-- portfolio items wrapper ends --> 
     </div>
     <!-- portfolio wrapper ends --> 

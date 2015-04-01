@@ -1,0 +1,225 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+        <!-- website wrapper starts -->
+        <div class="websiteWrapper">
+            <!-- page wrapper starts -->
+            <div class="pageWrapper advancedSearchPageWrapper">
+                <!-- main menu outer wrapper starts -->
+                <div class="mainMenuOuterWrapper">
+                    <!-- main menu wrapper starts -->
+                    <ul class="mainMenuWrapper">
+                        <li>
+                            <a href="index.html">
+                                首页
+                            </a>
+                        </li>
+                        <li>
+                            <a href="portfolioTwoColumns.html">
+                                系列
+                            </a>
+                        </li>
+                        <li>
+                            <a href="portfolioTwoColumns1.html">
+                                用途
+                            </a>
+                        </li>
+                        <li>
+                            <a href="food.html">
+                                食材
+                            </a>
+                        </li>
+                        <li>
+                            <a href="faq.html">
+                                FAQ
+                            </a>
+                        </li>
+                        <li>
+                            <a href="instruct.html">
+                                配送说明
+                            </a>
+                        </li>
+                        <li>
+                            <a href="aboutus.html">
+                                关于我们
+                            </a>
+                        </li>
+                        <li>
+                            <a href="contact.html">
+                                联系我们
+                            </a>
+                        </li>
+                        <li class="currentPage">
+                            <a href="advancedSearch.html">
+                                详细搜索
+                            </a>
+                        </li>
+                        <li><a href="">Rabbit Hole</a></li>
+                    </ul>
+                    <!-- main menu wrapper ends -->
+                    <div class="mainMenuBottomDecoration">
+                    </div>
+                </div>
+                <!-- main menu outer wrapper ends -->
+                <!-- shopping cart wrapper start -->
+                <form id="shoppingCartWrapper" class="shoppingCartWrapper" action="#" method="post">
+                  <fieldset>
+                    <!-- shopping cart product starts -->
+                    <div class="shoppingCartProductWrapper"> <a  href="singleProduct.html" class="shoppingCartProductImageWrapper"><img src="images/content/shoppingCartProductImage-1.jpg" class="shoppingCartProductImage" alt=""></a>
+                      <div class="shoppingCartProductInfoWrapper"> <a href="singleProduct.html" class="shoppingCartProductTitle">微茜甜品</a>
+                        <div class="shoppingCartProductButtonsWrapper">
+                          <input type="text" id="shoppingCartProductNumber-1" class="shoppingCartProductNumber" name="product-1" value="1">
+                          <span class="shoppingCartProductPrice">￥25</span><a href="" class="shoppingCartRemoveProductButton"></a> </div>
+                      </div>
+                    </div>
+                    <!-- shopping cart product ends --> 
+                    
+                    <!-- shopping cart product starts -->
+                    <div class="shoppingCartProductWrapper"> <a href="singleProduct.html" class="shoppingCartProductImageWrapper"><img src="images/content/shoppingCartProductImage-2.jpg" class="shoppingCartProductImage" alt=""></a>
+                      <div class="shoppingCartProductInfoWrapper"> <a href="singleProduct.html" class="shoppingCartProductTitle">微茜甜品</a>
+                        <div class="shoppingCartProductButtonsWrapper">
+                          <input type="text" id="shoppingCartProductNumber-2" class="shoppingCartProductNumber" name="product-2" value="2">
+                          <span class="shoppingCartProductPrice">￥50</span><a href="" class="shoppingCartRemoveProductButton"></a> </div>
+                      </div>
+                    </div>
+                    <!-- shopping cart product ends --> 
+                    
+                    <!-- shopping cart product starts -->
+                    <div class="shoppingCartProductWrapper"> <a  href="singleProduct.html" class="shoppingCartProductImageWrapper"><img src="images/content/shoppingCartProductImage-3.jpg" class="shoppingCartProductImage" alt=""></a>
+                      <div class="shoppingCartProductInfoWrapper"> <a href="singleProduct.html" class="shoppingCartProductTitle">微茜甜品</a>
+                        <div class="shoppingCartProductButtonsWrapper">
+                          <input type="text" id="shoppingCartProductNumber-3" class="shoppingCartProductNumber" name="product-3" value="1">
+                          <span class="shoppingCartProductPrice">￥110</span><a href="" class="shoppingCartRemoveProductButton"></a> </div>
+                      </div>
+                    </div>
+                    <!-- shopping cart product ends --> 
+                    
+                    <!-- shopping cart info wrapper starts -->
+                    <div class="shoppingCartInfoWrapper"> <span class="shoppingCartProductsNumber">购物车:3件产品</span> <span class="shoppingCartProductsTotal">总共: ￥185</span> </div>
+                    <!-- shopping cart info wrapper ends -->
+                    
+                    <div class="shoppingCartButtonsWrapper"><a href="" class="shoppingCartEmptyButton">清空购物车</a>
+                      <a href="" class="shoppingCartEmptyButton">更新购物车</a>
+                      <input type="button" value="去付款" onclick="javascript:window.location.href='checkout.html' "  class="shoppingCartCheckoutButton">
+                    </div>
+                  </fieldset>
+                </form>
+                <!-- shopping cart wrapper ends --> 
+                <!-- header outer wrapper starts -->
+                <div class="headerOuterWrapper">
+                    <div class="headerWrapper">
+                        <a href="login.html" class="accountButton">
+                        </a>
+                        <a href="" class="shoppingCartButton">
+                        </a>
+                        <a href="" class="mainMenuButton">
+                        </a>
+                    </div>
+                    <div class="headerDecoration">
+                    </div>
+                    <!-- main logo starts -->
+                    <a href="" class="mainLogo">
+                        <img src="images/common/mainLogo.png" alt="" />
+                    </a>
+                    <!-- main logo ends -->
+                </div>
+                <!-- header outer wrapper ends -->
+                <!-- page content wrapper starts -->
+                <div class="pageContentWrapper">
+                    <div class="headerBreak headerBreakTitleBottom">
+                    </div>
+                    <!-- page title starts -->
+                    <h3 class="pageTitle">
+                        详细搜索
+                    </h3>
+                    <!-- page title ends -->
+                    <!-- advanced search form wrapper starts -->
+                    <div class="advancedSearchFormWrapper">
+                        <form action="#" method="post" id="advancedSearchForm" class="advancedSearchForm">
+                            <fieldset>
+                                <!-- drop-down starts -->
+                                <label for="advancedSearchTermsField">
+                                    类别:
+                                </label>
+                                <div class="drop-downWrapper">
+                                    <span class="drop-downText" data-label="Category">
+                                    </span>
+                                    <div class="drop-downItemsWrapper">
+                                        <span class="drop-downItem" data-value="all">
+                                            食材
+                                        </span>
+                                        <span class="drop-downItem" data-value="one">
+                                            系列
+                                        </span>
+                                    </div>
+                                    <input type="hidden" name="drop-downField" class="drop-downField" value="all">
+                                </div>
+                                <!-- drop-down ends -->
+                                <label for="advancedSearchTermsField">
+                                    价格:
+                                </label>
+                                <!-- drop-down starts -->
+                                <div class="drop-downWrapper">
+                                    <span class="drop-downText" data-label="Price">
+                                    </span>
+                                    <div class="drop-downItemsWrapper">
+                                        <span class="drop-downItem" data-value="any">
+                                           默认
+                                        </span>
+                                        <span class="drop-downItem" data-value="0-100">
+                                            0 - 100
+                                        </span>
+                                        <span class="drop-downItem" data-value="100-1000">
+                                            100 - 1000
+                                        </span>
+                                        <span class="drop-downItem" data-value=">1000">
+                                            &gt; 1000
+                                        </span>
+                                    </div>
+                                    <input type="hidden" name="drop-downField" class="drop-downField" value="any">
+                                </div>
+                                <!-- drop-down ends -->
+                                <!-- drop-down starts -->
+                                <label for="advancedSearchTermsField">
+                                   排序:
+                                </label>
+                                <div class="drop-downWrapper">
+                                    <span class="drop-downText" data-label="Sort by">
+                                    </span>
+                                    <div class="drop-downItemsWrapper">
+                                        <span class="drop-downItem" data-value="random">
+                                           默认
+                                        </span>
+                                        <span class="drop-downItem" data-value="price-up">
+                                            价格升序
+                                        </span>
+                                        <span class="drop-downItem" data-value="price-down">
+                                            价格降序
+                                        </span>
+                                    </div>
+                                    <input type="hidden" name="drop-downField" class="drop-downField" value="random">
+                                </div>
+                                <!-- drop-down ends -->
+                                <!-- drop-down starts -->
+                                <!-- drop-down ends -->
+                                <div class="advancedSearchButtonsWrapper">
+                                    <input type="submit" value="搜索" class="advancedSearchButton" id="advancedSearchButton">
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <!-- advanced search form wrapper ends -->
+                </div>
+                <!-- page content wrapper ends -->
+                <div class="footerDecoration">
+                </div>
+                <!-- footer wrapper starts -->
+                <!-- footer wrapper starts -->
+                <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
+                <!-- footer wrapper ends --> 
+                <!-- footer wrapper ends -->
+            </div>
+            <!-- page wrapper ends -->
+        </div>
+        <!-- website wrapper ends -->
+    </body>
+
+</html>

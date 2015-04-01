@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 <!--{if $show_asynclist eq 1}-->
@@ -19,9 +20,19 @@
         </div>
       <!-- portfolio item ends -->
     <!--{/foreach}-->
+=======
+<!--{if $show_asynclist eq 1}-->
+{include file='library/category_grid.lbi '}
+<!--{else}-->
+{include file='library/category_grid.lbi '}
+>>>>>>> master
 <!--{/if} --> 
 
 <!--筛选开始-->
 
 <!--筛选结束--> 
+<<<<<<< HEAD
 
+=======
+{include file='library/page.lbi '}
+>>>>>>> master
