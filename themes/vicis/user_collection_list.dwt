@@ -1,37 +1,109 @@
-<!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
-<div class="ect-margin-tb ect-pro-list ect-margin-bottom0 ect-border-bottom0">
-<!--{if $collection_list}-->
-  <ul>
-  <!-- {foreach from=$collection_list item=val} -->
-    <li class="single_item" id="more_element_1"> <a href="{:url('goods/index', array('id'=>$this->_var[val]['goods_id']))}"><img src="{$val.goods_thumb}"></a>
-      <dl>
-        <dt>
-          <h4 class="title"><a href="{:url('goods/index', array('id'=>$this->_var[val]['goods_id']))}">{$val.goods_name}</a></h4>
-        </dt>
-        <dd class="dd-price">
-			<span class="pull-left"><strong>{$lang.sort_price}：<b class="ect-colory">{$val.shop_price}</b></strong><small class="ect-margin-lr"><del>{$val.market_price}</del></small></span>
-			<span class="pull-right">
-				<!-- {if $val.is_attention} -->
-				<a href="javascript:if (confirm('{$lang.del_attention}')) location.href='{:url('user/del_attention', array('rec_id'=>$this->_var['val']['rec_id']))}'" class="fa fa-eye-slash">{$lang.no_attention}</a>
-				<!-- {else} -->
-				<a href="javascript:if (confirm('{$lang.add_to_attention}')) location.href='{:url('user/add_attention', array('rec_id'=>$this->_var['val']['rec_id']))}'" class="fa fa-eye">{$lang.attention}</a>
-				<!-- {/if} -->
-			</span>
-		</dd>
-        <dd class="text-center">
-			<a class="flow-del" href="javascript:addToCart({$val.goods_id})">{$lang.add_to_cart}</a>
-			<a class="flow-del" href="javascript:if(confirm('{$lang.remove_collection_confirm}')) location.href='{:url('delete_collection', array('rec_id'=>$this->_var['val']['rec_id']))}'">{$lang.drop}</a>
-		</dd>
-      </dl>
-    </li>
-	<!-- {/foreach} -->
-  </ul>
-   <!--{else}-->
-      <p class="text-center ect-margin-tb ect-padding-tb">{$lang.no_data}</p>
-   <!--{/if}--> 
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<!-- website wrapper starts -->
+<div class="websiteWrapper"> 
+  <!-- page wrapper starts -->
+  <div class="pageWrapper blogPageWrapper"> 
+    <!-- main menu outer wrapper starts -->
+    <div class="mainMenuOuterWrapper"> 
+      <!-- main menu wrapper starts -->
+      <!-- #BeginLibraryItem "/library/page_menu.lbi" --><!-- #EndLibraryItem -->
+      <!-- main menu wrapper ends -->
+      <div class="mainMenuBottomDecoration"></div>
+    </div>
+    <!-- main menu outer wrapper ends --> 
+  
+    
+    <!-- header outer wrapper starts -->
+    <div class="headerOuterWrapper">
+      <div class="headerWrapper">
+       <a href="{:url('user/index')}" class="accountButton"></a>
+       <a href="{:url('flow/cart')}" class="shoppingCartButton"></a>
+       <a href="" class="mainMenuButton"></a>
+     </div>
+      <div class="headerDecoration"></div>
+      
+      <!-- main logo starts --> 
+      <a href="" class="mainLogo"><img src="__TPL__/images/common/mainLogo.png" alt="" /></a> 
+      <!-- main logo ends --> 
+    </div>
+    <!-- header outer wrapper ends --> 
+    
+    <!-- page content wrapper starts -->
+    <div class="pageContentWrapper"> 
+      
+     <div class="headerBreak headerBreakTitleBottom"></div>
+      
+      <!-- page title starts -->
+      <h3 class="pageTitle">我的收藏</h3>
+      <!-- page title ends -->
+        <!-- checkout form starts -->
+
+          <!--{if $collection_list}-->
+          <!-- checkout product starts -->
+          <div class="checkoutProductWrapper"> <a href="" class="checkoutProductImageWrapper"><img src="__TPL__/images/content/checkoutProductImage-1.jpg" class="checkoutProductImage" alt=""></a>
+            <div class="checkoutProductInfoWrapper"> <a href="" class="checkoutProductTitle">薇茜甜点</a>
+              <div class="checkoutProductButtonsWrapper">
+                <span>￥25</span>
+                <a href=""  class="storeRemoveProductButton">删除</a> 
+                <a href="" style="margin-right:10px;" class="storeRemoveProductButton">加入购物车</a> 
+              </div>
+            </div>
+          </div>
+          <!-- checkout product ends --> 
+          <!--{/if}--> 
+          
+
+
+          
+          <!--{if $collection_list}-->
+            <ul>
+            <!-- {foreach from=$collection_list item=val} -->
+              <li class="single_item" id="more_element_1"> <a href="{:url('goods/index', array('id'=>$this->_var[val]['goods_id']))}"><img src="{$val.goods_thumb}"></a>
+                <dl>
+                  <dt>
+                    <h4 class="title"><a href="{:url('goods/index', array('id'=>$this->_var[val]['goods_id']))}">{$val.goods_name}</a></h4>
+                  </dt>
+                  <dd class="dd-price">
+                <span class="pull-left"><strong>{$lang.sort_price}：<b class="ect-colory">{$val.shop_price}</b></strong><small class="ect-margin-lr"><del>{$val.market_price}</del></small></span>
+                <span class="pull-right">
+                  <!-- {if $val.is_attention} -->
+                  <a href="javascript:if (confirm('{$lang.del_attention}')) location.href='{:url('user/del_attention', array('rec_id'=>$this->_var['val']['rec_id']))}'" class="fa fa-eye-slash">{$lang.no_attention}</a>
+                  <!-- {else} -->
+                  <a href="javascript:if (confirm('{$lang.add_to_attention}')) location.href='{:url('user/add_attention', array('rec_id'=>$this->_var['val']['rec_id']))}'" class="fa fa-eye">{$lang.attention}</a>
+                  <!-- {/if} -->
+                </span>
+              </dd>
+                  <dd class="text-center">
+                <a class="flow-del" href="javascript:addToCart({$val.goods_id})">{$lang.add_to_cart}</a>
+                <a class="flow-del" href="javascript:if(confirm('{$lang.remove_collection_confirm}')) location.href='{:url('delete_collection', array('rec_id'=>$this->_var['val']['rec_id']))}'">{$lang.drop}</a>
+              </dd>
+                </dl>
+              </li>
+            <!-- {/foreach} -->
+            </ul>
+             <!--{else}-->
+                <p class="text-center ect-margin-tb ect-padding-tb">{$lang.no_data}</p>
+             <!--{/if}--> 
+   
+
+        <!-- checkout form ends -->
+    </div>
+    <!-- page content wrapper ends -->
+    <!-- page numbers start -->
+    <div class="pageNumbersOuterWrapper">
+      <div class="pageNumbersWrapper"> <span class="pageNumber currentPageNumber">1</span> <a href="" class="pageNumber">2</a> <a href="" class="pageNumber">3</a> <span class="pageNumber">...</span><a href="" class="pageNumber">&laquo;</a> <a href="" class="pageNumber">&raquo;</a> </div>
+    </div>
+    <!-- page numbers end -->
+    
+    <div class="footerDecoration"></div>
+    <!-- footer wrapper starts -->
+   <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
+    <!-- footer wrapper ends --> 
+    
+  </div>
+  <!-- page wrapper ends --> 
 </div>
-<!-- #BeginLibraryItem "/library/page.lbi" --><!-- #EndLibraryItem -->
-<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem --> <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<!-- website wrapper ends -->
 <script type="text/javascript">
 var compare_no_goods = "{$lang.compare_no_goods}";
 var btn_buy = "{$lang.btn_buy}";
@@ -40,3 +112,4 @@ var select_spe = "{$lang.select_spe}";
 </script>
 </body>
 </html>
+
