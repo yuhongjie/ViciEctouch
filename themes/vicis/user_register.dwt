@@ -120,7 +120,9 @@
                   <!-- <button href="flow_consignee.html" name="Submit" type="submit" class="btn btn-info ect-btn-info ect-colorf ect-bg">{$lang.next}</button> -->
                 </div>
 
-                <div class="registerButtonsWrapper"> <a href="{:url('user/index')}" class="registerLoginButton">登陆</a> <a href="#" class="registerRecoverButton">忘记密码？</a>
+                <div class="registerButtonsWrapper"> 
+                  <a href="{:url('user/login')}" class="registerLoginButton">登陆</a> 
+                  <a href="{:url('user/get_password_email')}" class="registerRecoverButton">忘记密码？</a>
                   <input href="flow_consignee.html" name="Submit" type="submit" value="{$lang.next}" class="registerButton" id="registerButton">
                 </div>
 

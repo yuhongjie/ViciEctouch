@@ -58,7 +58,11 @@
     
     <!-- header outer wrapper starts -->
     <div class="headerOuterWrapper">
-      <div class="headerWrapper"> <a href="login.html" class="accountButton"></a><a href="" class="shoppingCartButton"></a><a href="" class="mainMenuButton"></a></div>
+      <div class="headerWrapper"> 
+        <a href="{:url('user/index')}" class="accountButton"></a>
+        <a href="{:url('flow/cart')}" class="shoppingCartButton"></a>
+        <a href="" class="mainMenuButton"></a>
+      </div>
       <div class="headerDecoration"></div>
       
       <!-- main logo starts --> 

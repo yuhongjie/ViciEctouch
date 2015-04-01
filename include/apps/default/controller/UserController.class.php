@@ -1414,6 +1414,9 @@ class UserController extends CommonController {
      * 收藏商品列表
      */
     public function collection_list() {
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
         // 分页
         $count = $this->model->table('collect_goods')->where('user_id = ' . $this->user_id)->order('add_time desc')->count();
         $filter['page'] = '{page}';
@@ -1675,6 +1678,12 @@ class UserController extends CommonController {
      * 注册
      */
     public function register() {
+
+        /*添加导航15-04-01*/
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
+       /*end--*/
         // 注册处理
         if (IS_POST) {
             $enabled_sms = isset($_POST['enabled_sms']) ? intval($_POST['enabled_sms']) : 0;

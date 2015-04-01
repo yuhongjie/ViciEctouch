@@ -14,53 +14,21 @@
     <!-- main menu outer wrapper ends --> 
     
     <!-- shopping cart wrapper start -->
-    <form id="shoppingCartWrapper" class="shoppingCartWrapper" action="#" method="post">
-      <fieldset>
-        <!-- shopping cart product starts -->
-        <div class="shoppingCartProductWrapper"> <a  href="singleProduct.html" class="shoppingCartProductImageWrapper"><img src="__TPL__/images/content/shoppingCartProductImage-1.jpg" class="shoppingCartProductImage" alt=""></a>
-          <div class="shoppingCartProductInfoWrapper"> <a href="singleProduct.html" class="shoppingCartProductTitle">微茜甜品</a>
-            <div class="shoppingCartProductButtonsWrapper">
-              <input type="text" id="shoppingCartProductNumber-1" class="shoppingCartProductNumber" name="product-1" value="1">
-              <span class="shoppingCartProductPrice">￥25</span><a href="" class="shoppingCartRemoveProductButton"></a> </div>
-          </div>
-        </div>
-        <!-- shopping cart product ends --> 
-        
-        <!-- shopping cart product starts -->
-        <div class="shoppingCartProductWrapper"> <a href="singleProduct.html" class="shoppingCartProductImageWrapper"><img src="__TPL__/images/content/shoppingCartProductImage-2.jpg" class="shoppingCartProductImage" alt=""></a>
-          <div class="shoppingCartProductInfoWrapper"> <a href="singleProduct.html" class="shoppingCartProductTitle">微茜甜品</a>
-            <div class="shoppingCartProductButtonsWrapper">
-              <input type="text" id="shoppingCartProductNumber-2" class="shoppingCartProductNumber" name="product-2" value="2">
-              <span class="shoppingCartProductPrice">￥50</span><a href="" class="shoppingCartRemoveProductButton"></a> </div>
-          </div>
-        </div>
-        <!-- shopping cart product ends --> 
-        
-        <!-- shopping cart product starts -->
-        <div class="shoppingCartProductWrapper"> <a  href="singleProduct.html" class="shoppingCartProductImageWrapper"><img src="__TPL__/images/content/shoppingCartProductImage-3.jpg" class="shoppingCartProductImage" alt=""></a>
-          <div class="shoppingCartProductInfoWrapper"> <a href="singleProduct.html" class="shoppingCartProductTitle">微茜甜品III</a>
-            <div class="shoppingCartProductButtonsWrapper">
-              <input type="text" id="shoppingCartProductNumber-3" class="shoppingCartProductNumber" name="product-3" value="1">
-              <span class="shoppingCartProductPrice">￥110</span><a href="" class="shoppingCartRemoveProductButton"></a> </div>
-          </div>
-        </div>
-        <!-- shopping cart product ends --> 
-        
-        <!-- shopping cart info wrapper starts -->
-        <div class="shoppingCartInfoWrapper"> <span class="shoppingCartProductsNumber">购物车:3件产品</span> <span class="shoppingCartProductsTotal">总共: ￥185</span> </div>
-        <!-- shopping cart info wrapper ends -->
-        
-        <div class="shoppingCartButtonsWrapper"><a href="" class="shoppingCartEmptyButton">清空购物车</a>
-          <a href="" class="shoppingCartEmptyButton">更新购物车</a>
-          <input type="button" value="去付款" onclick="javascript:window.location.href='checkout.html' "  class="shoppingCartCheckoutButton">
-        </div>
-      </fieldset>
-    </form>
+   <div id="shoppingCartWrapper" class="shoppingCartWrapper">
+    <!-- #BeginLibraryItem "/library/flow_cart2.lbi" --><!-- #EndLibraryItem -->
+   </div>
     <!-- shopping cart wrapper ends --> 
     
     <!-- header outer wrapper starts -->
     <div class="headerOuterWrapper">
-      <div class="headerWrapper"> <a href="login.html" class="accountButton"></a><a href="" class="shoppingCartButton"></a><a href="" class="mainMenuButton"></a></div>
+      <div class="headerWrapper">
+        <a href="{:url('user/index')}" class="accountButton">
+        </a>
+        <a href="{:url('flow/cart')}" class="shoppingCartButton">
+        </a>
+        <a href="" class="mainMenuButton">
+        </a>
+      </div>
     </div>
     <!-- header outer wrapper ends --> 
     
