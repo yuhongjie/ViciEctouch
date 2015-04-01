@@ -62,68 +62,22 @@
           <!-- new products start -->
           <h4 class="sectionTitle">
             春季新品:
-            <a href="{:url('index.php?m=default&c=category&a=index&id=')}" class="sectionTitleLink">
+            <a href="{:url('category/index', array('type'=>'new'))}"  class="sectionTitleLink">
               更多 &raquo;
             </a>
           </h4>
-          <div class="homeProductsWrapper">
-
-          <!--{foreach from=$new_goods item=goods}-->
-            <div class="homeProductWrapper">
-                <a href="{$goods.url}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}"></a>
-              <div class="homeProductInfoWrapper">
-                <span class="homeProductTitle">
-                  {$goods.short_style_name}
-                </span>
-                <a href="{$goods.url}" class="homePurchaseButton">
-                  (<!-- {if $goods.promote_price neq ""} -->
-
-                 {$goods.promote_price}
-
-                 <!-- {else}-->
-
-                 {$goods.shop_price}
-
-                 <!--{/if}-->) 购买
-                </a>
-              </div>
-            </div>
-            <!--{/foreach}-->
-          </div>
+          <!-- #BeginLibraryItem "/library/recommend_new.lbi" --><!-- #EndLibraryItem -->
           <!-- new products end -->
           <div class="textBreakBottom">
           </div>
           <!-- recently viewed products start -->
           <h4 class="sectionTitle">
             特色推荐:
-            <a href="{:url('index.php?m=default&c=category&a=index&id=')}" class="sectionTitleLink">
+             <a href="{:url('category/index', array('type'=>'best'))}" class="sectionTitleLink">
               更多 &raquo;
             </a>
           </h4>
-          <div class="homeProductsWrapper">
-            <!--{foreach from=$best_goods item=goods}-->
-              <div class="homeProductWrapper">
-                  <a href="{$goods.url}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}"></a>
-                <div class="homeProductInfoWrapper">
-                  <span class="homeProductTitle">
-                    {$goods.short_style_name}
-                  </span>
-                  <a href="{$goods.url}" class="homePurchaseButton">
-                    (<!-- {if $goods.promote_price neq ""} -->
-
-                   {$goods.promote_price}
-
-                   <!-- {else}-->
-
-                   {$goods.shop_price}
-
-                   <!--{/if}-->) 购买
-                  </a>
-                </div>
-              </div>
-              <!--{/foreach}-->
-           
-          </div>
+          <!-- #BeginLibraryItem "/library/recommend_feature.lbi" --><!-- #EndLibraryItem -->
           <!-- recently viewed products end -->
           <div class="pageBreak">
           </div>

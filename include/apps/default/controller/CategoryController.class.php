@@ -79,6 +79,12 @@ class CategoryController extends CommonController {
         $this->assign('sort', $this->sort);
         $this->assign('order', $this->order);
         $this->assign('id', $this->cat_id);
+
+        /* 添加type参数 start 2015-3-31 */
+        $this->assign('type', $this->type);
+        /* 添加type参数 end */
+
+
         // 获取分类
         $this->assign('category', model('CategoryBase')->get_top_category());
         $count = model('Category')->category_get_count($this->children, $this->brand, $this->type, $this->price_min, $this->price_max, $this->ext);

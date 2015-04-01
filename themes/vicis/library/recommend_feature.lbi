@@ -1,0 +1,25 @@
+<div class="homeProductsWrapper">
+  <!--{foreach from=$best_goods item=goods name="recommend_feature"}-->
+    <!--{if $smarty.foreach.recommend_feature.iteration < 5}-->
+    <div class="homeProductWrapper">
+        <a href="{$goods.url}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}"></a>
+      <div class="homeProductInfoWrapper">
+        <span class="homeProductTitle">
+          {$goods.short_style_name}
+        </span>
+        <a href="{$goods.url}" class="homePurchaseButton">
+          (<!-- {if $goods.promote_price neq ""} -->
+
+         {$goods.promote_price}
+
+         <!-- {else}-->
+
+         {$goods.shop_price}
+
+         <!--{/if}-->) 购买
+        </a>
+      </div>
+    </div>
+    <!--{/if}-->
+    <!--{/foreach}-->
+</div>
