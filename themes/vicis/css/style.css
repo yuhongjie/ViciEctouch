@@ -1345,6 +1345,7 @@ input.checkoutCheckoutButton {
 	height: 36px;
 }
 .portfolioTwoItemTitle {
+	margin-top: 0px !important;
 	font-size: 12px;
 	margin-bottom: 0px;
 	height: 36px;
@@ -2078,8 +2079,6 @@ input[type=radio], input[type=checkbox] {
 display: none;
 }
 
-<<<<<<< HEAD
-=======
 /*排序样式*/
 .ect-wrapper {
   z-index: 2;
@@ -2107,4 +2106,3 @@ display: none;
   background-color: #fff;
 }
 
->>>>>>> master
