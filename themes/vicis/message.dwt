@@ -46,7 +46,7 @@
           <!-- {if $message.url_info} -->
            <div class="user-account-success" style="float:right;">
            <!--{foreach from=$message.url_info key=info item=url}-->
-              <a href="{$url}" class="shoppingCartEmptyButton">
+              <a href="{$url}" class="shoppingCartEmptyButton" style="width:100px;">
                 {$info}
               </a>
             <!--{/foreach}-->

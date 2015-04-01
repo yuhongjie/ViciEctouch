@@ -64,7 +64,7 @@
                   <a href="{:url('collection_list')}">{$lang.label_collection}</a>
                 </li>
                 <li>
-                  <a href="user_address.html">收货地址</a>
+                  <a href="{:url('user/address_list')}">收货地址</a>
                 </li>
               </ul>
             </div>
