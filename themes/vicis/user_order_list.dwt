@@ -1,18 +1,77 @@
-<!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
-<div class="ect-pro-list user-order" style="border-bottom:none;">
-    <ul id="J_ItemList">
-       <li class="single_item"></li>
-       <a href="javascript:;" style="text-align:center" class="get_more"></a>
-    </ul>
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<!-- website wrapper starts -->
+<div class="websiteWrapper"> 
+  <!-- page wrapper starts -->
+  <div class="pageWrapper blogPageWrapper"> 
+    <!-- main menu outer wrapper starts -->
+    <div class="mainMenuOuterWrapper"> 
+      <!-- main menu wrapper starts -->
+      <!-- #BeginLibraryItem "/library/page_menu.lbi" --><!-- #EndLibraryItem -->
+      <!-- main menu wrapper ends -->
+      <div class="mainMenuBottomDecoration"></div>
+    </div>
+    <!-- main menu outer wrapper ends --> 
+  
+    
+    <!-- header outer wrapper starts -->
+    <div class="headerOuterWrapper">
+      <div class="headerWrapper">
+       <a href="{:url('user/index')}" class="accountButton"></a>
+       <a href="{:url('flow/cart')}" class="shoppingCartButton"></a>
+       <a href="" class="mainMenuButton"></a>
+     </div>
+      <div class="headerDecoration"></div>
+      
+      <!-- main logo starts --> 
+      <a href="" class="mainLogo"><img src="__TPL__/images/common/mainLogo.png" alt="" /></a> 
+      <!-- main logo ends --> 
+    </div>
+    <!-- header outer wrapper ends --> 
+    
+    <!-- page content wrapper starts -->
+    <div class="pageContentWrapper"> 
+      
+     <div class="headerBreak headerBreakTitleBottom"></div>
+      
+      <!-- page title starts -->
+      <h3 class="pageTitle">我的订单</h3>
+      <!-- page title ends -->
+		<!-- checkout form starts -->
+		<form id="checkoutForm" class="checkoutForm" action="#" method="post">
+		  <fieldset>
+		    <!-- checkout product starts -->
+		        <div id="J_ItemList" class="checkoutProductWrapper" style="border-bottom:none;">
+		           <div class="single_item"></div>
+		           <a href="javascript:;" style="text-align:center" class="get_more"></a>
+		        </div>
+		    <!-- checkout product ends -->
+		  </fieldset>
+		</form>
+
+    </div>
+    <!-- page content wrapper ends -->
+    <!-- page numbers start -->
+    <div class="pageNumbersOuterWrapper">
+       <!-- #BeginLibraryItem "/library/page.lbi" --><!-- #EndLibraryItem --> 
+    </div>
+    <!-- page numbers end -->
+    
+    <div class="footerDecoration"></div>
+    <!-- footer wrapper starts -->
+   <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
+    <!-- footer wrapper ends --> 
+    
+  </div>
+  <!-- page wrapper ends --> 
 </div>
-</div>
-<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem -->
-<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
-<footer class="logo"><a href="http://www.ectouch.cn" title="ECTouch官网" target="_blank"><img src="__TPL__/images/copyright.png" width="176" height="60"></a></footer>
+<!-- website wrapper ends -->
 <script type="text/javascript">
 {foreach from=$lang.merge_order_js item=item key=key}
     var {$key} = "{$item}";
 {/foreach}
 get_asynclist('index.php?m=default&c=user&a=async_order_list&pay={$pay}' , '__TPL__/images/loader.gif');
 </script> 
-</body></html>
+</body>
+</html>
+
+

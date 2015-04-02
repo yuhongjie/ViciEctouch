@@ -1044,9 +1044,9 @@ input.checkoutProductNumber {
 	line-height: 24px;
 }
 .checkoutProductTitle {
-	color: #73CBC2;
+	color: #73CBC2!important;
 	text-decoration: none;
-	margin-top: 5px;
+	/*margin-top: 5px;*/
 }
 .checkoutInfoWrapper {
 	margin-bottom: 16px;
@@ -1772,8 +1772,8 @@ input.fieldHasError, textarea.fieldHasError {
 	clear: both;
 	margin-bottom: 33px;
 	padding-bottom: 0px;
-	padding-top: 36px;
-	border-top: 3px solid #f0f0f0;
+	padding-top: 36px!important;
+	border-top: 3px solid #f0f0f0!important;
 }
 .blogPageWrapper .pageNumbersWrapper {
 	padding-top: 0px;
@@ -1979,7 +1979,7 @@ input.fieldHasError, textarea.fieldHasError {
 /*取消订单*/
 .checkoutCancelProductButton {
   background: #6FC7BC center center no-repeat;
-  color: #fff;
+  color: #fff!important;
   display: block;
   border-radius: 3px;
   padding-left: 12px;
@@ -1999,7 +1999,6 @@ input.fieldHasError, textarea.fieldHasError {
 }
 /*新增收货地址*/
 .shoppingaddressButtons{
-height: 36px;
 padding-bottom: 24px;
 padding-top: 24px;
 }
@@ -2011,8 +2010,8 @@ padding-top: 24px;
 }
 /*我的收藏*/
 .storeRemoveProductButton {
-background: #73CBC2;
-color: #fff;
+background: #73CBC2!important;
+color: #fff!important;
 display: block;
 border-radius: 3px;
 padding-left: 12px;
@@ -2027,7 +2026,7 @@ line-height: 24px;
 float: right;
 width: 96px;
 text-align: center;
-color: #fff;
+color: #fff!important;
 text-decoration: none;
 height: 36px;
 line-height: 36px;
@@ -2075,7 +2074,7 @@ code {
 }
 
 
-input[type=radio], input[type=checkbox] {
+.pro-detail-form input[type=radio], input[type=checkbox] {
 display: none;
 }
 
@@ -2105,4 +2104,46 @@ display: none;
   padding-right: 0px;
   background-color: #fff;
 }
+
+
+/*弹出购物车相关样式*/
+.popup-a {
+	display: inline;
+}
+/*弹出购物车相关样式end*/
+
+/*添加/修改收货地址*/
+.l-form-select select {
+	width: 100%;
+	border: none;
+	border-radius: 0;
+	line-height: inherit;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: #F3F3F3;
+}
+
+
+.l-form-select i.fa {
+	font-size: 15px;
+	display: block;
+	display: inline-block;
+	position: absolute;
+	top: 33%;
+	margin-top: -0.65em;
+	right: 1em;
+	z-index: 1;
+	color: #aaa;
+}
+
+.l-textarea {
+	width: 100%;
+	border-radius: 0;
+	border: none;
+}
+.l-deletaddr {
+	float: left;
+	font-weight: bolder;
+}
+/*end*/
 

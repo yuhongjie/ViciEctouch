@@ -853,6 +853,7 @@ class UsersModel extends BaseModel {
 
             // 默认没有设置关联支付方式的
             if ($touch_pay_id <= 0) {
+
                 $payment_list = model('Order')->available_payment_list(false, 0, true);
                 /* 过滤掉余额支付方式 */
                 if (is_array($payment_list)) {
@@ -863,7 +864,7 @@ class UsersModel extends BaseModel {
                         }
                     }
                 }
-            }
+            } 
 
             /* 检查订单是否未付款和未发货 以及订单金额是否为0 和支付id是否为改变 */
             if ($touch_pay_id > 0 && $order['pay_status'] == PS_UNPAYED && $order['shipping_status'] == SS_UNSHIPPED && $order['goods_amount'] > 0) {
@@ -882,7 +883,7 @@ class UsersModel extends BaseModel {
                 $this->query($sql);
             }
         }
-
+        
         //检查订单是否属于该用户
         if ($user_id > 0 && $user_id != $order['user_id']) {
             ECTouch::err()->add(L('no_priv'));

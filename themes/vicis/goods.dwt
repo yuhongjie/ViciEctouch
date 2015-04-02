@@ -69,15 +69,18 @@
 
      <!-- test -->
 
-
+    <!-- <section class="ect-margin-tb ect-margin-lr goods-title">
+      <h4 class="title pull-left">{$goods.goods_style_name}</h4>
+      <span class="pull-right text-center {if $sc eq 1}ect-colory{/if} ect-padding-lr" onClick="collect({$goods.goods_id})" id='ECS_COLLECT'> 
+        <i class="fa {if $sc eq 1}fa-heart{else}fa-heart-o{/if}"></i><br>
+      {$lang.btn_collect} </span> 
+    </section> -->
      <!--商品属性介绍-->
        <!--商品描述-->
        <!--商品评价-->
        
-       <form action="javascript:addToCart({$goods.goods_id})" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
- 
+       <form action="javascript:addToCart({$goods.goods_id})" method="post" name="ECS_FORMBUY" class="pro-detail-form" id="ECS_FORMBUY" >
             <!-- {foreach name=spec from=$specification item=spec key=spec_key} -->
-            <!-- {if $spec.name=="口味"} -->
             <div class="drop-downWrapper">
                <span class="drop-downText" data-label="{$spec.name}">{$spec.name}</span>
                <div class="drop-downItemsWrapper"> 
@@ -87,24 +90,7 @@
                  <!-- {/foreach} -->
                </div>
              </div>
-              <!-- {/if} -->
-             <!-- {/foreach} --> 
-
-            <!-- {foreach name=spec from=$specification item=spec key=spec_key} -->
-            <!-- {if $spec.name=="数量"} -->
-            <div class="drop-downWrapper">
-               <span class="drop-downText" data-label="{$spec.name}">{$spec.name}</span>
-               <div class="drop-downItemsWrapper"> 
-                 <!-- {foreach from=$spec.values item=value key=key} -->
-                 <input type="radio" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}" {if $key eq 0}checked{/if} onclick="changePrice()" />
-                 <label for="spec_value_{$value.id}" class="drop-downItem" data-value="">{$value.label}</label>
-                 <!-- {/foreach} -->
-               </div>
-             </div>
-              <!-- {/if} -->
-             <!-- {/foreach} --> 
-            
-
+             <!-- {/foreach} -->
             <div class="l-good-num goods-num"> 
               <span class="l-numlabel pull-left">{$lang.number}：</span> 
               <!-- {if $goods.goods_id gt 0 && $goods.is_gift eq 0 && $goods.parent_id eq 0} 普通商品可修改数量 -->
@@ -124,7 +110,7 @@
       <a href="javascript:addToCart_quick({$goods.goods_id})" class="singleProductPurchaseButton">(
             <span id="ECS_GOODS_AMOUNT"></span>
             ){$lang.buy_now}</a> 
-      <a href="javascript:void(0)" onClick="collect({$goods.goods_id})" id='ECS_COLLECT' class="singleProductPurchaseButton">添加到收藏</a> 
+      <a href="javascript:collect({$goods.goods_id})" id='ECS_COLLECT' class="singleProductPurchaseButton"> <i style="padding-right:5px;" class="fa <!--{if $sc eq 1}-->fa-heart ect-colory<!--{else}-->fa-heart-o<!--{/if}-->"></i>添加到收藏</a>  
           <!-- product info accordions start -->
           <div class="accordionWrapper"> 
             <!-- accordion item wrapper starts -->

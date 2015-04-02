@@ -480,6 +480,7 @@ class CategoryController extends CommonController {
      * 获取分类信息
      * 只获取二级分类当没有参数时获取最高的二级分类
      */
+
     public function all() {
         $cat_id = I('get.id');
         /* 页面的缓存ID */
@@ -623,3 +624,5 @@ class CategoryController extends CommonController {
     }
 
 }
+
+

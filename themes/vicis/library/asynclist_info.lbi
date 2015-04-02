@@ -117,26 +117,50 @@
 <!-- 文章列表end--> 
 
 <!-- 用户订单 start--> 
-<!--{if $orders}--><a href="{:url('user/order_detail', array('order_id'=>$this->_var['orders']['order_id']))}"><img src="{$orders.img}" class="pull-left" />
-<dl>
-  <dt>
-    <h4 class="title">{$lang.order_number}：{$orders.order_sn}</h4>
-  </dt>
-  <dd>{$lang.order_status}：{$orders.order_status}</dd>
-  <dd>{$lang.order_total_fee}：<span class="ect-color">{$orders.total_fee}</span></dd>
-  <dd>{$lang.order_addtime}：{$orders.order_time}</dd>
-</dl>
-<i class="pull-right fa fa-angle-right"></i> </a> 
+
+<!--{if $orders}-->
+   <div class="checkoutProductWrapper">
+        <a href="{:url('user/order_detail', array('order_id'=>$this->_var['orders']['order_id']))}" class="checkoutProductImageWrapper">
+          <img src="{$orders.img}" class="checkoutProductImage"
+          alt="">
+        </a>
+      <div class="checkoutProductInfoWrapper">
+          <a href="" class="checkoutCancelProductButton">
+          取消订单
+          </a>
+          <a href="{:url('user/order_detail', array('order_id'=>$this->_var['orders']['order_id']))}" class="checkoutProductTitle">
+            {$lang.order_number}：{$orders.order_sn}
+          </a>
+        <div class="checkoutProductTitle">
+          {$lang.order_total_fee}：<span class="">{$orders.total_fee}</span>
+        </div>
+        <div class="checkoutProductButtonsWrapper">
+           <span href="" class="checkoutProductTitle">
+            {$lang.order_addtime}：{$orders.order_time}
+          </span>
+        </div>
+      </div>
+    </div>
 
 <!-- {/if}--> 
-<!-- 用户订单end--> 
 
 <!-- 配送地址 start--> 
 <!--{if $consignee}--> 
-<a href="{$consignee.url}">
-<p class="title">{$consignee.consignee} <span class="ect-colory">{$consignee.mobile}</span></p>
-<p>{$consignee.address}</p>
-<i class="fa fa-angle-right"></i> </a> 
+  <p> 
+     <div>
+      <p>收货人姓名：{$consignee.consignee}</p>
+      <p>电话：{$consignee.mobile}</p>
+      <p>详细地址：{$consignee.address}</p>
+      <!-- <p>邮件地址：</p>
+      <p>邮编：</p> -->
+    </div>
+    <div>
+    <div class="showaddress">
+      <a style="margin-right:10px;" href="{$consignee.url}">编辑</a><!-- <a href="">删除</a> -->
+    </div>
+    </div>
+    </div>
+</p>
 <!-- {/if}--> 
 <!-- 配送地址end--> 
 

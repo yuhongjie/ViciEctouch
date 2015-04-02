@@ -28,7 +28,7 @@
     <!--{/if}--> 
   </div>
   {if $order.order_amount gt 0}
-	<section class="ect-padding-lr ect-padding-tb ect-margin-tb ect-margin-bottom0">{$order.pay_online}</section>
+  <section class="ect-padding-lr ect-padding-tb ect-margin-tb ect-margin-bottom0">{$order.pay_online}</section>
   {/if}
   <div class="ect-pro-list">
     <ul>
@@ -63,7 +63,7 @@
       <p class="ect-margin-tb">{$lang.goods_all_price}：<b class="ect-colory"> 
         <!-- {if $order.extension_code eq "group_buy"} -->{$lang.gb_deposit}<!-- {/if} -->{$order.formated_goods_amount}</b>
          - {$lang.discount}：<b class="ect-colory">{$order.formated_discount} </b><br>
-      	 <!-- {if $order.tax gt 0} --> 
+         <!-- {if $order.tax gt 0} --> 
       + {$lang.tax}:<b class="ect-colory">{$order.formated_tax}</b><br>
       <!-- {/if} --> 
       <!-- {if $order.shipping_fee > 0} --> 
@@ -83,7 +83,7 @@
       <!-- {/if} --> 
       </p>
       <p class="ect-margin-tb">
-      	 <!-- {if $order.money_paid > 0} --> 
+         <!-- {if $order.money_paid > 0} --> 
       - {$lang.order_money_paid}: <b class="ect-colory">{$order.formated_money_paid}</b><br>
       <!-- {/if} --> 
       <!-- {if $order.surplus > 0} --> 

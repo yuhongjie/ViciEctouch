@@ -1,50 +1,109 @@
-<!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem --> 
-<script type="text/javascript">
-	  {foreach from=$lang.profile_js item=item key=key}
-		var {$key} = "{$item}";
-	  {/foreach}
-	</script>
-<form name="formEdit" action="{:url('user/profile')}" method="post" onSubmit="return userEdit()">
-  <section class="flow-consignee ect-bg-colorf">
-    <ul>
-      <li>
-        <div class="input-text"><b class="pull-left">{$lang.email}：</b><span>
-          <input name="email" type="text" placeholder="{$lang.no_emaill}"  value="{$profile.email}">
-          </span></div>
-      </li>
-      {foreach from=$extend_info_list item=field} 
-      <!-- {if $field.id eq 6} -->
-      <li>
-        <div class="form-select"> <i class="fa fa-sort"></i>
-          <select name="sel_question">
-            <option value='0'>{$lang.sel_question}</option>
-            
-            {html_options options=$passwd_questions selected=$profile.passwd_question}
-          
-          </select>
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<!-- website wrapper starts -->
+<div class="websiteWrapper"> 
+  <!-- page wrapper starts -->
+  <div class="pageWrapper blogPageWrapper"> 
+    <!-- main menu outer wrapper starts -->
+    <div class="mainMenuOuterWrapper"> 
+      <!-- main menu wrapper starts -->
+      <!-- #BeginLibraryItem "/library/page_menu.lbi" --><!-- #EndLibraryItem -->
+      <!-- main menu wrapper ends -->
+      <div class="mainMenuBottomDecoration"></div>
+    </div>
+    <!-- main menu outer wrapper ends --> 
+  
+    
+    <!-- header outer wrapper starts -->
+    <div class="headerOuterWrapper">
+      <div class="headerWrapper">
+       <a href="{:url('user/index')}" class="accountButton"></a>
+       <a href="{:url('flow/cart')}" class="shoppingCartButton"></a>
+       <a href="" class="mainMenuButton"></a>
+     </div>
+      <div class="headerDecoration"></div>
+      
+      <!-- main logo starts --> 
+      <a href="" class="mainLogo"><img src="__TPL__/images/common/mainLogo.png" alt="" /></a> 
+      <!-- main logo ends --> 
+    </div>
+    <!-- header outer wrapper ends --> 
+    
+    <!-- page content wrapper starts -->
+    <div class="pageContentWrapper"> 
+
+
+
+
+  <!-- contact form wrapper starts -->
+  <div class="contactFormWrapper">
+
+    <script type="text/javascript">
+        {foreach from=$lang.profile_js item=item key=key}
+        var {$key} = "{$item}";
+        {/foreach}
+      </script>
+    <h4 class="contactTitle">
+      我的个人信息
+    </h4>
+    <!-- form success message wrapper ends -->
+    <!-- contact form starts -->
+    <form name="formEdit" action="{:url('user/profile')}" method="post" onSubmit="return userEdit()" class="contactForm">
+      <fieldset>
+        <div class="formFieldWrapper">
+          <label for="contactEmailField">
+           {$lang.email}：
+          </label>
+          <input name="email" type="text" placeholder="{$lang.no_emaill}"  value="{$profile.email}" class="contactField fieldWithIcon emailFieldIcon requiredField requiredEmailField"
+          id="contactEmailField" data-dummy="">
         </div>
-      </li>
-      <li>
-        <div class="input-text"><b class="pull-left">{$lang.passwd_answer}:</b> <span>
-          <input placeholder="{$lang.passwd_answer}" name="passwd_answer" type="text" value="{$profile.passwd_answer}" />
-          </span></div>
-      </li>
-      <!-- {else} -->
-      <li>
-        <div class="input-text"><b class="pull-left">{$field.reg_field_name}:</b><span>
-          <input name="extend_field{$field.id}" type="text" value="{$field.content}" placeholder="{$field.reg_field_name}">
-          </span></div>
-      </li>
-      </li>
-      <!-- {/if} --> 
-      {/foreach}
-    </ul>
-  </section>
-  <input name="act" type="hidden" value="profile" />
-  <div class="two-btn ect-padding-tb ect-padding-lr ect-margin-tb text-center">
-    <input name="submit" type="submit" value="{$lang.confirm_edit}" class="btn btn-info" />
+         <div class="formSubmitButtonErrorsWrapper">
+            <!-- form errors start -->
+            <!-- form errors end -->
+            <input name="submit" type="submit" value="{$lang.confirm_edit}" class="buttonWrapper contactSubmitButton" 
+            data-formId="contactForm">
+          </div>
+        <input type="hidden" name="formIsReady" value="true" id="formIsReady"
+        />
+      </fieldset>
+    </form>
+    <form name="formPassword" action="{:url('user/edit_password')}" method="post" onSubmit="return editPassword()" class="contactForm" >
+    
+        <fieldset>
+          <div class="formFieldWrapper">
+            <label for="registerPasswordField">{$lang.old_password}：</label>
+            <input placeholder="{$lang.old_password}" name="old_password" type="password" value="" id="registerPasswordField" class="registerPasswordField fieldWithIcon passwordFieldIcon" />
+          </div>
+          
+          <div class="formFieldWrapper">
+            <label for="registerPasswordField">{$lang.new_password}：</label>
+            <input placeholder="{$lang.new_password}" name="new_password" type="password" class="registerPasswordField fieldWithIcon passwordFieldIcon" />
+          </div>
+          <div class="formFieldWrapper">
+            <label for="registerPasswordField">{$lang.confirm_password}：</label>
+            <input placeholder="{$lang.confirm_password}" name="comfirm_password" type="password" class="registerPasswordField fieldWithIcon passwordFieldIcon" />
+          </div>
+      
+          <input name="act" type="hidden" value="edit_password" />
+            <input name="submit" type="submit" class="buttonWrapper contactSubmitButton" value="{$lang.confirm_edit}" />
+        </fieldset>
+     </form>
+    <!-- contact form ends -->
   </div>
-</form>
+  <!-- contact form wrapper ends -->
+ </div>
 </div>
-<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem --> <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
-</body></html>
+    <!-- page content wrapper ends -->
+    
+    
+    <div class="footerDecoration"></div>
+    <!-- footer wrapper starts -->
+   <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
+    <!-- footer wrapper ends --> 
+    
+  </div>
+  <!-- page wrapper ends --> 
+</div>
+<!-- website wrapper ends -->
+</body>
+</html>
+

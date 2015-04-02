@@ -1,77 +1,140 @@
-<!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
-<form action="{:url('user/add_address')}" method="post" name="theForm" onsubmit="return checkConsignee(this)">
-  <div class="ect-bg-colorf flow-consignee">
-    <ul class="o-info">
-      <li>
-        <div class="input-text"><b class="pull-left">{$lang.consignee_name}：</b><span>
-          <input name="consignee" placeholder="{$lang.consignee_name}{$lang.require_field}" type="text" class="inputBg_touch" value="{$consignee.consignee|escape}" />
-          </span></div>
-      </li>
-      <li>
-        <div class="input-text"><b class="pull-left">{$lang.mobile}：</b><span>
-          <input placeholder="{$lang.mobile}{$lang.require_field}" name="mobile" type="text" class="inputBg_touch" value="{$consignee.mobile|escape}" />
-          </span></div>
-      </li>
-      <li>
-        <div class="form-select"> <i class="fa fa-sort"></i>
-          <select name="country" onchange="region.changed(this, 1, 'selProvinces')">
-            <option value="0">{$lang.please_select}{$name_of_region[0]}</option>
-            <!-- {foreach from=$country_list item=country} -->
-            <option value="{$country.region_id}" {if $consignee.country eq $country.region_id}selected{/if}>{$country.region_name}</option>
-            <!-- {/foreach} -->
-          </select>
-        </div>
-        <div class="form-select"> <i class="fa fa-sort"></i>
-          <select name="province" id="selProvinces" onchange="region.changed(this, 2, 'selCities')">
-            <option value="0">{$lang.please_select}{$name_of_region[1]}</option>
-            <!-- {foreach from=$province_list item=province} -->
-            <option value="{$province.region_id}" {if $consignee.province eq $province.region_id}selected{/if}>{$province.region_name}</option>
-            <!-- {/foreach} -->
-          </select>
-        </div>
-        <div class="form-select"> <i class="fa fa-sort"></i>
-          <select name="city" id="selCities" onchange="region.changed(this, 3, 'selDistricts')">
-            <option value="0">{$lang.please_select}{$name_of_region[2]}</option>
-            <!-- {foreach from=$city_list item=city} -->
-            <option value="{$city.region_id}" {if $consignee.city eq $city.region_id}selected{/if}>{$city.region_name}</option>
-            <!-- {/foreach} -->
-          </select>
-        </div>
-        <div class="form-select"> <i class="fa fa-sort"></i>
-          <select name="district" id="selDistricts" {if !$district_list}style="display:none"{/if}>
-            <option value="0">{$lang.please_select}{$name_of_region[3]}</option>
-            <!-- {foreach from=$district_list item=district} -->
-            <option value="{$district.region_id}" {if $consignee.district eq $district.region_id}selected{/if}>{$district.region_name}</option>
-            <!-- {/foreach} -->
-          </select>
-        </div>
-      </li>
-      <li class="input-text"><b class="pull-left">{$lang.detailed_address}</b>
-        <textarea name="address" placeholder="{$lang.detailed_address}{$lang.require_field}" type="text">{$consignee.address|escape}</textarea>
-      </li>
-    </ul>
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<!-- website wrapper starts -->
+<div class="websiteWrapper"> 
+  <!-- page wrapper starts -->
+  <div class="pageWrapper blogPageWrapper"> 
+    <!-- main menu outer wrapper starts -->
+    <div class="mainMenuOuterWrapper"> 
+      <!-- main menu wrapper starts -->
+      <!-- #BeginLibraryItem "/library/page_menu.lbi" --><!-- #EndLibraryItem -->
+      <!-- main menu wrapper ends -->
+      <div class="mainMenuBottomDecoration"></div>
+    </div>
+    <!-- main menu outer wrapper ends --> 
+  
+    
+    <!-- header outer wrapper starts -->
+    <div class="headerOuterWrapper">
+      <div class="headerWrapper">
+       <a href="{:url('user/index')}" class="accountButton"></a>
+       <a href="{:url('flow/cart')}" class="shoppingCartButton"></a>
+       <a href="" class="mainMenuButton"></a>
+     </div>
+      <div class="headerDecoration"></div>
+      
+      <!-- main logo starts --> 
+      <a href="" class="mainLogo"><img src="__TPL__/images/common/mainLogo.png" alt="" /></a> 
+      <!-- main logo ends --> 
+    </div>
+    <!-- header outer wrapper ends --> 
+    
+    <!-- page content wrapper starts -->
+    <div class="pageContentWrapper"> 
+      
+     <div class="headerBreak headerBreakTitleBottom"></div>
+      
+      <!-- page title starts -->
+      <h3 class="pageTitle">新增收货地址</h3>
+      <!-- page title ends -->
+          <!-- page content wrapper ends -->
+
+
+
+
+          <!-- register form wrapper starts -->
+          <div class="registerFormWrapper">
+            <form action="{:url('user/add_address')}" method="post" name="theForm" onsubmit="return checkConsignee(this)" class="registerForm">
+              <fieldset>
+                <div class="formFieldWrapper">
+                  <label for="registerFirstNameField">{$lang.consignee_name}：</label>
+                  <input  name="consignee" placeholder="{$lang.consignee_name}{$lang.require_field}" type="text" value="{$consignee.consignee|escape}"   class="registerFirstNameField fieldWithIcon userFieldIcon" />
+                </div>
+                <div class="formFieldWrapper">
+                  <label for="registerPhoneField">{$lang.mobile}：</label>
+                  <input placeholder="{$lang.mobile}{$lang.require_field}" name="mobile" type="text" value="{$consignee.mobile|escape}" class="registerPhoneField fieldWithIcon phoneFieldIcon" />
+                </div>
+                <label style="margin-bottom:13px;" for="advancedSearchTermsField">所在区域:</label>
+                <div class="l-form-select"> <i class="fa fa-sort"></i>
+                  <select name="country" onchange="region.changed(this, 1, 'selProvinces')">
+                    <option value="0">{$lang.please_select}{$name_of_region[0]}</option>
+                    <!-- {foreach from=$country_list item=country} -->
+                    <option value="{$country.region_id}" {if $consignee.country eq $country.region_id}selected{/if}>{$country.region_name}</option>
+                    <!-- {/foreach} -->
+                  </select>
+                </div>
+                <div class="l-form-select"> <i class="fa fa-sort"></i>
+                  <select name="province" id="selProvinces" onchange="region.changed(this, 2, 'selCities')">
+                    <option value="0">{$lang.please_select}{$name_of_region[1]}</option>
+                    <!-- {foreach from=$province_list item=province} -->
+                    <option value="{$province.region_id}" {if $consignee.province eq $province.region_id}selected{/if}>{$province.region_name}</option>
+                    <!-- {/foreach} -->
+                  </select>
+                </div>
+                <div class="l-form-select"> <i class="fa fa-sort"></i>
+                  <select name="city" id="selCities" onchange="region.changed(this, 3, 'selDistricts')">
+                    <option value="0">{$lang.please_select}{$name_of_region[2]}</option>
+                    <!-- {foreach from=$city_list item=city} -->
+                    <option value="{$city.region_id}" {if $consignee.city eq $city.region_id}selected{/if}>{$city.region_name}</option>
+                    <!-- {/foreach} -->
+                  </select>
+                </div>
+                <div class="l-form-select"> <i class="fa fa-sort"></i>
+                  <select name="district" id="selDistricts" {if !$district_list}style="display:none"{/if}>
+                    <option value="0">{$lang.please_select}{$name_of_region[3]}</option>
+                    <!-- {foreach from=$district_list item=district} -->
+                    <option value="{$district.region_id}" {if $consignee.district eq $district.region_id}selected{/if}>{$district.region_name}</option>
+                    <!-- {/foreach} -->
+                  </select>
+                </div>
+                 
+                  <div class="formFieldWrapper">
+                    <label for="registerAddressField">{$lang.detailed_address}:</label>
+                    <textarea name="address" class="l-textarea" placeholder="{$lang.detailed_address}{$lang.require_field}" type="text">{$consignee.address|escape}</textarea>
+                  </div>
+                <!-- <div class="formFieldWrapper">
+                  <label for="registerPhoneField">邮政编码:</label>
+                  <input type="text" value="" id="registerPhoneField" class="registerPhoneField fieldWithIcon phoneFieldIcon" name="registerPhoneField" />
+                </div> -->
+                <div class="registerButtonsWrapper"> 
+                  <input type="submit" name="submit" style="color:#fff;"  value="{$lang.add_address}"  class="addressButton">
+                  <input name="address_id" type="hidden" value="{$consignee.address_id}" />
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          <!-- register form wrapper ends -->
+        
+
+     
+    </div>
+    <!-- page content wrapper ends -->
+    
+    
+    <div class="footerDecoration"></div>
+    <!-- footer wrapper starts -->
+   <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
+    <!-- footer wrapper ends --> 
+    
   </div>
-  <div class="two-btn ect-padding-tb ect-padding-lr ect-margin-tb text-center">
-    <input type="submit" name="submit"  class="btn btn-info"  value="{$lang.add_address}"/>
-    <input name="address_id" type="hidden" value="{$consignee.address_id}" />
-  </div>
-</form>
+  <!-- page wrapper ends --> 
 </div>
-<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem --> <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
 <script type="text/javascript" src="__PUBLIC__/js/region.js"></script> 
 <script type="text/javascript" src="__PUBLIC__/js/shopping_flow.js"></script> 
 <script type="text/javascript">
-	region.isAdmin = false;
-	{foreach from=$lang.flow_js item=item key=key}
-	var {$key} = "{$item}";
-	{/foreach}
-	{literal}
-	onload = function() {
-	      if (!document.all)
-	      {
-	        document.forms['theForm'].reset();
-	      }
-	}
-	{/literal}
+  region.isAdmin = false;
+  {foreach from=$lang.flow_js item=item key=key}
+  var {$key} = "{$item}";
+  {/foreach}
+  {literal}
+  onload = function() {
+        if (!document.all)
+        {
+          document.forms['theForm'].reset();
+        }
+  }
+  {/literal}
 </script>
-</body></html>
+<!-- website wrapper ends -->
+</body>
+</html>
+

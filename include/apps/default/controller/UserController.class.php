@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /**
  * ECTouch Open Source Project
@@ -71,6 +71,20 @@ class UserController extends CommonController {
         $this->assign('comment_list', $comment_list);
         $this->assign('history', $history);
         $this->assign('title', L('user_center'));
+
+        /*添加订单信息*/
+        $pay = 1;
+        $count = $this->model->table('order_info')->where('user_id = ' . $this->user_id)->count();
+        $filter['page'] = '{page}';
+        $offset = $this->pageLimit(url('order_list', $filter), 5);
+        $offset_page = explode(',', $offset);
+        $orders = model('Users')->get_user_orders($this->user_id, $pay, $offset_page[1], $offset_page[0]);
+        $this->assign('pay', $pay);
+        $this->assign('title', L('order_list_lnk'));
+        $this->assign('pager', $this->pageShow($count));
+        $this->assign('orders', $orders);
+        /*添加订单信息*/
+
         $this->display('user.dwt');
     }
 
@@ -78,6 +92,10 @@ class UserController extends CommonController {
      * 账户中心
      */
     public function profile() {
+
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
         // 修改个人资料的处理
         if (IS_POST) {
             $email = I('post.email');
@@ -516,6 +534,10 @@ class UserController extends CommonController {
      * 获取未付款订单
      */
     public function not_pay_order_list() {
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
+        // end
         $this->assign('pay', 0);
         $this->assign('title', L('not_pay_list'));
         $this->display('user_order_list.dwt');
@@ -525,6 +547,10 @@ class UserController extends CommonController {
      * 获取全部订单
      */
     public function order_list() {
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
+        // end
         $pay = 1;
         $count = $this->model->table('order_info')->where('user_id = ' . $this->user_id)->count();
         $filter['page'] = '{page}';
@@ -592,6 +618,7 @@ class UserController extends CommonController {
 
         // 订单详情
         $order = model('Users')->get_order_detail($order_id, $this->user_id);
+
         if ($order['order_status'] == OS_UNCONFIRMED) {
             $order['handler'] = "<a class=\"btn btn-info ect-colorf\" href=\"" . url('user/cancel_order', array(
                         'order_id' => $order['order_id']
@@ -884,6 +911,12 @@ class UserController extends CommonController {
      * 收货地址列表界面
      */
     public function address_list() {
+        /*添加导航*/
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
+        // end--
+
         if (IS_AJAX) {
             $start = $_POST['last'];
             $limit = $_POST['amount'];
@@ -959,6 +992,12 @@ class UserController extends CommonController {
      * 编辑收货地址的处理
      */
     public function edit_address() {
+
+        /*添加导航*/
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
+        // end--
         // 编辑收货地址
         if (IS_POST) {
             $address = array(

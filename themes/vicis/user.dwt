@@ -58,13 +58,13 @@
             <div class="user-center-menu">
               <ul>
                 <li>
-                  <a href="user_myorder.html">我的订单</a>
+                  <a href="{:url('user/order_list')}">我的订单</a>
                 </li>
                 <li>
                   <a href="{:url('collection_list')}">{$lang.label_collection}</a>
                 </li>
                 <li>
-                  <a href="user_address.html">收货地址</a>
+                  <a href="{:url('user/address_list')}">{$lang.label_address}</a>
                 </li>
               </ul>
             </div>
@@ -81,77 +81,45 @@
           <form id="checkoutForm" class="checkoutForm" action="#" method="post">
             <fieldset>
               <!-- checkout product starts -->
-             <div class="checkoutProductWrapper">
-                  <a href="" class="checkoutProductTitle">
-                <a href="user_orderdetail.html" class="checkoutProductImageWrapper">
-                  <img src="__TPL__/images/content/checkoutProductImage-1.jpg" class="checkoutProductImage"
-                  alt="">
-                </a>
-                <div class="checkoutProductInfoWrapper">
-                  <a href="user_orderdetail.html" class="checkoutProductTitle">
-                    订单号：2015032171720
-                  </a>
-                  <span href="" class="checkoutProductTitle">
-                    订单金额：￥300
-                  </span>
-                  <div class="checkoutProductButtonsWrapper">
-                     <span href="" class="checkoutProductTitle">
-                      下单时间：2015-03-22 
-                    </span>
-                    <a href="" class="checkoutCancelProductButton">
-                    取消订单
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <!-- checkout product ends -->
-              <!-- cart product starts -->
-             <div class="checkoutProductWrapper">
-                <a href="user_orderdetail.html" class="checkoutProductImageWrapper">
-                  <img src="__TPL__/images/content/checkoutProductImage-1.jpg" class="checkoutProductImage"
-                  alt="">
-                </a>
-                <div class="checkoutProductInfoWrapper">
-                  <a href="user_orderdetail.html" class="checkoutProductTitle">
-                    订单号：2015032171720
-                  </a>
-                  <span href="" class="checkoutProductTitle">
-                    订单金额：￥300
-                  </span>
-                  <div class="checkoutProductButtonsWrapper">
-                     <span href="" class="checkoutProductTitle">
-                      下单时间：2015-03-22 
-                    </span>
-                    <span  class="checkoutCancelProductButton">
-                    已取消
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <!-- checkout product ends -->
-              <!-- cart product starts -->
-             <div class="checkoutProductWrapper">
-                <a href="user_orderdetail.html" class="checkoutProductImageWrapper">
-                  <img src="__TPL__/images/content/checkoutProductImage-1.jpg" class="checkoutProductImage"
-                  alt="">
-                </a>
-                <div class="checkoutProductInfoWrapper">
-                  <a href="user_orderdetail.html" class="checkoutProductTitle">
-                    订单号：2015032171720
-                  </a>
-                  <span href="" class="checkoutProductTitle">
-                    订单金额：￥300
-                  </span>
-                  <div class="checkoutProductButtonsWrapper">
-                     <span href="" class="checkoutProductTitle">
-                      下单时间：2015-03-22 
-                    </span>
-                    <a href="" class="checkoutCancelProductButton">
-                    取消订单
-                    </a>
-                  </div>
-                </div>
-              </div>
+
+            <!--{if $orders}-->
+            <!-- {foreach from=$orders item=val name=neworder} -->
+            <!-- checkout product starts -->
+            <!--{if $smarty.foreach.neworder.iteration < 4}-->
+            <div class="checkoutProductWrapper">
+                 <a href=" " class="checkoutCancelProductButton">
+                 取消订单
+                 </a>
+                 <a href="{:url('user/order_detail', array('order_id'=>$this->_var['orders']['order_id']))}" class="checkoutProductImageWrapper">
+                   <img src="{$val.img}" class="checkoutProductImage"
+                   alt="">
+                 </a>
+               <div class="checkoutProductInfoWrapper">
+                   <a href="{:url('user/order_detail', array('order_id'=>$this->_var['orders']['order_id']))}" class="checkoutProductTitle">
+                     {$lang.order_number}：{$val.order_sn}
+                   </a>
+                 <!-- <span class="checkoutProductTitle">
+                   {$lang.order_status}：{$val.order_status}
+                 </span> -->
+                 <div class="checkoutProductTitle">
+                   {$lang.order_total_fee}：<span class="">{$val.total_fee}</span>
+                 </div>
+                 <div class="checkoutProductButtonsWrapper">
+                    <span href="" class="checkoutProductTitle">
+                     {$lang.order_addtime}：{$val.order_time}
+                   </span>
+                   
+                 </div>
+               </div>
+             </div>
+              <!-- {/if} -->
+            <!-- checkout product ends --> 
+            <!-- {/foreach} -->
+
+            <!--{else}-->
+               <p class="text-center ect-margin-tb ect-padding-tb">{$lang.no_data}</p>
+            <!--{/if}--> 
+
               <!-- checkout product ends -->
             </fieldset>
           </form>
