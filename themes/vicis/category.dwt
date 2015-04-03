@@ -92,6 +92,10 @@
           </a>   
         </div> 
       </div>
+
+      <!-- test start -->
+        <em>{$career}</em>
+      <!-- end -->
        
       <!-- portfolio items wrapper starts -->
         <!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem --> 

@@ -30,6 +30,7 @@ class CategoryController extends CommonController {
     private $order = 'ASC'; // 排序方式
     private $keywords = ''; // 搜索关键词
     private $filter_attr_str = 0;
+    private $em_name = ""; //TEST
 
     /**
      * 构造函数
@@ -50,8 +51,6 @@ class CategoryController extends CommonController {
         $this->assign('navigator', $navigator['middle']);
         // end--liugu
 
-
-        
         $this->assign('best_goods', model('Index')->goods_list('best', C('page_size')));
         $this->assign('new_goods', model('Index')->goods_list('new', C('page_size')));
         $this->assign('hot_goods', model('Index')->goods_list('hot', C('page_size')));
@@ -80,10 +79,14 @@ class CategoryController extends CommonController {
         $this->assign('order', $this->order);
         $this->assign('id', $this->cat_id);
 
+        // EM_NAME Start
+
+        $this->assign('career',  model('Mointe')->get_em_desc($this->em_name));
+        // end
+
         /* 添加type参数 start 2015-3-31 */
         $this->assign('type', $this->type);
         /* 添加type参数 end */
-
 
         // 获取分类
         $this->assign('category', model('CategoryBase')->get_top_category());
@@ -98,16 +101,29 @@ class CategoryController extends CommonController {
         $page_info = get_page_title($this->cat_id);
         $this->assign('ur_here', $page_info['ur_here']);
         $this->assign('page_title', $page_info['title']);
-        $cat = model('Category')->get_cat_info($this->cat_id);  // 获得分类的相关信息
+
+        // 获得分类的相关信息
+        $cat = model('Category')->get_cat_info($this->cat_id);
         if (!empty($cat['keywords'])) {
             if (!empty($cat['keywords'])) {
                 $this->assign('keywords_list', explode(' ', $cat['keywords']));
             }
         }
+
         $this->assign('categories', model('CategoryBase')->get_categories_tree($this->cat_id));
 		$this->assign('show_marketprice', C('show_marketprice'));
         $this->display('category.dwt');
     }
+
+
+    /**
+     * 处理search请求
+     */
+    public function search() {
+         $this->assign('categories', model('CategoryBase')->get_categories_tree($this->cat_id));
+        $this->display('search.dwt');
+    }
+
 
     /**
      * 异步加载商品列表
@@ -177,6 +193,13 @@ class CategoryController extends CommonController {
         if (empty($this->cat_id)) {
             $this->cat_id = 0;
         }
+
+        // 获得名称 start
+            $em_name = isset($_REQUEST["em_name"]) ? $_REQUEST["em_name"] : "";
+            $this->em_name = $em_name;
+        // end
+
+
         // 获得分类的相关信息
         $cat = model('Category')->get_cat_info($this->cat_id);
         $this->keywords();
@@ -184,8 +207,21 @@ class CategoryController extends CommonController {
         // 初始化分页信息
         $page_size = C('page_size');
         $brand = I('request.brand');
+
         $price_max = I('request.price_max');
         $price_min = I('request.price_min');
+
+        // 获得价格区间 start
+        if(isset($_REQUEST['price'])) {
+            $price_limit = $_REQUEST['price'];
+            $prices = explode(',',$price_limit);
+            echo $prices[1];
+            $price_max = $prices[1];
+            $price_min = $prices[0];
+        }
+        // end
+
+
         $filter_attr = I('request.filter_attr');
         $this->size = intval($page_size) > 0 ? intval($page_size) : 10;
         $this->page = I('request.page') > 0 ? intval(I('request.page')) : 1;

@@ -1,43 +1,38 @@
- <div class="menu">
-            <ul>
-            <li class="father-li"><a class="" href="javascript:void(0)">产品分类</a>
-                <ul style="display:black;">
-                 
+<div class="menu">
+  <ul>
+    <li class="father-li"><a class="" href="javascript:void(0)">产品分类</a>
+      <ul style="display:black;">    
+            <!--{foreach from=$categories item=cat name=no}-->
 
-                  <!--{foreach from=$categories item=cat name=no}-->
+              <!-- 说明他是有子分类的 -->
+              <!--{if $cat.cat_id}-->
+                <li>
+                 <a href="{$cat.url}">{$cat.name|escape:html} </a>
+                </li>
+                
+                <!--{foreach from=$cat.cat_id item=child name=no1}-->
 
+                  <li>
+                  <a href="{$child.url}">&nbsp<i class="icon-angle-right"></i>&nbsp{$child.name|escape:html|truncate:5,false} </a>
+                  </li>
 
-                    <!-- 说明他是有子分类的 -->
-                    <!--{if $cat.cat_id}-->
-                      <li>
-                       <a href="{$cat.url}">{$cat.name|escape:html} </a>
-                      </li>
-                      
-                      <!--{foreach from=$cat.cat_id item=child name=no1}-->
+                <!--{/foreach}-->
 
-                        <li>
-                        <a href="{$child.url}">&nbsp<i class="icon-angle-right"></i>&nbsp{$child.name|escape:html|truncate:5,false} </a>
-                        </li>
+                <li class="line">
+                </li>
 
-                      <!--{/foreach}-->
+              <!--{else}-->
 
-                      <li class="line">
-                      </li>
+                <li><a href="{:url('category/index',array('id'=>$this->_var['cat']['id']))}">
+                  {$cat.name|escape:html}
+                </a></li>
 
-                    <!--{else}-->
-
-                      <li><a href="{:url('category/index',array('id'=>$this->_var['cat']['id']))}">
-                        {$cat.name|escape:html}
-                      </a></li>
-
-
-                    <!--{/if}-->
+              <!--{/if}-->
 
 
-                  <!--{/foreach}-->
+        <!--{/foreach}-->
 
-              
-                </ul>
-            </li>
-        </ul>
-        </div>
+      </ul>
+    </li>
+  </ul>
+</div>
