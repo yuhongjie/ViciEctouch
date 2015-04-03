@@ -1,4 +1,3 @@
-
 <div class="shopSearchFormWrapper">
    <form action="{:url('category/index')}<!-- {if $id} -->&id={$id}<!-- {/if} -->"  method="post" id="searchForm" name="searchForm">
     <fieldset>

@@ -1,0 +1,57 @@
+<form action="{:url('category/index')}" method="post" name='search_form'>
+  <div class="form-control">
+    <div class="input-control">
+    <label for="price">价格区间：</label>
+      <select name="price">
+        <option value="0,100">0-100</option>
+        <option value="100,200">100-200</option>
+      </select>
+    </div>
+    <div class="input-control">
+    <label for="keywords">关键词：</label>
+        <input type="text" name="keywords">
+    </div>
+    <div class="input-control">
+    <label for="sort">排序：</label>
+    <select name="sort">
+      <option value="shop_price">价格</option>
+      <option value="click_count">人气</option>
+      <option value="goods_id">商品ID</option>
+    </select>
+    <div class="input-control">
+      <label for="em_name">输入你的名字：</label>
+      <input type="text" name="em_name">
+    </div>
+    <div class="input-control">
+      <select name="id" id="">
+        <option value="0"></option>
+
+          <!--{foreach from=$categories item=cat name=no}-->
+
+              <!--{if $cat.cat_id}-->
+                <option value="{$cat.id}">{$cat.name|escape:html}</option>
+                
+                <!--{foreach from=$cat.cat_id item=child name=no1}-->
+
+                  <option value="{$child.id}"><i class="icon-angle-right"></i>&nbsp{$child.name|escape:html|truncate:5,false}</option>
+
+                <!--{/foreach}-->
+
+                <li class="line">
+                </li>
+
+              <!--{else}-->
+
+                 <option value="{$cat.id}">{$cat.name|escape:html}</option>
+
+              <!--{/if}-->
+
+        <!--{/foreach}-->
+
+
+      </select>
+    </div>
+    </div>
+        <input type="submit" name="submit" value="submit">
+  </div>
+</form>
