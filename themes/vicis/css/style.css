@@ -335,14 +335,14 @@ input.fieldWithIcon {
 }
 input.shoppingCartProductNumber {
 	color: #999;
-	border: 1px solid rgba(0,0,0,0.12);
+	/*border: 1px solid rgba(0,0,0,0.12);*/
 	display: block;
 	float: left;
 	border-radius: 3px;
 	padding: 0px;
-	height: 22px;
+	height: 25px;
 	line-height: 22px;
-	width: 22px;
+	width: 25px;
 	margin: 0px;
 	text-align: center;
 }
@@ -371,12 +371,12 @@ input.shoppingCartProductNumber {
 	line-height: 24px;
 }
 .shoppingCartProductTitle {
-	color: #fff;
+	/*color: #fff;*/
 	text-decoration: none;
 	margin-top: 5px;
 }
 .shoppingCartInfoWrapper {
-	color: #fff;
+	/*color: #fff;*/
 	margin-bottom: 16px;
 	border-top: 3px solid rgba(0,0,0,0.12);
 	padding-top: 17px;
@@ -1066,7 +1066,6 @@ input.checkoutProductNumber {
 	line-height: 24px;
 }
 .checkoutButtonsWrapper {
-	height: 36px;
 	padding-top: 24px;
 	border-top: 3px solid #f0f0f0;
 }
@@ -2146,4 +2145,70 @@ display: none;
 	font-weight: bolder;
 }
 /*end*/
+
+/*支付按钮*/
+.l-pay-btn {
+	width: 49%;
+	background-color: #73CBC2!important;
+	float: right;
+	border: none;
+}
+
+.l-order-sta-btn {
+	width: 45%;
+}
+/*end*/
+
+/*订单列表*/
+.l-user-order {
+	border: none;
+}
+.l-user-order ul li a {
+	width: 100%;
+	position: relative;
+}
+.l-user-order ul li dl {
+	margin-bottom: 0!important;
+}
+.l-user-order ul li dl dt,.l-user-order ul li dl dd {
+	margin-left: 5px;
+}
+.l-user-order ul li dl h4 {
+	margin: 0;
+	padding: 0;
+	height: 17px;
+	font-size: 12px;
+}
+.l-user-order ul li i {
+	position: absolute;
+	right: 0;
+	top: 12px;
+	font-size: 45px!important;
+	color: #95CDD0;
+}
+.l-ectcolor {
+	color: #6FC7BC!important;
+}
+/*订单列表end*/
+
+/*密码验证*/
+.formFieldWrapper label.error {
+	color: red;
+	position: absolute;
+	top: 77px;
+	font-size: 12px;
+}
+/*密码验证end*/
+
+.l-form-contro {
+	margin-bottom: 0!important;
+}
+.color-green-fr {
+	background-color: #73CBC2!important;
+	float: right;
+}
+
+.l-color73c  {
+	background-color: #73CBC2!important;
+}
 

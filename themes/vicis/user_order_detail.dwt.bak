@@ -117,27 +117,113 @@
 <!-- 文章列表end--> 
 
 <!-- 用户订单 start--> 
+
 <!--{if $orders}-->
-<a href="{:url('user/order_detail', array('order_id'=>$this->_var['orders']['order_id']))}"><img src="{$orders.img}" class="pull-left" />
-<dl>
-  <dt>
-    <h4 class="title">{$lang.order_number}：{$orders.order_sn}</h4>
-  </dt>
-  <dd>{$lang.order_status}：{$orders.order_status}</dd>
-  <dd>{$lang.order_total_fee}：<span class="l-ect-color">{$orders.total_fee}</span></dd>
-  <dd>{$lang.order_addtime}：{$orders.order_time}</dd>
-</dl>
-<i class="pull-right fa fa-angle-right"></i> </a> 
+   <div class="checkoutProductWrapper">
+        <a href="{:url('user/order_detail', array('order_id'=>$this->_var['orders']['order_id']))}" class="checkoutProductImageWrapper">
+          <img src="{$orders.img}" class="checkoutProductImage"
+          alt="">
+        </a>
+      <div class="checkoutProductInfoWrapper">
+
+
+          <!-- 我的意见： -->
+          <!-- 1. 在订单列表里面如果把所有操作（如取消、付款、确认收货等）和所有状态（订单状态、配送状态、支付状态）全部 -->
+          <!-- 都包含进来，用户体验并不好，因为操作和状态都显示在同一个按钮上面，而且并不是所有的状态都有对应的操作，例如未付款状态可以显示为 -->
+          <!-- 付款操作，但是未发货状态并没有对应的操作（假设我们不设置催店主发货的功能），这时只是显示未发货的状态，用户容易迷惑。 -->
+          <!-- 2. 我参照了其它团购app对应这块的设计（艾尚团购），他们是只有当订单未付款需要付款的时候才会在订单列表页面显示“付款按钮”，其它状态都是 -->
+          <!-- 到详情页里面查看 -->
+          <!-- 所以目前完全按照ectouch的逻辑进行设计吧 -->
+
+          
+          <!-- 我下面已经实现了以上第一点的功能，但我觉得体验不好 -->
+
+
+          <!-- 未确认订单 -->
+          <!-- {if ($orders.order_status == $OS_UNCONFIRMED )} --> 
+
+            <a class="checkoutCancelProductButton" href="{:url('user/cancel_order', array('order_id'=>$this->_var['orders']['order_id']))}" 
+              onclick="if (!confirm('" . "{$lang.confirm_cancel}" . "'))return false;"> {$lang.cancel} </a>
+  
+          <!-- 已确认订单 -->
+          <!-- {elseif ($orders.order_status == $OS_CONFIRMED )} --> 
+
+              <!-- 订单已确认、已付款 -->
+              <!-- {if ($orders.pay_status == $PS_PAYED )} -->
+
+
+                <!-- 订单已确认、已付款、已发货 -->
+                <!-- {if ($orders.shipping_status == $SS_SHIPPED )} -->
+
+                  <a class="checkoutCancelProductButton"  href="{:url('user/affirm_received', array('order_id'=>$this->_var['orders']['order_id']))}" 
+                      onclick="if (!confirm('" . "{$lang.confirm_received}" . "'))return false;"> {$lang.received} </a>
+
+
+                <!-- 订单已完成 -->
+                <!-- {elseif ($orders.shipping_status == $SS_RECEIVED )} -->
+                    
+                    <a class="checkoutCancelProductButton" type="button" href="javascript:void(0);"> {$lang.ss_received} </a>
+                  
+                <!-- 订单未发货\发货中   -->
+                <!-- {else} -->
+
+                    <a href="#" class="btn disabled" style="float:right" role="button">{$lang.ss[$orders.shipping_status]}</a>
+
+                <!-- {/if} -->
+
+              <!-- 订单已确认、未付款 -->
+              <!-- {else} -->
+
+                  <!-- 付款的按钮是支付插件自行控制的，详情见plugins/payment对应支付方式的get_code函数 -->
+                  <!-- get_code函数生成了支付按钮，支付按钮上显示的文字参见payment文件夹中language的文件夹下对应的语言文件 -->
+                  {$orders.pay_online}
+                  <!-- <a class="checkoutCancelProductButton" href="{:url('user/cancel_order', array('order_id'=>$this->_var['orders']['order_id']))}"> {$lang.pay_money} </a> -->
+
+              <!-- {/if} -->
+
+
+          <!-- 订单已取消\退款\无效等状态，详情见constant.php中defined的订单状态 -->
+          <!-- {else} -->
+
+              <a href="#" class="btn disabled" style="float:right" role="button">{$lang.os[$orders.order_status]} </a>
+
+          <!-- {/if} -->
+          
+
+
+          <a href="{:url('user/order_detail', array('order_id'=>$this->_var['orders']['order_id']))}" class="checkoutProductTitle">
+            {$lang.order_number}：{$orders.order_sn}
+          </a>
+        <div class="checkoutProductTitle">
+          {$lang.order_total_fee}：<span class="">{$orders.total_fee}</span>
+        </div>
+        <div class="checkoutProductButtonsWrapper">
+           <span href="" class="checkoutProductTitle">
+            {$lang.order_addtime}：{$orders.order_time}
+          </span>
+        </div>
+      </div>
+    </div>
 
 <!-- {/if}--> 
-<!-- 用户订单end--> 
 
 <!-- 配送地址 start--> 
 <!--{if $consignee}--> 
-<a href="{$consignee.url}">
-<p class="title">{$consignee.consignee} <span class="ect-colory">{$consignee.mobile}</span></p>
-<p>{$consignee.address}</p>
-<i class="fa fa-angle-right"></i> </a> 
+  <p> 
+     <div>
+      <p>收货人姓名：{$consignee.consignee}</p>
+      <p>电话：{$consignee.mobile}</p>
+      <p>详细地址：{$consignee.address}</p>
+      <!-- <p>邮件地址：</p>
+      <p>邮编：</p> -->
+    </div>
+    <div>
+    <div class="showaddress">
+      <a style="margin-right:10px;" href="{$consignee.url}">编辑</a><!-- <a href="">删除</a> -->
+    </div>
+    </div>
+    </div>
+</p>
 <!-- {/if}--> 
 <!-- 配送地址end--> 
 

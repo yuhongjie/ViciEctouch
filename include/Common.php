@@ -1592,4 +1592,3 @@ if (!function_exists('class_alias')) {
     }
 
 }
-

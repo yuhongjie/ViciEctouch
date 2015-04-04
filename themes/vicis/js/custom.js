@@ -102,14 +102,15 @@ jQuery(document).ready(function($){
 		return false;
 		
 	});
-	
-	$('.shoppingCartButton').click(function(){
+
+	// 取消购物车滑出效果  --by google
+	// $('.shoppingCartButton').click(function(){
 		
-		headerSection('.shoppingCartWrapper', 'shoppingCart');
+	// 	headerSection('.shoppingCartWrapper', 'shoppingCart');
 		
-		return false;
+	// 	return false;
 		
-	});
+	// });
 	// main menu and shopping cart functions end
 	
 	
@@ -161,15 +162,15 @@ jQuery(document).ready(function($){
 	// adapt main menu function ends
 	
 	
-	
+	//删除静态页面演示删除购物车功能
 	// remove shopping cart/checkout product function starts
-	$('.shoppingCartRemoveProductButton, .checkoutRemoveProductButton').click(function(){
+	// $('.shoppingCartRemoveProductButton, .checkoutRemoveProductButton').click(function(){
 		
-		$(this).parent().parent().parent().fadeOut(300);
+	// 	$(this).parent().parent().parent().fadeOut(300);
 		
-		return false;
+	// 	return false;
 		
-	});
+	// });
 	// remove shopping cart/checkout product function ends
     
 	

@@ -83,39 +83,28 @@
               <!-- checkout product starts -->
 
             <!--{if $orders}-->
-            <!-- {foreach from=$orders item=val name=neworder} -->
-            <!-- checkout product starts -->
-            <!--{if $smarty.foreach.neworder.iteration < 4}-->
-            <div class="checkoutProductWrapper">
-                 <a href=" " class="checkoutCancelProductButton">
-                 取消订单
-                 </a>
-                 <a href="{:url('user/order_detail', array('order_id'=>$this->_var['orders']['order_id']))}" class="checkoutProductImageWrapper">
-                   <img src="{$val.img}" class="checkoutProductImage"
-                   alt="">
-                 </a>
-               <div class="checkoutProductInfoWrapper">
-                   <a href="{:url('user/order_detail', array('order_id'=>$this->_var['orders']['order_id']))}" class="checkoutProductTitle">
-                     {$lang.order_number}：{$val.order_sn}
-                   </a>
-                 <!-- <span class="checkoutProductTitle">
-                   {$lang.order_status}：{$val.order_status}
-                 </span> -->
-                 <div class="checkoutProductTitle">
-                   {$lang.order_total_fee}：<span class="">{$val.total_fee}</span>
-                 </div>
-                 <div class="checkoutProductButtonsWrapper">
-                    <span href="" class="checkoutProductTitle">
-                     {$lang.order_addtime}：{$val.order_time}
-                   </span>
-                   
-                 </div>
-               </div>
-             </div>
-              <!-- {/if} -->
-            <!-- checkout product ends --> 
-            <!-- {/foreach} -->
-
+            <div class="ect-pro-list user-order l-user-order" style="border-bottom:none;">
+              <ul id="J_ItemList">
+              <!-- {foreach from=$orders item=val name=neworder} -->
+              <!-- checkout product starts -->
+              <!--{if $smarty.foreach.neworder.iteration < 4}-->
+              <li class="single_item">
+               <a href="{:url('user/order_detail', array('order_id'=>$this->_var['val']['order_id']))}"><img src="{$val.img}" class="pull-left" />
+               <dl>
+                 <dt>
+                   <h4 class="title">{$lang.order_number}：{$val.order_sn}</h4>
+                 </dt>
+                 <dd>{$lang.order_status}：{$val.order_status}</dd>
+                 <dd>{$lang.order_total_fee}：<span class="ect-color l-ectcolor">{$val.total_fee}</span></dd>
+                 <dd>{$lang.order_addtime}：{$val.order_time}</dd>
+               </dl>
+               <i class="pull-right fa fa-angle-right"></i> </a> 
+               </li>
+                <!-- {/if} -->
+              <!-- checkout product ends --> 
+              <!-- {/foreach} -->
+              </ul>
+            </div>
             <!--{else}-->
                <p class="text-center ect-margin-tb ect-padding-tb">{$lang.no_data}</p>
             <!--{/if}--> 

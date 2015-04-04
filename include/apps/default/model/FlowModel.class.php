@@ -18,6 +18,23 @@ defined('IN_ECTOUCH') or die('Deny Access');
 
 class FlowModel extends BaseModel {
 
+
+
+
+    /**
+     * 清空购物车
+     *
+     * @access public
+     * @return void
+     *
+     */
+    function flow_clear_cart() {
+        $sql = "DELETE FROM " . $this->pre .
+                "cart WHERE session_id = '" . SESS_ID . "'";
+        $this->query($sql);
+    }
+    
+
     /**
      * 删除购物车中的商品
      *

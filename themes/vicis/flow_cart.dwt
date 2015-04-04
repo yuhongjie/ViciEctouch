@@ -1,95 +1,102 @@
-<div class="con">
-  <div class="ect-bg">
-    <header class="ect-header ect-margin-tb ect-margin-lr text-center ect-bg icon-write"> <a href="javascript:history.go(-1)" class="pull-left ect-icon ect-icon1 ect-icon-history"></a> <span>{$title}</span> <a href="javascript:;" onClick="openMune()" class="pull-right ect-icon ect-icon1 ect-icon-mune icon-write"></a></header>
-    <nav class="ect-nav ect-nav-list" style="display:none;">
-     <!-- #BeginLibraryItem "/library/page_menu.lbi" --><!-- #EndLibraryItem --> 
-    </nav>
-  </div>
-  <!-- {if $goods_list } -->
-  <p class="flow-price ect-padding-lr ect-padding-tb"> {$lang.total}<b id="total_number">{$total.total_number}</b>{$lang.total_number}，{$lang.goods_price}：<b class="ect-colory" id="goods_subtotal">{$total.goods_price}</b> </p>
-  <section class="ect-pro-list flow-pic ect-border-bottom0">
-    <ul>
-      <!-- {foreach from=$goods_list item=goods key=k} -->
-      <li>
-        <div class="ect-clear-over"> <a href="{:url('goods/index',array('id'=>$this->_var['goods']['goods_id']))}"><img src="{$goods.goods_thumb}" title="{$goods.goods_name|escape:html}"></a>
-          <dl>
-            <dt>
-              <h4 class="title"><a href="{:url('goods/index',array('id'=>$this->_var['goods']['goods_id']))}">{$goods.goods_name} 
-                <!-- {if $goods.parent_id gt 0} 配件 --> 
-                <span style="color:#FF0000">（{$lang.accessories}）</span> 
-                <!-- {/if} --> 
-                <!-- {if $goods.is_gift gt 0} 赠品 --> 
-                <span style="color:#FF0000">（{$lang.largess}）</span> 
-                <!-- {/if} --> 
-                </a></h4>
-            </dt>
-            <dd class="ect-color999"> 
-              <!-- {if $show_goods_attribute eq 1} 显示商品属性 -->
-              <p>{$goods.goods_attr|nl2br}</p>
-              <!-- {/if} -->
-              <p><strong class="ect-colory">{$goods.goods_price}</strong></p>
-            </dd>
-          </dl>
+
+    <!-- website wrapper starts -->
+    <div class="websiteWrapper">
+
+      <!-- page wrapper starts -->
+      <div class="pageWrapper homePageWrapper">
+        <!-- main menu outer wrapper starts -->
+        <div class="mainMenuOuterWrapper">
+          <!-- main menu wrapper starts -->
+          <!-- #BeginLibraryItem "/library/page_menu.lbi" --><!-- #EndLibraryItem -->
+          <!-- main menu wrapper ends -->
+          <div class="mainMenuBottomDecoration">
+          </div>
         </div>
-        <div class="ect-margin-tb ect-margin-bottom0 ect-clear-over flow-num-del"> 
-        <!-- {if $goods.goods_id gt 0 && $goods.is_gift eq 0 && $goods.parent_id eq 0} 普通商品可修改数量 -->
-          <div class="input-group pull-left wrap"> <span class="input-group-addon" onClick="change_goods_number('1',{$goods.rec_id})" >-</span>
-            <input type="hidden" id="back_number{$goods.rec_id}" value="{$goods.goods_number}" />
-            <input type="text" class="form-num form-contro"  name="{$goods.rec_id}" id="goods_number{$goods.rec_id}" autocomplete="off" value="{$goods.goods_number}" onFocus="back_goods_number({$goods.rec_id})"  onblur="change_goods_number('2',{$goods.rec_id})" />
-            <span class="input-group-addon" onClick="change_goods_number('3',{$goods.rec_id})">+</span> </div>
-         
-         <!-- {else} -->
-          	<input type="text" class="txtnum" readonly value="{$goods.goods_number}"/>
-          <!-- {/if} --> 
-           <div class="pull-right flow-del text-center"> <a href="javascript:if (confirm('{$lang.drop_goods_confirm}')) location.href='{:url('flow/drop_goods',array('id'=>$this->_var['goods']['rec_id']))}';" style="padding: 2px 5px;">{$lang.drop}</a> </div>
+        <!-- main menu outer wrapper ends -->
+        <!-- shopping cart wrapper start -->
+        <!-- shopping cart wrapper ends -->
+        <!-- header outer wrapper starts -->
+        <div class="headerOuterWrapper">
+          <div class="headerWrapper">
+            <a href="{:url('user/index')}" class="accountButton">
+            </a>
+            <a href="{:url('flow/cart')}" class="shoppingCartButton">
+            </a>
+            <a href="" class="mainMenuButton">
+            </a>
+          </div>
+          <div class="headerDecoration">
+          </div>
+          <!-- main logo starts -->
+          <a href="" class="mainLogo">
+            <img src="__TPL__/images/common/mainLogo.png" alt="" />
+          </a>
+          <!-- main logo ends -->
         </div>
-      </li>
-      <!-- {/foreach} -->
-    </ul>
-    <!-- {if $favourable_list} -->
-    <p class="bg-warning text-center ect-padding-tb" onClick="location.href='{:url('flow/label_favourable')}'">{$lang.show_favourable}</p>
-    <!-- {/if} -->
-  </section>
-  <!-- {if $fittings_list} -->
-     <div class="two-btn flow-jiesuan ect-padding-tb ect-padding-lr text-center">
-   		<a class="btn btn-info" type="button" href="{:url('flow/goods_fittings')}">{$lang.goods_fittings}</a>
-        <a class="btn btn-info ect-bg-colory" type="button"  href="{:url('flow/checkout')}">{$lang.check_out}</a>
-	</div>
-  <!-- {else} -->
-  	<div class="flow-jiesuan ect-padding-lr ect-padding-tb">
-  	<a href="{:url('flow/checkout')}" type="button" class="btn btn-info ect-btn-info ect-bg">{$lang.check_out}</a>
-  </div>
-  <!-- {/if} -->
-  <!-- {if $linked_goods} 关联商品-->
-  <section class="ect-pro-list flow-rel-pro flow-pic">
-    <h4 class="ect-margin-lr ect-margin-tb"><strong>{$lang.releate_goods}：</strong></h4>
-    <ul>
-      <!--{foreach from=$linked_goods item=releated_goods_data}-->
-      <li>
-        <div class="ect-clear-over"> <a href="{$releated_goods_data.url}"><img src="{$releated_goods_data.goods_thumb}" alt="{$releated_goods_data.goods_name}" /></a>
-          <dl>
-            <dt>
-              <h4 class="title"><a href="{$releated_goods_data.url}">{$releated_goods_data.short_name}</a></h4>
-            </dt>
-            <dd class="ect-color999">
-              <p> 
-                <!-- {if $releated_goods_data.promote_price neq 0} --> 
-                {$lang.promote_price}<strong class="ect-colory">{$releated_goods_data.formated_promote_price}</strong> 
-                <!-- {else} --> 
-                {$lang.shop_price}<strong class="ect-colory">{$releated_goods_data.shop_price}</strong> 
-                <!-- {/if} --> 
-              </p>
-            </dd>
-          </dl>
+        <!-- header outer wrapper ends -->
+        <!-- page content wrapper starts -->
+        <div class="pageContentWrapper">
+            <div class="headerBreak headerBreakTitleBottom"></div>
+             <!-- page title starts -->
+             <h3 class="pageTitle">购物车</h3>
+             <!-- page title ends -->
+            <!-- {if $goods_list } -->
+            <!-- shopping cart wrapper start -->
+            <!-- shopping cart product starts -->
+
+            <!-- {foreach from=$goods_list item=goods key=k} -->
+            <div class="shoppingCartProductWrapper">
+              <a href="{:url('goods/index',array('id'=>$this->_var['goods']['goods_id']))}" class="shoppingCartProductImageWrapper">
+                <img src="{$goods.goods_thumb}" class="shoppingCartProductImage"
+                alt="{$goods.goods_name|escape:html}">
+              </a>
+              <div class="shoppingCartProductInfoWrapper">
+                <a href="{:url('goods/index',array('id'=>$this->_var['goods']['goods_id']))}" class="shoppingCartProductTitle">
+                  {$goods.goods_name} 
+                </a>
+                <div class="shoppingCartProductButtonsWrapper">
+                  <!-- {if $goods.goods_id gt 0 && $goods.is_gift eq 0 && $goods.parent_id eq 0} 普通商品可修改数量 -->
+                    <input type="hidden" id="back_number{$goods.rec_id}" value="{$goods.goods_number}" />
+                    <input type="text" class="shoppingCartProductNumber" name="{$goods.rec_id}" id="goods_number{$goods.rec_id}" autocomplete="off" value="{$goods.goods_number}" onFocus="back_goods_number({$goods.rec_id})"  onblur="change_goods_number('2',{$goods.rec_id})" />
+                    <span class="shoppingCartProductPrice">
+                      {$goods.goods_price}
+                    </span>
+                   <!-- {else} -->
+                      <input type="text" class="txtnum" readonly value="{$goods.goods_number}"/>
+                    <!-- {/if} --> 
+                  
+                  <a href="javascript:if (confirm('{$lang.drop_goods_confirm}')) location.href='{:url('flow/drop_goods',array('id'=>$this->_var['goods']['rec_id']))}';" class="shoppingCartRemoveProductButton" style="padding: 2px 5px;text-indent: -999999px;">{$lang.drop}</a>
+
+                </div>
+              </div>
+            </div>
+            <!-- shopping cart product ends -->
+            <!-- {/foreach} -->
+          
+  
+            <!-- shopping cart info wrapper starts -->
+            <div class="shoppingCartInfoWrapper">
+              <span class="shoppingCartProductsNumber">
+                购物车{$lang.total}:<b id="total_number">&nbsp{$total.total_number}</b>&nbsp件产品
+              </span>
+              <span class="shoppingCartProductsTotal">
+              {$lang.goods_price}: <b class="ect-colory" id="goods_subtotal">{$total.goods_price}</b>
+              </span>
+            </div>
+            <!-- shopping cart info wrapper ends -->
+            <div class="shoppingCartButtonsWrapper">
+              <a href="javascript:if (confirm('确定清空购物车？')) location.href='{:url('flow/clear_cart')}';" class="btn btn-info ect-colorf l-order-sta-btn">
+                清空购物车
+              </a>
+              <a href="{:url('flow/checkout')}" type="button" class="btn btn-info color-green-fr l-order-sta-btn">{$lang.check_out}</a>
+            </div>
+            <!-- shopping cart wrapper ends -->
+            <!-- page content wrapper ends -->
+            <!--{else}-->
+            <div class="flow-no-pro"> <img src="__TPL__/images/gwc.png">
+              <p class="text-center">{$lang.empty_shopping}</p>
+              <a type="button" href="{:url('category/index')}" class="btn btn-info ect-btn-info l-color73c ect-bg">{$lang.go_shopping}</a> </div>
+            <!-- {/if} --> 
         </div>
-      </li>
-      <!-- {/foreach} -->
-    </ul>
-  </section>
-  <!-- {/if} --> 
-  <!--{else}-->
-  <div class="flow-no-pro"> <img src="__TPL__/images/gwc.png">
-    <p class="text-center">{$lang.empty_shopping}</p>
-    <a type="button" href="{:url('category/top_all')}" class="btn btn-info ect-btn-info ect-bg">{$lang.go_shopping}</a> </div>
-  <!-- {/if} --> 
-</div>
+        <div class="footerDecoration">
+      </div>

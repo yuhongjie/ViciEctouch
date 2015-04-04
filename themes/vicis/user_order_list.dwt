@@ -40,10 +40,18 @@
 		<form id="checkoutForm" class="checkoutForm" action="#" method="post">
 		  <fieldset>
 		    <!-- checkout product starts -->
-		        <div id="J_ItemList" class="checkoutProductWrapper" style="border-bottom:none;">
+		        <!-- <div id="J_ItemList" class="checkoutProductWrapper" style="border-bottom:none;">
 		           <div class="single_item"></div>
 		           <a href="javascript:;" style="text-align:center" class="get_more"></a>
-		        </div>
+		        </div> -->
+
+            <div class="ect-pro-list user-order l-user-order" style="border-bottom:none;">
+                <ul id="J_ItemList">
+                   <li class="single_item"></li>
+                   <a href="javascript:;" style="text-align:center" class="get_more"></a>
+                </ul>
+            </div>
+            </div>
 		    <!-- checkout product ends -->
 		  </fieldset>
 		</form>

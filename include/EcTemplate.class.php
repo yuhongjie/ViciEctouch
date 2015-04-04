@@ -165,6 +165,3 @@ class EcTemplate {
     }
 
 }
-
-
-
