@@ -26,7 +26,7 @@ class FlowController extends CommonController {
         $navigator = model('Common')->get_navigator();
         $this->assign('navigator', $navigator['middle']);
 
-		$_SESSION['flow_type'] = CART_GENERAL_GOODS;
+        $_SESSION['flow_type'] = CART_GENERAL_GOODS;
         /* 如果是一步购物，跳到结算中心 */
         if (C('one_step_buy') == '1') {
             ecs_header("Location: " . url('flow/checkout') . "\n");
@@ -305,12 +305,12 @@ class FlowController extends CommonController {
             /* 查询：检查该项是否为基本件 以及是否存在配件 */
             /* 此处配件是指添加商品时附加的并且是设置了优惠价格的配件 此类配件都有parent_idgoods_number为1 */
             $sql = "SELECT b.goods_number,b.rec_id
-			FROM " . $this->model->pre . "cart a, " . $this->model->pre . "cart b
-				WHERE a.rec_id = '$key'
-				AND a.session_id = '" . SESS_ID . "'
-			AND a.extension_code <>'package_buy'
-			AND b.parent_id = a.goods_id
-			AND b.session_id = '" . SESS_ID . "'";
+            FROM " . $this->model->pre . "cart a, " . $this->model->pre . "cart b
+                WHERE a.rec_id = '$key'
+                AND a.session_id = '" . SESS_ID . "'
+            AND a.extension_code <>'package_buy'
+            AND b.parent_id = a.goods_id
+            AND b.session_id = '" . SESS_ID . "'";
 
             $offers_accessories_res = $this->model->query($sql);
 
@@ -401,15 +401,6 @@ class FlowController extends CommonController {
         $rec_id = intval($_GET ['id']);
         //删除购物车中的商品
         model('Flow')->flow_drop_cart_goods($rec_id);
-        ecs_header("Location: " . url('flow/index') . "\n");
-    }
-
-    /**
-     * 清空购物车
-     */
-    public function clear_cart() {
-        //清空购物车
-        model('Flow')->flow_clear_cart();
         ecs_header("Location: " . url('flow/index') . "\n");
     }
 
@@ -848,7 +839,7 @@ class FlowController extends CommonController {
             /* 返回收货人页面代码 */
             $this->assign('real_goods_count', model('Order')->exist_real_goods(0, $flow_type) ? 1 : 0 );
         } else {
-            /*  保存收货人信息 	 */
+            /*  保存收货人信息      */
             $consignee = array(
                 'address_id' => empty($_POST ['address_id']) ? 0 : intval($_POST ['address_id']),
                 'consignee' => empty($_POST ['consignee']) ? '' : I('post.consignee'),
@@ -2105,9 +2096,7 @@ class FlowController extends CommonController {
     }
 
     /**
-
      * 获取配送地址列表
-
      */
     public function consignee_list() {
         if (IS_AJAX) {
@@ -2148,9 +2137,7 @@ class FlowController extends CommonController {
     }
 
     /**
-
      * 删除收货人信息
-
      */
     public function drop_consignee() {
         $consignee_id = intval($_GET['id']);
