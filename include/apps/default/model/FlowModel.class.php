@@ -55,13 +55,13 @@ class FlowModel extends BaseModel {
             elseif ($row ['parent_id'] == 0 && $row ['is_gift'] == 0) {
                 /* 检查购物车中该普通商品的不可单独销售的配件并删除 */
                 $sql = "SELECT c.rec_id
-				FROM " . $this->pre . "cart AS c, " . $this->pre . "group_goods AS gg, " . $this->pre . "goods AS g
-				WHERE gg.parent_id = '" . $row ['goods_id'] . "'
-				AND c.goods_id = gg.goods_id
-				AND c.parent_id = '" . $row ['goods_id'] . "'
-				AND c.extension_code <> 'package_buy'
-				AND gg.goods_id = g.goods_id
-				AND g.is_alone_sale = 0";
+                FROM " . $this->pre . "cart AS c, " . $this->pre . "group_goods AS gg, " . $this->pre . "goods AS g
+                WHERE gg.parent_id = '" . $row ['goods_id'] . "'
+                AND c.goods_id = gg.goods_id
+                AND c.parent_id = '" . $row ['goods_id'] . "'
+                AND c.extension_code <> 'package_buy'
+                AND gg.goods_id = g.goods_id
+                AND g.is_alone_sale = 0";
                 $res = $this->query($sql);
                 $_del_str = $id . ',';
                 foreach ($res as $id_alone_sale_goods) {
@@ -90,13 +90,13 @@ class FlowModel extends BaseModel {
     function flow_clear_cart_alone() {
         /* 查询：购物车中所有不可以单独销售的配件 */
         $sql = "SELECT c.rec_id, gg.parent_id
-		FROM " . $this->pre . "cart AS c
-		LEFT JOIN " . $this->pre . "group_goods AS gg ON c.goods_id = gg.goods_id
-		LEFT JOIN " . $this->pre . "goods AS g ON c.goods_id = g.goods_id
-		WHERE c.session_id = '" . SESS_ID . "'
-		AND c.extension_code <> 'package_buy'
-		AND gg.parent_id > 0
-		AND g.is_alone_sale = 0";
+        FROM " . $this->pre . "cart AS c
+        LEFT JOIN " . $this->pre . "group_goods AS gg ON c.goods_id = gg.goods_id
+        LEFT JOIN " . $this->pre . "goods AS g ON c.goods_id = g.goods_id
+        WHERE c.session_id = '" . SESS_ID . "'
+        AND c.extension_code <> 'package_buy'
+        AND gg.parent_id > 0
+        AND g.is_alone_sale = 0";
         $res = $this->query($sql);
         $rec_id = array();
         foreach ($res as $row) {
@@ -108,9 +108,9 @@ class FlowModel extends BaseModel {
 
         /* 查询：购物车中所有商品 */
         $sql = "SELECT DISTINCT goods_id
-		FROM " . $this->pre .
+        FROM " . $this->pre .
                 "cart WHERE session_id = '" . SESS_ID . "'
-		AND extension_code <> 'package_buy'";
+        AND extension_code <> 'package_buy'";
         $res = $this->query($sql);
         $cart_good = array();
         foreach ($res as $row) {
@@ -140,7 +140,7 @@ class FlowModel extends BaseModel {
         /* 删除 */
         $sql = "DELETE FROM " . $this->pre .
                 "cart WHERE session_id = '" . SESS_ID . "'
-			AND rec_id IN ($del_rec_id)";
+            AND rec_id IN ($del_rec_id)";
         $this->query($sql);
     }
 
@@ -163,7 +163,7 @@ class FlowModel extends BaseModel {
      * 取得某用户等级当前时间可以享受的优惠活动
      *
      * @param int $user_rank
-     *        	用户等级id，0表示非会员
+     *          用户等级id，0表示非会员
      * @return array
      */
     function favourable_list_flow($user_rank) {
@@ -210,9 +210,9 @@ class FlowModel extends BaseModel {
      * 比较优惠活动的函数，用于排序（把可用的排在前面）
      *
      * @param array $a
-     *        	优惠活动a
+     *          优惠活动a
      * @param array $b
-     *        	优惠活动b
+     *          优惠活动b
      * @return int 相等返回0，小于返回-1，大于返回1
      */
     static function cmp_favourable($a, $b) {
@@ -231,7 +231,7 @@ class FlowModel extends BaseModel {
      * 取得优惠范围描述
      *
      * @param array $favourable
-     *        	优惠活动
+     *          优惠活动
      * @return string
      */
     function act_range_desc($favourable) {
@@ -267,7 +267,7 @@ class FlowModel extends BaseModel {
      * 根据购物车判断是否可以享受某优惠活动
      *
      * @param array $favourable
-     *        	优惠活动信息
+     *          优惠活动信息
      * @return bool
      */
     function favourable_available($favourable) {
@@ -288,7 +288,7 @@ class FlowModel extends BaseModel {
      * 取得购物车中某优惠活动范围内的总金额
      *
      * @param array $favourable
-     *        	优惠活动
+     *          优惠活动
      * @return float
      */
     function cart_favourable_amount($favourable) {
@@ -325,7 +325,7 @@ class FlowModel extends BaseModel {
      * 购物车中是否已经有某优惠
      *
      * @param array $favourable
-     *        	优惠活动
+     *          优惠活动
      * @param array $cart_favourable购物车中已有的优惠活动及数量
      */
     function favourable_used($favourable, $cart_favourable) {
@@ -340,11 +340,11 @@ class FlowModel extends BaseModel {
      * 添加优惠活动（赠品）到购物车
      *
      * @param int $act_id
-     *        	优惠活动id
+     *          优惠活动id
      * @param int $id
-     *        	赠品id
+     *          赠品id
      * @param float $price
-     *        	赠品价格
+     *          赠品价格
      */
     function add_gift_to_cart($act_id, $id, $price) {
         $sql = "INSERT INTO " . $this->pre . "cart (" . "user_id, session_id, goods_id, goods_sn, goods_name, market_price, goods_price, " . "goods_number, is_real, extension_code, parent_id, is_gift, rec_type ) " . "SELECT '$_SESSION[user_id]', '" . SESS_ID . "', goods_id, goods_sn, goods_name, market_price, " . "'$price', 1, is_real, extension_code, 0, '$act_id', '" . CART_GENERAL_GOODS . "' " . "FROM " . $this->pre . "goods WHERE goods_id = '$id'";

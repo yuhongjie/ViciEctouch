@@ -11,11 +11,7 @@
   <div class="pageNumbersWrapper">
     <!-- {if $pager.page_number} -->
       <!-- {foreach from=$pager.page_number key=key item=num} -->
-      <!--{if $pager.page_count == 1}-->
-      <span>共1页</span> 
-      <!--{else}-->
         <a class="pageNumber {if $pager.page == $key}currentPageNumber{/if}" href="{$num}&type={$type}">{$key}</a> 
-      <!--{/if}-->
     <!-- {/foreach} -->
     <!-- {/if} -->
    <a id="{if $pager.page_count > 1} {else}test{/if}" href="{$pager.page_prev|default:#}" class="pageNumber">&laquo;</a> 
