@@ -121,7 +121,7 @@ class CategoryController extends CommonController {
      */
     public function search() {
          $this->assign('categories', model('CategoryBase')->get_categories_tree($this->cat_id));
-        $this->display('search.dwt');
+         $this->display('search.dwt');
     }
 
 
@@ -215,7 +215,7 @@ class CategoryController extends CommonController {
         if(isset($_REQUEST['price'])) {
             $price_limit = $_REQUEST['price'];
             $prices = explode(',',$price_limit);
-            echo $prices[1];
+            // echo $prices[1];
             $price_max = $prices[1];
             $price_min = $prices[0];
         }

@@ -381,6 +381,15 @@ class FlowController extends CommonController {
     }
 
     /**
+     * 清空购物车
+     */
+    public function clear_cart() {
+        //清空购物车
+        model('Flow')->flow_clear_cart();
+        ecs_header("Location: " . url('flow/index') . "\n");
+    }
+
+    /**
      * 订单确认
      */
     public function checkout() {
