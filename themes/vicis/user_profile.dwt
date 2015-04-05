@@ -1,3 +1,4 @@
+<!-- 修改个人信息 -->
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
 <!-- website wrapper starts -->
 <div class="websiteWrapper"> 
@@ -66,7 +67,9 @@
         />
       </fieldset>
     </form>
-    <form name="formPassword" action="{:url('user/edit_password')}" method="post" onSubmit="return editPassword()" class="contactForm" >
+
+
+    <form id="signupForm" name="formPassword" action="{:url('user/edit_password')}" method="post" onSubmit="return editPassword()" class="contactForm" >
     
         <fieldset>
           <div class="formFieldWrapper">
@@ -75,19 +78,19 @@
           </div>
           
           <div class="formFieldWrapper">
-            <label for="registerPasswordField">{$lang.new_password}：</label>
-            <input placeholder="{$lang.new_password}" name="new_password" type="password" class="registerPasswordField fieldWithIcon passwordFieldIcon" />
+            <label for="password">{$lang.new_password}：</label>
+            <input id="password" placeholder="{$lang.new_password}" name="new_password" type="password" class="registerPasswordField fieldWithIcon passwordFieldIcon" />
           </div>
           <div class="formFieldWrapper">
-            <label for="registerPasswordField">{$lang.confirm_password}：</label>
-            <input placeholder="{$lang.confirm_password}" name="comfirm_password" type="password" class="registerPasswordField fieldWithIcon passwordFieldIcon" />
+            <label for="confirm_password">{$lang.confirm_password}：</label>
+            <input id="confirm_password" placeholder="{$lang.confirm_password}" name="confirm_password" type="password" class="registerPasswordField fieldWithIcon passwordFieldIcon" />
           </div>
-      
           <input name="act" type="hidden" value="edit_password" />
             <input name="submit" type="submit" class="buttonWrapper contactSubmitButton" value="{$lang.confirm_edit}" />
         </fieldset>
      </form>
     <!-- contact form ends -->
+
   </div>
   <!-- contact form wrapper ends -->
  </div>
@@ -104,6 +107,46 @@
   <!-- page wrapper ends --> 
 </div>
 <!-- website wrapper ends -->
+
+<script>
+// $.validator.setDefaults({
+//   submitHandler: function() {
+//     alert("submitted!");
+//   }
+// });
+
+$().ready(function() {
+  // validate the comment form when it is submitted
+  $("#commentForm").validate();
+
+  // validate signup form on keyup and submit
+  $("#signupForm").validate({
+    rules: {
+      password: {
+        required: true,
+        minlength: 6
+      },
+      confirm_password: {
+        required: true,
+        minlength: 6,
+        equalTo: "#password"
+      },
+    },
+    messages: {
+      password: {
+        required: "请输入密码",
+        minlength: "你的密码必须至少6个字符长度"
+      },
+      confirm_password: {
+        required: "请输入密码",
+        minlength: "你的密码必须至少6个字符长度",
+        equalTo: "请输入相同的密码"
+      }
+    }
+  });
+});
+</script>
+
 </body>
 </html>
 

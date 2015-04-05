@@ -21,6 +21,11 @@ class FlowController extends CommonController {
      * 购物车列表
      */
     public function index() {
+
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
+
 		$_SESSION['flow_type'] = CART_GENERAL_GOODS;
         /* 如果是一步购物，跳到结算中心 */
         if (C('one_step_buy') == '1') {
@@ -122,6 +127,10 @@ class FlowController extends CommonController {
      * 购物车列表 连接到index
      */
     public function cart() {
+
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
         $this->index();
     }
 
@@ -129,6 +138,10 @@ class FlowController extends CommonController {
      * 立即购买
      */
     public function add_to_cart() {
+
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
         //对goods处理
         $_POST ['goods'] = strip_tags(urldecode($_POST ['goods']));
         $_POST ['goods'] = json_str_iconv($_POST ['goods']);
@@ -370,6 +383,17 @@ class FlowController extends CommonController {
         }
     }
 
+
+
+    /**
+     * 清空购物车
+     */
+    public function clear_cart() {
+        //清空购物车
+        model('Flow')->flow_clear_cart();
+        ecs_header("Location: " . url('flow/index') . "\n");
+    }
+
     /**
      * 删除购物车中的商品
      */
@@ -384,6 +408,11 @@ class FlowController extends CommonController {
      * 订单确认
      */
     public function checkout() {
+
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
+
         /* 取得购物类型 */
         $flow_type = isset($_SESSION ['flow_type']) ? intval($_SESSION ['flow_type']) : CART_GENERAL_GOODS;
         /* 团购标志 */
@@ -743,6 +772,13 @@ class FlowController extends CommonController {
      * 收货信息
      */
     public function consignee() {
+
+
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
+
+        
         if ($_SERVER ['REQUEST_METHOD'] == 'GET') {
             /* 取得购物类型 */
             $flow_type = isset($_SESSION ['flow_type']) ? intval($_SESSION ['flow_type']) : CART_GENERAL_GOODS;

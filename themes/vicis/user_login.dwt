@@ -42,8 +42,8 @@
         <form name="formLogin" action="{:url('user/login')}" method="post" class="validforms">
           <fieldset>
             <div class="formFieldWrapper">
-              <label for="loginNameField">{$lang.username}：</label>
-              <input placeholder="{$lang.username}/{$lang.mobile}/{$lang.email}" name="username" type="text"  id="username" datatype="*" class="loginNameField fieldWithIcon userFieldIcon" />
+              <label for="loginNameField">用户名 / 邮箱：</label>
+              <input placeholder="{$lang.username}/邮箱" name="username" type="text"  id="username" datatype="*" class="loginNameField fieldWithIcon userFieldIcon" />
             </div>
             <div class="formFieldWrapper">
               <label for="loginPasswordField">{$lang.label_password}：</label>

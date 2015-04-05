@@ -575,6 +575,24 @@ class UserController extends CommonController {
 
             $order_list = model('Users')->get_user_orders($this->user_id, $pay, $limit, $start);
             foreach ($order_list as $key => $order) {
+
+                // vicis 获取完整的order对象 start
+                //$order = model('Users')->get_order_detail($order['order_id'], $this->user_id);
+                // end 
+                
+                // vicis assign需要用到的PHP常量 start
+                // 订单状态
+                //$this->assign('OS_CANCELED', OS_CANCELED);
+                //$this->assign('OS_UNCONFIRMED', OS_UNCONFIRMED);
+                //$this->assign('OS_CONFIRMED', OS_CONFIRMED);
+                // 配送状态
+                //$this->assign('OS_SPLITED', OS_SPLITED);
+                //$this->assign('SS_SHIPPED', SS_SHIPPED);
+                //$this->assign('SS_RECEIVED', SS_RECEIVED);
+                // 支付状态
+                //$this->assign('PS_PAYED', PS_PAYED);
+                // end
+                
                 $this->assign('orders', $order);
                 $sayList[] = array(
                     'single_item' => ECTouch::view()->fetch('library/asynclist_info.lbi')
@@ -614,6 +632,10 @@ class UserController extends CommonController {
      * 订单详情
      */
     public function order_detail() {
+
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
         $order_id = isset($_GET['order_id']) ? intval($_GET['order_id']) : 0;
 
         // 订单详情
@@ -623,7 +645,7 @@ class UserController extends CommonController {
             $order['handler'] = "<a class=\"btn btn-info ect-colorf\" href=\"" . url('user/cancel_order', array(
                         'order_id' => $order['order_id']
                     )) . "\" onclick=\"if (!confirm('" . L('confirm_cancel') . "')) return false;\">" . L('cancel') . "</a>";
-        } else
+        } else 
         if ($order['order_status'] == OS_SPLITED) {
             /* 对配送状态的处理 */
             if ($order['shipping_status'] == SS_SHIPPED) {
@@ -642,7 +664,7 @@ class UserController extends CommonController {
                 }
             }
         } else {
-            $order['handler'] = '<a class="btn btn-info ect-colorf" type="button" href="javascript:void(0);">' . L('os.' . $order['order_status']) . '</a>';
+            $order['handler'] = '<a class="btn btn-info ect-colorf l-order-sta-btn" type="button" href="javascript:void(0);">' . L('os.' . $order['order_status']) . '</a>';
         }
         if ($order === false) {
             ECTouch::err()->show(L('back_home_lnk'), './');
@@ -657,6 +679,8 @@ class UserController extends CommonController {
             $goods_list[$key]['subtotal'] = price_format($value['subtotal'], false);
             $goods_list[$key]['tags'] = model('ClipsBase')->get_tags($value['goods_id']);
             $goods_list[$key]['goods_thumb'] = get_image_path($order_id, $value['goods_thumb']);
+            //添加订单商品数量--by guliu
+            $goods_numbe = sizeof($goods_list);
         }
 
         // 设置能否修改使用余额数
@@ -694,6 +718,8 @@ class UserController extends CommonController {
         $this->assign('title', L('order_detail'));
         $this->assign('order', $order);
         $this->assign('goods_list', $goods_list);
+        $this->assign('goods_numbe', $goods_numbe);
+         
         $this->display('user_order_detail.dwt');
     }
 
