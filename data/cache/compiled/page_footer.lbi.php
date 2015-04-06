@@ -9,6 +9,7 @@
     &nbsp;All rights reserved.
   </span>
 </div>
+
 <a id="scrollUp" href="#top" style="position: fixed; z-index: 10;"><i class="fa fa-angle-up"></i></a>
 <style>
 #scrollUp {
@@ -34,6 +35,8 @@
 <script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script> 
 <script src="__TPL__/js/jquery.scrollUp.min.js"></script> 
 <script type="text/javascript" src="__PUBLIC__/js/validform.js" ></script> 
+<script type="text/javascript" src="__PUBLIC__/js/jquery.validate.min.js">
+</script>
 <script type="text/javascript" src="__TPL__/js/effects.jquery-ui.min.js">
 </script>
 <script type="text/javascript" src="__TPL__/js/jquery.nivo-slider.min.js">
@@ -44,11 +47,32 @@
 </script>
 <script type="text/javascript" src="__TPL__/js/menu_min.js">
 </script>
+<script type="text/javascript" src="__TPL__/js/WdatePicker.js"></script>
+
+
+
+
 <script type="text/javascript">
   $(document).ready(function() {
     $(".menu ul li").menu();
+
+    /* 添加当前页面menu高亮效果 2015-3-31 start */
+	$('a.page_menu').each(function(){
+      //alert(window.location.href);
+      var current_url = window.location.href;
+      var page_menu_href = $(this).attr('href');
+
+      if(current_url.indexOf(page_menu_href) >= 0) {
+      	$('a.page_menu').parent().removeClass("currentPage");
+      	$(this).parent().addClass("currentPage");
+      }
+	})
+	/* 添加当前页面menu高亮效果 2015-3-31 end */
+
   });
 </script>
+
+
 <script language="javascript">
 	/*banner滚动图片*/
 		TouchSlide({
@@ -75,4 +99,5 @@
 			$(".search").hide();
 		}
 	}
+
 </script> 

@@ -45,8 +45,6 @@
     <link rel="stylesheet" type="text/css" href="__TPL__/css/menu-css.css">
     <link rel="stylesheet" href="__TPL__/css/font-awesome.min.css">
     
-    
-    
   </head>
   
   <body>
