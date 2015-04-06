@@ -1,4 +1,3 @@
-<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
 <script type="text/javascript" src="__PUBLIC__/js/region.js"></script>
 <script type="text/javascript" src="__PUBLIC__/js/shopping_flow.js"></script>
 <script type="text/javascript">
@@ -16,17 +15,57 @@
           }
           {/literal}
         </script>
-<div class="con">
-  <div class="ect-bg">
-    <header class="ect-header ect-margin-tb ect-margin-lr text-center ect-bg icon-write"> <a href="#" class="pull-left ect-icon ect-icon1 ect-icon-history"></a> <span>{$title}</span> <a href="javascript:;" onClick="openMune()" class="pull-right ect-icon ect-icon1 ect-icon-mune"></a></header>
-    <nav class="ect-nav ect-nav-list" style="display:none;"> <!-- #BeginLibraryItem "/library/page_menu.lbi" --><!-- #EndLibraryItem --> </nav>
+<div class="websiteWrapper">
+  <!-- page wrapper starts -->
+  <div class="pageWrapper homePageWrapper">
+    <!-- main menu outer wrapper starts -->
+    <div class="mainMenuOuterWrapper">
+      <!-- main menu wrapper starts -->
+      <!-- #BeginLibraryItem "/library/page_menu.lbi" -->
+      <!-- #EndLibraryItem -->
+      <!-- main menu wrapper ends -->
+      <div class="mainMenuBottomDecoration">
+      </div>
+    </div>
+    <!-- main menu outer wrapper ends -->
+    <!-- shopping cart wrapper start -->
+    <!-- shopping cart wrapper ends -->
+    <!-- header outer wrapper starts -->
+    <div class="headerOuterWrapper">
+      <div class="headerWrapper">
+        <a href="{:url('user/index')}" class="accountButton">
+        </a>
+        <a href="{:url('flow/cart')}" class="shoppingCartButton">
+        </a>
+        <a href="" class="mainMenuButton">
+        </a>
+      </div>
+      <div class="headerDecoration">
+      </div>
+      <!-- main logo starts -->
+      <a href="" class="mainLogo">
+        <img src="__TPL__/images/common/mainLogo.png" alt="" />
+      </a>
+      <!-- main logo ends -->
+    </div>
+    <!-- header outer wrapper ends -->
+    <!-- page content wrapper starts -->
+    <div class="pageContentWrapper">
+     <!-- register form wrapper starts -->
+     <div class="registerFormWrapper">
+       <form  action="{:url('flow/consignee')}" method="post" name="theForm" id="theForm" onSubmit="return checkConsignee(this)">
+       </form>
+       <!-- 如果有收货地址，循环显示用户的收获地址 --> 
+       <!-- {foreach from=$consignee_list item=consignee key=sn} -->    
+          <form action="{:url('flow/consignee')}" method="post" name="theForm" id="theForm" onSubmit="return checkConsignee(this)">
+             <!-- #BeginLibraryItem "/Library/consignee.lbi" --><!-- #EndLibraryItem -->
+          </form>
+       <!-- {/foreach} --> 
+     </div>
+     <!-- register form wrapper ends -->
+      
+      <!-- page content wrapper ends -->
+    </div>
+  
   </div>
-<section class="ect-text-style">
-  <!-- 如果有收货地址，循环显示用户的收获地址 --> 
-  <!-- {foreach from=$consignee_list item=consignee key=sn} -->    
-     <form action="{:url('flow/consignee')}" method="post" name="theForm" id="theForm" onSubmit="return checkConsignee(this)">
-        <!-- #BeginLibraryItem "/Library/consignee.lbi" --><!-- #EndLibraryItem -->
-     </form>
-  <!-- {/foreach} --> 
-</section>
 </div>

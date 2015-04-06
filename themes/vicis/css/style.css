@@ -1899,7 +1899,7 @@ input.fieldHasError, textarea.fieldHasError {
 	height: 36px;
 	line-height: 36px;
 	border: 1px solid #f0f0f0;
-	background: #f3f3f3 url(../images/common/drop-downTextBg.png) right 0px no-repeat;
+	background: #f3f3f3 right 0px no-repeat;
 	color: #999;
 	display: block;
 	overflow: hidden;

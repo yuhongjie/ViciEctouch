@@ -1,16 +1,72 @@
-<!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
-<div class="flow-consignee-list ect-bg-colorf">
-  <section>
-    <ul id="J_ItemList">
-      <li class="ect-padding-tb checkout-add single_item "> </li>
-      <a href="javascript:;" style="text-align:center" class="get_more"></a>
-    </ul>
-  </section>
+<!-- #BeginLibraryItem "/library/page_header.lbi" -->
+<!-- #EndLibraryItem -->
+<!-- website wrapper starts -->
+<div class="websiteWrapper">
+  <!-- page wrapper starts -->
+  <div class="pageWrapper homePageWrapper">
+    <!-- main menu outer wrapper starts -->
+    <div class="mainMenuOuterWrapper">
+      <!-- main menu wrapper starts -->
+      <!-- #BeginLibraryItem "/library/page_menu.lbi" -->
+      <!-- #EndLibraryItem -->
+      <!-- main menu wrapper ends -->
+      <div class="mainMenuBottomDecoration">
+      </div>
+    </div>
+    <!-- main menu outer wrapper ends -->
+    <!-- shopping cart wrapper start -->
+    <!-- shopping cart wrapper ends -->
+    <!-- header outer wrapper starts -->
+    <div class="headerOuterWrapper">
+      <div class="headerWrapper">
+        <a href="{:url('user/index')}" class="accountButton">
+        </a>
+        <a href="{:url('flow/cart')}" class="shoppingCartButton">
+        </a>
+        <a href="" class="mainMenuButton">
+        </a>
+      </div>
+      <div class="headerDecoration">
+      </div>
+      <!-- main logo starts -->
+      <a href="" class="mainLogo">
+        <img src="__TPL__/images/common/mainLogo.png" alt="" />
+      </a>
+      <!-- main logo ends -->
+    </div>
+    <!-- header outer wrapper ends -->
+    <!-- page content wrapper starts -->
+    <div class="pageContentWrapper">
+      <div class="headerBreak headerBreakTitleBottom">
+      </div>
+      <ul id="J_ItemList">
+        <li class="ect-padding-tb checkout-add single_item ">
+        </li>
+        <a href="javascript:;" style="text-align:center" class="get_more">
+        </a>
+      </ul>
+      <div>
+        <div class="shoppingaddressButtons">
+          <a class="addressButton" href="{:url('flow/consignee')}">
+            {$lang.add_address}
+          </a>
+        </div>
+      </div>
+      <!-- page content wrapper ends -->
+    </div>
+    <div class="footerDecoration">
+    </div>
+    <!-- footer wrapper starts -->
+    <!-- #BeginLibraryItem "/library/page_footer.lbi" -->
+    <!-- #EndLibraryItem -->
+    <!-- footer wrapper ends -->
+  </div>
 </div>
-<div class="ect-padding-lr ect-padding-tb ect-margin-tb"> <a href="{:url('flow/consignee')}" type="botton" class="btn btn-info ect-btn-info ect-colorf ect-bg">{$lang.add_address}</a> </div>
-</div>
-<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem --> <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
-<script type="text/javascript" src="__PUBLIC__/js/jquery.more.js"></script> 
-<script type="text/javascript">
-get_asynclist('index.php?m=default&c=flow&a=consignee_list' , '__TPL__/images/loader.gif');</script>
-</body></html>
+  <script type="text/javascript" src="__PUBLIC__/js/jquery.more.js">
+  </script>
+  <script type="text/javascript">
+    get_asynclist('index.php?m=default&c=flow&a=consignee_list', '__TPL__/images/loader.gif');
+  </script>
+  </body>
+  
+  </html>
