@@ -16,6 +16,22 @@ $data = array (
     'id' => '13',
     'name' => '系列',
   ),
+  14 => 
+  array (
+    'cat_id' => '14',
+    'cat_name' => '盒装系列',
+    'measure_unit' => '',
+    'parent_id' => '13',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => '4',
+    'level' => 1,
+    'id' => '14',
+    'name' => '盒装系列',
+  ),
   16 => 
   array (
     'cat_id' => '16',
@@ -64,22 +80,6 @@ $data = array (
     'id' => '15',
     'name' => '花束系列',
   ),
-  14 => 
-  array (
-    'cat_id' => '14',
-    'cat_name' => '盒装系列',
-    'measure_unit' => '',
-    'parent_id' => '13',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => '4',
-    'level' => 1,
-    'id' => '14',
-    'name' => '盒装系列',
-  ),
   2 => 
   array (
     'cat_id' => '2',
@@ -95,6 +95,38 @@ $data = array (
     'level' => 0,
     'id' => '2',
     'name' => '用途',
+  ),
+  7 => 
+  array (
+    'cat_id' => '7',
+    'cat_name' => '生日',
+    'measure_unit' => '',
+    'parent_id' => '2',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => '8',
+    'level' => 1,
+    'id' => '7',
+    'name' => '生日',
+  ),
+  11 => 
+  array (
+    'cat_id' => '11',
+    'cat_name' => '回礼',
+    'measure_unit' => '',
+    'parent_id' => '2',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => '1',
+    'level' => 1,
+    'id' => '11',
+    'name' => '回礼',
   ),
   8 => 
   array (
@@ -143,38 +175,6 @@ $data = array (
     'level' => 1,
     'id' => '10',
     'name' => '商务',
-  ),
-  7 => 
-  array (
-    'cat_id' => '7',
-    'cat_name' => '生日',
-    'measure_unit' => '',
-    'parent_id' => '2',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => '8',
-    'level' => 1,
-    'id' => '7',
-    'name' => '生日',
-  ),
-  11 => 
-  array (
-    'cat_id' => '11',
-    'cat_name' => '回礼',
-    'measure_unit' => '',
-    'parent_id' => '2',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => '1',
-    'level' => 1,
-    'id' => '11',
-    'name' => '回礼',
   ),
 );
 ?>

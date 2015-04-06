@@ -122,26 +122,38 @@
  
 
  
-<?php if ($this->_var['orders']): ?><a href="<?php echo url('user/order_detail', array('order_id'=>$this->_var['orders']['order_id']));?>"><img src="<?php echo $this->_var['orders']['img']; ?>" class="pull-left" />
-<dl>
-  <dt>
-    <h4 class="title"><?php echo $this->_var['lang']['order_number']; ?>：<?php echo $this->_var['orders']['order_sn']; ?></h4>
-  </dt>
-  <dd><?php echo $this->_var['lang']['order_status']; ?>：<?php echo $this->_var['orders']['order_status']; ?></dd>
-  <dd><?php echo $this->_var['lang']['order_total_fee']; ?>：<span class="ect-color"><?php echo $this->_var['orders']['total_fee']; ?></span></dd>
-  <dd><?php echo $this->_var['lang']['order_addtime']; ?>：<?php echo $this->_var['orders']['order_time']; ?></dd>
-</dl>
-<i class="pull-right fa fa-angle-right"></i> </a> 
+
+<?php if ($this->_var['orders']): ?>
+    <a href="<?php echo url('user/order_detail', array('order_id'=>$this->_var['orders']['order_id']));?>"><img src="<?php echo $this->_var['orders']['img']; ?>" class="pull-left" />
+    <dl>
+      <dt>
+        <h4 class="title"><?php echo $this->_var['lang']['order_number']; ?>：<?php echo $this->_var['orders']['order_sn']; ?></h4>
+      </dt>
+      <dd><?php echo $this->_var['lang']['order_status']; ?>：<?php echo $this->_var['orders']['order_status']; ?></dd>
+      <dd><?php echo $this->_var['lang']['order_total_fee']; ?>：<span class="ect-color l-ectcolor"><?php echo $this->_var['orders']['total_fee']; ?></span></dd>
+      <dd><?php echo $this->_var['lang']['order_addtime']; ?>：<?php echo $this->_var['orders']['order_time']; ?></dd>
+    </dl>
+    <i class="pull-right fa fa-angle-right"></i> </a> 
 
 <?php endif; ?> 
- 
 
  
 <?php if ($this->_var['consignee']): ?> 
-<a href="<?php echo $this->_var['consignee']['url']; ?>">
-<p class="title"><?php echo $this->_var['consignee']['consignee']; ?> <span class="ect-colory"><?php echo $this->_var['consignee']['mobile']; ?></span></p>
-<p><?php echo $this->_var['consignee']['address']; ?></p>
-<i class="fa fa-angle-right"></i> </a> 
+  <p> 
+     <div>
+      <p>收货人姓名：<?php echo $this->_var['consignee']['consignee']; ?></p>
+      <p>电话：<?php echo $this->_var['consignee']['mobile']; ?></p>
+      <p>详细地址：<?php echo $this->_var['consignee']['address']; ?></p>
+      <!-- <p>邮件地址：</p>
+      <p>邮编：</p> -->
+    </div>
+    <div>
+    <div class="showaddress">
+      <a style="margin-right:10px;" href="<?php echo $this->_var['consignee']['url']; ?>">编辑</a><!-- <a href="">删除</a> -->
+    </div>
+    </div>
+    </div>
+</p>
 <?php endif; ?> 
  
 
