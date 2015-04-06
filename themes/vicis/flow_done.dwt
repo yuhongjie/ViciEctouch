@@ -1,37 +1,72 @@
 
-<div class="con">
-  <div class="ect-bg">
-  <header class="ect-header ect-margin-tb ect-margin-lr text-center ect-bg icon-write"> <a href="javascript:history.go(-1)" class="pull-left ect-icon ect-icon1 ect-icon-history"></a> <span>{$title}</span> <a href="javascript:;" onClick="openMune()" class="pull-right ect-icon ect-icon1 ect-icon-mune"></a></header>
-  <nav class="ect-nav ect-nav-list" style="display:none;"> <!-- #BeginLibraryItem "/library/page_menu.lbi" --><!-- #EndLibraryItem --> </nav>
-</div>
-  <section class="ect-bg-colorf ect-padding-lr flow-done">
-  		<i class="glyphicon glyphicon-ok"></i>
-        <p class="ect-margin-tb">{$lang.remember_order_number}：<b class="ect-color">{$order.order_sn}</b></p>
-        <p class="ect-margin-tb"><!--{if $order.shipping_name}-->{$lang.select_shipping}:<b>{$order.shipping_name}</b><!--{/if}--></p>
-        <p class="ect-margin-tb">{$lang.order_amount}: <b>{$total.amount_formated}</b></p>
-        <p class="ect-margin-tb">{$lang.select_payment}: <b>{$order.pay_name}</b></p>
-        <p class="ect-margin-tb" style="padding: 10px;">{$pay_desc}</p>
-        <!--{if $virtual_card}-->
-        <div class="alert alert-warning" role="alert" style="height: 100px;">
- 	    <!--{foreach from=$virtual_card item=vgoods}-->
-            <h3 style="color:#2359B1; font-size:15px;">{$vgoods.goods_name}</h3>
-            <!--{foreach from=$vgoods.info item=card}-->
-            <ul style="list-style:none;padding:0;margin:0;clear:both">
-              <!--{if $card.card_sn}-->
-              <li> <strong>{$lang.card_sn}:</strong><span style="color:red;">{$card.card_sn}</span> </li>
-              <!--{/if}--> 
-              <!--{if $card.card_password}-->
-              <li> <strong>{$lang.card_password}:</strong><span style="color:red;">{$card.card_password}</span> </li>
-              <!--{/if}--> 
-              <!--{if $card.end_date}-->
-              <li> <strong>{$lang.end_date}:</strong>{$card.end_date} </li>
-              <!--{/if}-->
-            </ul>
-        	<!--{/foreach}--> 
-        <!--{/foreach}--> 
-		</div>
-        <!-- {/if} -->
-       <p class="ect-margin-tb text-center">{$pay_online}</p>
-       <p class="ect-margin-tb text-center">{$order_submit_back}</p>
-  </section>
-</div>
+<!-- website wrapper starts -->
+<div class="websiteWrapper">
+
+  <!-- page wrapper starts -->
+  <div class="pageWrapper homePageWrapper">
+    <!-- main menu outer wrapper starts -->
+    <div class="mainMenuOuterWrapper">
+      <!-- main menu wrapper starts -->
+      <!-- #BeginLibraryItem "/library/page_menu.lbi" --><!-- #EndLibraryItem -->
+      <!-- main menu wrapper ends -->
+      <div class="mainMenuBottomDecoration">
+      </div>
+    </div>
+    <!-- main menu outer wrapper ends -->
+    <!-- shopping cart wrapper start -->
+    <!-- shopping cart wrapper ends -->
+    <!-- header outer wrapper starts -->
+    <div class="headerOuterWrapper">
+      <div class="headerWrapper">
+        <a href="{:url('user/index')}" class="accountButton">
+        </a>
+        <a href="{:url('flow/cart')}" class="shoppingCartButton">
+        </a>
+        <a href="" class="mainMenuButton">
+        </a>
+      </div>
+      <div class="headerDecoration">
+      </div>
+      <!-- main logo starts -->
+      <a href="" class="mainLogo">
+        <img src="__TPL__/images/common/mainLogo.png" alt="" />
+      </a>
+      <!-- main logo ends -->
+    </div>
+    <!-- header outer wrapper ends -->
+    <!-- page content wrapper starts -->
+    <div class="pageContentWrapper">
+        <div class="headerBreak headerBreakTitleBottom"></div>
+          <section class="ect-bg-colorf ect-padding-lr flow-done">
+              <i class="glyphicon glyphicon-ok"></i>
+                <p class="ect-margin-tb">{$lang.remember_order_number}：<b class="ect-color">{$order.order_sn}</b></p>
+                <p class="ect-margin-tb"><!--{if $order.shipping_name}-->{$lang.select_shipping}:<b>{$order.shipping_name}</b><!--{/if}--></p>
+                <p class="ect-margin-tb">{$lang.order_amount}: <b>{$total.amount_formated}</b></p>
+                <p class="ect-margin-tb">{$lang.select_payment}: <b>{$order.pay_name}</b></p>
+                <p class="ect-margin-tb" style="padding: 10px;">{$pay_desc}</p>
+                <!--{if $virtual_card}-->
+                <div class="alert alert-warning" role="alert" style="height: 100px;">
+              <!--{foreach from=$virtual_card item=vgoods}-->
+                    <h3 style="color:#2359B1; font-size:15px;">{$vgoods.goods_name}</h3>
+                    <!--{foreach from=$vgoods.info item=card}-->
+                    <ul style="list-style:none;padding:0;margin:0;clear:both">
+                      <!--{if $card.card_sn}-->
+                      <li> <strong>{$lang.card_sn}:</strong><span style="color:red;">{$card.card_sn}</span> </li>
+                      <!--{/if}--> 
+                      <!--{if $card.card_password}-->
+                      <li> <strong>{$lang.card_password}:</strong><span style="color:red;">{$card.card_password}</span> </li>
+                      <!--{/if}--> 
+                      <!--{if $card.end_date}-->
+                      <li> <strong>{$lang.end_date}:</strong>{$card.end_date} </li>
+                      <!--{/if}-->
+                    </ul>
+                  <!--{/foreach}--> 
+                <!--{/foreach}--> 
+            </div>
+                <!-- {/if} -->
+               <p class="ect-margin-tb text-center">{$pay_online}</p>
+               <p class="ect-margin-tb ">{$order_submit_back}</p>
+          </section>
+    </div>
+    <div class="footerDecoration">
+  </div>

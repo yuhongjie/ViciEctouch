@@ -81,7 +81,7 @@ class CategoryController extends CommonController {
 
         // EM_NAME Start
 
-        $this->assign('career',  model('Mointe')->get_em_desc($this->em_name));
+        //$this->assign('career',  model('Mointe')->get_em_desc($this->em_name));
         // end
 
         /* 添加type参数 start 2015-3-31 */

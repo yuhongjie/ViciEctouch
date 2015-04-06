@@ -58,6 +58,7 @@ class ShippingModel extends BaseModel {
                 ' AND r.shipping_area_id = a.shipping_area_id AND a.shipping_id = s.shipping_id AND s.enabled = 1 ORDER BY s.shipping_order';
 
         return $this->query($sql);
+
     }
 
     /**

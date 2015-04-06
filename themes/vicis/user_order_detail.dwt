@@ -67,14 +67,11 @@
            <!-- page title starts -->
         <h3 class="pageTitle">地址信息</h3>
         <!-- page title ends -->
-        <p>{$lang.consignee_name}：<b>{$order.consignee}</b></p>
-        <p>{$lang.mobile}：<b>{$order.mobile}</b></p>
+        <p>{$lang.consignee_name}：{$order.consignee}</p>
+        <p>{$lang.mobile}：{$order.mobile}</p>
         <!-- {if $order.exist_real_goods} -->
-        <p>{$lang.detailed_address}：<b>{$order.address}</b></p>
+        <p>{$lang.detailed_address}：{$l_detail_address}</p>
         <!-- {/if}--> 
-        <!-- {if $orders.exist_real_goods} -->
-        <p>{$lang.deliver_goods_time}：<b>{$order.best_time}</b></p>
-        <!--{/if}-->
       </div>
 
 
@@ -149,6 +146,17 @@
           {$order.handler}
         </div>
       </fieldset>
+       <div style="margin-top: 15px;">
+           <!-- page title starts -->
+        <h3 class="pageTitle">配送方式和时间</h3>
+        <!-- page title ends -->
+        <!-- {if $order.exist_real_goods} -->
+        <p>{$lang.deliver_goods_time}：{$order.best_time}</p>
+        <!--{/if}-->
+        <!-- {if $order.shipping_id > 0} -->
+         <p>{$lang.shipping}：{$order.shipping_name}</p>
+         <!-- {/if} -->
+      </div>
 
 
 
