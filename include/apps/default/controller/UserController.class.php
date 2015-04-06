@@ -636,11 +636,20 @@ class UserController extends CommonController {
         // 自定义导航栏
         $navigator = model('Common')->get_navigator();
         $this->assign('navigator', $navigator['middle']);
+
         $order_id = isset($_GET['order_id']) ? intval($_GET['order_id']) : 0;
 
         // 订单详情
         $order = model('Users')->get_order_detail($order_id, $this->user_id);
 
+        //添加详细地址  -by l  2015-04-06
+        $l_country = model('RegionBase')->get_region_name($order['country']);
+        $l_province = model('RegionBase')->get_region_name($order['province']);
+        $l_city = model('RegionBase')->get_region_name($order['city']);
+        $l_district = model('RegionBase')->get_region_name($order['district']);
+        $l_detail_address = $l_country.' &nbsp'.$l_province.$l_city.$l_district.$order['address'];
+        $this->assign('l_detail_address', $l_detail_address);
+        //end
         if ($order['order_status'] == OS_UNCONFIRMED) {
             $order['handler'] = "<a class=\"btn btn-info ect-colorf\" href=\"" . url('user/cancel_order', array(
                         'order_id' => $order['order_id']
@@ -682,7 +691,6 @@ class UserController extends CommonController {
             //添加订单商品数量--by guliu
             $goods_numbe = sizeof($goods_list);
         }
-
         // 设置能否修改使用余额数
         if ($order['order_amount'] > 0) {
             if ($order['order_status'] == OS_UNCONFIRMED || $order['order_status'] == OS_CONFIRMED) {
@@ -719,7 +727,6 @@ class UserController extends CommonController {
         $this->assign('order', $order);
         $this->assign('goods_list', $goods_list);
         $this->assign('goods_numbe', $goods_numbe);
-         
         $this->display('user_order_detail.dwt');
     }
 

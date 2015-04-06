@@ -21,12 +21,7 @@ class FlowController extends CommonController {
      * 购物车列表
      */
     public function index() {
-
-        // 自定义导航栏
-        $navigator = model('Common')->get_navigator();
-        $this->assign('navigator', $navigator['middle']);
-
-        $_SESSION['flow_type'] = CART_GENERAL_GOODS;
+		$_SESSION['flow_type'] = CART_GENERAL_GOODS;
         /* 如果是一步购物，跳到结算中心 */
         if (C('one_step_buy') == '1') {
             ecs_header("Location: " . url('flow/checkout') . "\n");
@@ -127,10 +122,6 @@ class FlowController extends CommonController {
      * 购物车列表 连接到index
      */
     public function cart() {
-
-        // 自定义导航栏
-        $navigator = model('Common')->get_navigator();
-        $this->assign('navigator', $navigator['middle']);
         $this->index();
     }
 
@@ -138,10 +129,6 @@ class FlowController extends CommonController {
      * 立即购买
      */
     public function add_to_cart() {
-
-        // 自定义导航栏
-        $navigator = model('Common')->get_navigator();
-        $this->assign('navigator', $navigator['middle']);
         //对goods处理
         $_POST ['goods'] = strip_tags(urldecode($_POST ['goods']));
         $_POST ['goods'] = json_str_iconv($_POST ['goods']);
@@ -305,12 +292,12 @@ class FlowController extends CommonController {
             /* 查询：检查该项是否为基本件 以及是否存在配件 */
             /* 此处配件是指添加商品时附加的并且是设置了优惠价格的配件 此类配件都有parent_idgoods_number为1 */
             $sql = "SELECT b.goods_number,b.rec_id
-            FROM " . $this->model->pre . "cart a, " . $this->model->pre . "cart b
-                WHERE a.rec_id = '$key'
-                AND a.session_id = '" . SESS_ID . "'
-            AND a.extension_code <>'package_buy'
-            AND b.parent_id = a.goods_id
-            AND b.session_id = '" . SESS_ID . "'";
+			FROM " . $this->model->pre . "cart a, " . $this->model->pre . "cart b
+				WHERE a.rec_id = '$key'
+				AND a.session_id = '" . SESS_ID . "'
+			AND a.extension_code <>'package_buy'
+			AND b.parent_id = a.goods_id
+			AND b.session_id = '" . SESS_ID . "'";
 
             $offers_accessories_res = $this->model->query($sql);
 
@@ -383,17 +370,6 @@ class FlowController extends CommonController {
         }
     }
 
-
-
-    /**
-     * 清空购物车
-     */
-    public function clear_cart() {
-        //清空购物车
-        model('Flow')->flow_clear_cart();
-        ecs_header("Location: " . url('flow/index') . "\n");
-    }
-
     /**
      * 删除购物车中的商品
      */
@@ -408,11 +384,6 @@ class FlowController extends CommonController {
      * 订单确认
      */
     public function checkout() {
-
-        // 自定义导航栏
-        $navigator = model('Common')->get_navigator();
-        $this->assign('navigator', $navigator['middle']);
-
         /* 取得购物类型 */
         $flow_type = isset($_SESSION ['flow_type']) ? intval($_SESSION ['flow_type']) : CART_GENERAL_GOODS;
         /* 团购标志 */
@@ -452,15 +423,6 @@ class FlowController extends CommonController {
         $this->assign('address_id', $address_id);
 
         $_SESSION ['flow_consignee'] = $consignee;
-        
-        //add 添加收货详细地址 --by liugu  2015-04-06
-        $l_country = model('RegionBase')->get_region_name($consignee['country']);
-        $l_province = model('RegionBase')->get_region_name($consignee['province']);
-        $l_city = model('RegionBase')->get_region_name($consignee['city']);
-        $l_district = model('RegionBase')->get_region_name($consignee['district']);
-        $l_detail_address = $l_country.' &nbsp'.$l_province.$l_city.$l_district.$consignee['address'];
-        $this->assign('l_detail_address', $l_detail_address);
-        //end
         $this->assign('consignee', $consignee);
 
         /* 对商品信息赋值 */
@@ -479,7 +441,6 @@ class FlowController extends CommonController {
         // 取得订单信息
         $order = model('Order')->flow_order_info();
         $this->assign('order', $order);
-
 
         /* 计算折扣 */
         if ($flow_type != CART_EXCHANGE_GOODS && $flow_type != CART_GROUP_BUY_GOODS) {
@@ -519,6 +480,7 @@ class FlowController extends CommonController {
         foreach ($shipping_list as $key => $val) {
             $shipping_cfg = unserialize_config($val ['configure']);
             $shipping_fee = ($shipping_count == 0 and $cart_weight_price ['free_shipping'] == 1) ? 0 : shipping_fee($val ['shipping_code'], unserialize($val ['configure']), $cart_weight_price ['weight'], $cart_weight_price ['amount'], $cart_weight_price ['number']);
+
             $shipping_list [$key] ['format_shipping_fee'] = price_format($shipping_fee, false);
             $shipping_list [$key] ['shipping_fee'] = $shipping_fee;
             $shipping_list [$key] ['free_money'] = price_format($shipping_cfg ['free_money'], false);
@@ -530,12 +492,6 @@ class FlowController extends CommonController {
                 $cod_disabled = ($val ['support_cod'] == 0);
             }
         }
-
-
-
-         foreach ($colors as $value) {
-           echo "$value <br>";
-         }
 
         $this->assign('shipping_list', $shipping_list);
         $this->assign('insure_disabled', $insure_disabled);
@@ -787,13 +743,6 @@ class FlowController extends CommonController {
      * 收货信息
      */
     public function consignee() {
-
-
-        // 自定义导航栏
-        $navigator = model('Common')->get_navigator();
-        $this->assign('navigator', $navigator['middle']);
-
-        
         if ($_SERVER ['REQUEST_METHOD'] == 'GET') {
             /* 取得购物类型 */
             $flow_type = isset($_SESSION ['flow_type']) ? intval($_SESSION ['flow_type']) : CART_GENERAL_GOODS;
@@ -854,7 +803,7 @@ class FlowController extends CommonController {
             /* 返回收货人页面代码 */
             $this->assign('real_goods_count', model('Order')->exist_real_goods(0, $flow_type) ? 1 : 0 );
         } else {
-            /*  保存收货人信息      */
+            /*  保存收货人信息 	 */
             $consignee = array(
                 'address_id' => empty($_POST ['address_id']) ? 0 : intval($_POST ['address_id']),
                 'consignee' => empty($_POST ['consignee']) ? '' : I('post.consignee'),
@@ -865,6 +814,7 @@ class FlowController extends CommonController {
                 'address' => empty($_POST ['address']) ? '' : I('post.address'),
                 'mobile' => empty($_POST ['mobile']) ? '' : make_semiangle(I('post.mobile'))
             );
+
             if ($_SESSION ['user_id'] > 0) {
                 /* 如果用户已经登录，则保存收货人信息 */
                 $consignee ['user_id'] = $_SESSION ['user_id'];
@@ -1001,11 +951,6 @@ class FlowController extends CommonController {
      *  提交订单
      */
     public function done() {
-
-        // 自定义导航栏
-        $navigator = model('Common')->get_navigator();
-        $this->assign('navigator', $navigator['middle']);
-
         /* 取得购物类型 */
         $flow_type = isset($_SESSION ['flow_type']) ? intval($_SESSION ['flow_type']) : CART_GENERAL_GOODS;
         /* 检查购物车中是否有商品 */
@@ -1045,8 +990,6 @@ class FlowController extends CommonController {
         $inv_content = I('post.inv_content', '');
         $postscript = I('post.postscript', '');
         $oos = L('oos.' . $how_oos);
-
-               
         // 订单信息
         $order = array(
             'shipping_id' => I('post.shipping'),
@@ -1155,7 +1098,6 @@ class FlowController extends CommonController {
                 $is_real_good = 1;
             }
         }
-
         if (isset($is_real_good)) {
             $res = $this->model->table('shipping')->field('shipping_id')->where("shipping_id=" . $order ['shipping_id'] . " AND enabled =1")->getOne();
             if (!$res) {
@@ -1268,8 +1210,6 @@ class FlowController extends CommonController {
 
         /* 插入订单表 */
         $error_no = 0;
-
-        $order['best_time'] = isset($_POST['best_time']) ? $_POST['best_time'] : '';
         do {
             $order ['order_sn'] = get_order_sn(); // 获取新订单号
             $new_order = model('Common')->filter_field('order_info', $order);
@@ -2120,7 +2060,9 @@ class FlowController extends CommonController {
     }
 
     /**
+
      * 获取配送地址列表
+
      */
     public function consignee_list() {
         if (IS_AJAX) {
@@ -2161,7 +2103,9 @@ class FlowController extends CommonController {
     }
 
     /**
+
      * 删除收货人信息
+
      */
     public function drop_consignee() {
         $consignee_id = intval($_GET['id']);

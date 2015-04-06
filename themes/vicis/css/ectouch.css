@@ -95,6 +95,7 @@ del { color: #bbb; }
 .ect-colorf { color: #fff !important; }/*白色*/
 .ect-bg-colorf { background: #fff; }/*背景白色*/
 .ect-color999 { color: #777 !important; }/*灰色*/
+.ect-bg-blackgreen { background: #6FC7BC!important; } /*背景墨绿*/
 .ect-border-top { border-top: 2px solid #5babe6 }
 /*过度效果*/
 .ect-transition05 { -webkit-transition: 0.5s ease; -moz-transition: 0.5s ease; -o-transition: 0.5s ease; transition: 0.5s ease }
@@ -220,7 +221,7 @@ footer.logo img { width: 8em; height: auto; display: block; margin: 0.8em auto; 
 .ect-checkbox label i { width: 1.2em; height: 1.2em; margin-right: 0.3em; display: block; float: left; margin-top: 0.1em; border-radius: 100%; background: rgba(255,255,255,0); border: 2px solid #bbb; }
 .ect-checkbox label i { border-radius: 4px !important; }
 .ect-radio input:checked+label i,
-.ect-checkbox input:checked+label i { color: #F00; background: url(../images/radio.png) center center #5babe6 no-repeat; background-size: 80%; border: none; }
+.ect-checkbox input:checked+label i { color: #F00; background: url(../images/radio.png) center center #6FC7BC no-repeat; background-size: 80%; border: none; }
 .ect-radio input:disabled+label i,
 .ect-checkbox input:disabled+label i { background: #fff; border: 2px solid #e8e8e8; }
 .ect-radio input.disabled:disabled+label i,

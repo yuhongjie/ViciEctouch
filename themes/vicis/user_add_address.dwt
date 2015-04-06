@@ -86,15 +86,11 @@
                     <!-- {/foreach} -->
                   </select>
                 </div>
-                 
-                  <div class="formFieldWrapper">
-                    <label for="registerAddressField">{$lang.detailed_address}:</label>
-                    <textarea name="address" class="l-textarea" placeholder="{$lang.detailed_address}{$lang.require_field}" type="text">{$consignee.address|escape}</textarea>
-                  </div>
-                <!-- <div class="formFieldWrapper">
-                  <label for="registerPhoneField">邮政编码:</label>
-                  <input type="text" value="" id="registerPhoneField" class="registerPhoneField fieldWithIcon phoneFieldIcon" name="registerPhoneField" />
-                </div> -->
+                <div class="formFieldWrapper">
+                  <label for="registerAddressField">{$lang.detailed_address}:</label>
+                  <textarea name="address" class="l-textarea" placeholder="{$lang.detailed_address}{$lang.require_field}" type="text">{$consignee.address|escape}</textarea>
+                </div>
+  
                 <div class="registerButtonsWrapper"> 
                   <input type="submit" name="submit" style="color:#fff;"  value="{$lang.add_address}"  class="addressButton">
                   <input name="address_id" type="hidden" value="{$consignee.address_id}" />

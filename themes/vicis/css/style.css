@@ -2211,4 +2211,8 @@ display: none;
 .l-color73c  {
 	background-color: #73CBC2!important;
 }
+.l-timebox {
+	border-radius: 0!important;
+	padding:15px 10px!important;
+}
 
