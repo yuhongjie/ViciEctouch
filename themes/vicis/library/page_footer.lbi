@@ -101,3 +101,25 @@
 	}
 
 </script> 
+
+<!-- checkout 表单验证 -->
+<script>
+
+$(document).ready(function() {
+
+  // validate signup form on keyup and submit
+  $("#checkForm").validate({
+    rules: {
+      best_time: {
+        required: true,
+        minlength: 2
+      },
+    },
+    messages: {
+      best_time: {
+        required: "*您没有选择配送日期",
+      },
+    }
+  });
+});
+</script>

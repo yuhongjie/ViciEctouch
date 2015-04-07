@@ -5,7 +5,7 @@
 
 
   <!-- {if $total.shipping_fee > 0} 配送费用 --> 
-  <!-- + {$lang.shipping_fee}: -->
+ + {$lang.shipping_fee}:
   <b class="ect-colory">{$total.shipping_fee_formated}</b>
   <!-- {/if} --> 
 

@@ -2216,3 +2216,10 @@ display: none;
 	padding:15px 10px!important;
 }
 
+.l-fuyan {
+   border-radius: 0;
+   width: 100%;
+}
+label.error {
+	color: red;
+}

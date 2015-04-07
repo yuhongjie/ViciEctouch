@@ -8,7 +8,9 @@
       <script type="text/javascript">
         var flow_no_payment = "{$lang.flow_no_payment}";
         var flow_no_shipping = "{$lang.flow_no_shipping}";
-        </script><a href="{:url('flow/consignee_list')}">
+      </script>
+
+        <a href="{:url('flow/consignee_list')}">
       <section class="ect-margin-tb ect-padding-lr ect-padding-tb checkout-add">
           <label for="addressId{$con_list.address_id}">
           <p class="title">{$consignee.consignee|escape} <span>{$consignee.mobile}</span></p>
