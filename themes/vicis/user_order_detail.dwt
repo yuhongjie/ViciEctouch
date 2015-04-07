@@ -156,6 +156,7 @@
         <!-- {if $order.shipping_id > 0} -->
          <p>{$lang.shipping}：{$order.shipping_name}</p>
          <!-- {/if} -->
+        <p>{$lang.payment}：{$order.pay_name}</p>
       </div>
 
       <div class="textBreakBottom"></div>
