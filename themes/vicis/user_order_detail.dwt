@@ -158,6 +158,14 @@
          <!-- {/if} -->
       </div>
 
+      <div class="textBreakBottom"></div>
+      <div class="l-bblock">
+        <h4>{$lang.order_postscript} </h4>
+
+            <p>{$order.postscript}</p>
+
+      </div>
+
 
 
 

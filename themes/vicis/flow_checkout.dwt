@@ -44,10 +44,12 @@
 
 
         <!-- checkout form starts -->
-        <form action="{:url('flow/done')}" method="post" name="theForm" id="theForm" onSubmit="return checkOrderForm(this)">
+        <form action="{:url('flow/done')}" method="post" name="checkForm" id="checkForm"  onSubmit="return checkOrderForm(this)">
+          <script type="text/javascript">
+            var flow_no_payment = "{$lang.flow_no_payment}";
+            var flow_no_shipping = "{$lang.flow_no_shipping}";
+          </script>
         <fieldset>
-          
-
           <section class="ect-margin-tb ect-margin-bottom0 ect-padding-lr checkout-select checkout-pro-list">
             <p><b style="font-size: 14px;font-weight: normal;">{$lang.goods_list}</b><span class="label ect-bg-blackgreen"><!--{if $allow_edit_cart} --><a href="{:url('flow/index')}" class="ect-colorf">{$lang.modify}</a><!--{/if} --></span></p>
             <ul style="margin-left:-15px;margin-bottom: 0;">
@@ -94,7 +96,7 @@
             <ul style="margin-left: -10px;" class="ect-radio">
               <!-- {foreach from=$shipping_list item=shipping} 循环配送方式 -->
               <li>
-                <input name="shipping" type="radio" id="shipping_{$shipping.shipping_id}" value="{$shipping.shipping_id}"  {if $order.shipping_id eq $shipping.shipping_id}checked="true"{/if} supportCod="{$shipping.support_cod}" insure="{$shipping.insure}" onclick="selectShipping(this)">
+                <input name="shipping" type="radio" id="shipping_{$shipping.shipping_id}" value="{$shipping.shipping_id}"  {if $order.shipping_id eq $shipping.shipping_id}checked="true"{/if} supportCod="{$shipping.support_cod}" insure="{$shipping.insure}" onclick="selectShipping(this)" required>
                 <label for="shipping_{$shipping.shipping_id}">{$shipping.shipping_name} [{$shipping.format_shipping_fee}]<i></i></label>
               </li>
               <!-- {/foreach} 循环配送方式 -->
@@ -103,12 +105,19 @@
              <br>
             <span>送货日期</span>
               <p id="basicExample">
-                  <input class="l-timebox" type="text" onfocus="WdatePicker({isShowClear:false,readOnly:true})" class="date start" name="best_time" value="" readonly="">
+                  <input id="best_time" class="l-timebox" type="text" onfocus="WdatePicker({isShowClear:false})" class="date start" name="best_time" value="">
               </p>
           </div>
           <div class="textBreakBottom"></div>
+          <div class="l-bblock">
+            <h4>{$lang.order_postscript} </h4>
+            <textarea name="postscript" type="text" class="fuyan l-fuyan" placeholder="{$lang.please_order_postscript}"></textarea> 
+          </div>
+          <div class="textBreakBottom"></div>
+          
+
           <div class="l-block">
-            <h4>{$lang.payment_method} <span class="label ect-bg-blackgreen">{$lang.require_field}</span></h4>
+            <h4>{$lang.payment_method}</h4>
             <!--{if $is_exchange_goods neq 1 || $total.real_goods_count neq 0}--> 
             <ul style="margin-left:-10px;" class="ect-radio">
               <!-- {foreach from=$payment_list item=payment} -->
@@ -121,8 +130,6 @@
             <!--{else}-->
             <input name = "payment" type="radio" value = "-1" checked="checked"  style="display:none"/>
             <!--{/if}-->  
-
-
             <br>
           </div>
           <div class="checkoutButtonsWrapper">
