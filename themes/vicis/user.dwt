@@ -19,21 +19,16 @@
        <!-- shopping cart wrapper ends --> 
         <!-- header outer wrapper starts -->
         <div class="headerOuterWrapper">
-          <div class="headerWrapper">
-            <a href="{:url('user/index')}" class="accountButton">
-            </a>
-            <a href="{:url('flow/cart')}" class="shoppingCartButton">
-            </a>
-            <a href="" class="mainMenuButton">
-            </a>
+          <div class="headerWrapper"> 
+            <a href="{:url('user/index')}" class="accountButton"></a>
+            <a href="{:url('flow/cart')}" class="shoppingCartButton"></a>
+            <a href="" class="mainMenuButton"></a>
           </div>
-          <div class="headerDecoration">
-          </div>
-          <!-- main logo starts -->
-          <a href="" class="mainLogo">
-            <img src="__TPL__/images/common/mainLogo.png" alt="" />
-          </a>
-          <!-- main logo ends -->
+          <div class="headerDecoration"></div>
+          
+          <!-- main logo starts --> 
+          <a href="index.php" class="mainLogo"><img src="__TPL__/images/common/mainLogo.png" alt="" /></a> 
+          <!-- main logo ends --> 
         </div>
         <!-- header outer wrapper ends -->
         <!-- page content wrapper starts -->

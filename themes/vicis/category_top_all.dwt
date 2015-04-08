@@ -34,15 +34,13 @@
     </div>
   </div>
 
-  <div id="shoppingCartWrapper" class="shoppingCartWrapper">
-   <!-- #BeginLibraryItem "/library/flow_cart.dwt" --><!-- #EndLibraryItem -->
-  </div>
+ 
 
    
     <div class="headerDecoration">
     </div>
     <!-- main logo starts -->
-    <a href="" class="mainLogo">
+    <a href="index.php" class="mainLogo">
       <img src="__TPL__/images/common/mainLogo.png" alt="" />
     </a>
     <!-- main logo ends -->
