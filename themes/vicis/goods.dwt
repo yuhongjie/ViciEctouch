@@ -14,21 +14,20 @@
     <!-- main menu outer wrapper ends --> 
     
     <!-- shopping cart wrapper start -->
-   <div id="shoppingCartWrapper" class="shoppingCartWrapper">
-    <!-- #BeginLibraryItem "/library/flow_cart2.lbi" --><!-- #EndLibraryItem -->
-   </div>
     <!-- shopping cart wrapper ends --> 
     
     <!-- header outer wrapper starts -->
     <div class="headerOuterWrapper">
-      <div class="headerWrapper">
-        <a href="{:url('user/index')}" class="accountButton">
-        </a>
-        <a href="{:url('flow/cart')}" class="shoppingCartButton">
-        </a>
-        <a href="" class="mainMenuButton">
-        </a>
+      <div class="headerWrapper"> 
+        <a href="{:url('user/index')}" class="accountButton"></a>
+        <a href="{:url('flow/cart')}" class="shoppingCartButton"></a>
+        <a href="" class="mainMenuButton"></a>
       </div>
+      <div class="headerDecoration"></div>
+      
+      <!-- main logo starts --> 
+      <a href="index.php" class="mainLogo"><img src="__TPL__/images/common/mainLogo.png" alt="" /></a> 
+      <!-- main logo ends --> 
     </div>
     <!-- header outer wrapper ends --> 
     

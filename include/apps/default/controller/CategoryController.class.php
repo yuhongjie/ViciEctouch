@@ -120,6 +120,11 @@ class CategoryController extends CommonController {
      * 处理search请求
      */
     public function search() {
+
+         // 自定义导航栏
+         $navigator = model('Common')->get_navigator();
+         $this->assign('navigator', $navigator['middle']);
+         
          $this->assign('categories', model('CategoryBase')->get_categories_tree($this->cat_id));
          $this->display('search.dwt');
     }
