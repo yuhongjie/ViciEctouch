@@ -1,0 +1,11 @@
+<!--{foreach name=goods_list from=$goods_list item=goods}-->
+<div class="portfolioOneItemWrapper"> 
+
+  <div class="portfolioOneItemInfoWrapper">
+    <h4 class="portfolioOneItemTitle"><a href="{$goods.url}">{$goods.name}</a></h4>
+
+  </div>
+</div>
+<!--{/foreach}-->
+
+<!-- #BeginLibraryItem "/library/page.lbi" --><!-- #EndLibraryItem -->

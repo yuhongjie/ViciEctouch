@@ -4,7 +4,6 @@
 {include file='library/category_grid.lbi '}
 <!--{/if} --> 
 
-<!--筛选开始-->
-
-<!--筛选结束--> 
 {include file='library/page.lbi '}
+
+

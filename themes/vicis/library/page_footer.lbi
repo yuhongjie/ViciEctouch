@@ -8,6 +8,34 @@
     </a>
     &nbsp;All rights reserved.
   </span>
+
+  <!-- Small modal -->
+  <a style="wid" class="btn rubbit_btn " data-toggle="modal" data-target=".bs-example-modal-sm">Rubbit Hole</a>
+
+  <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div style="padding:15px;" class="modal-content">
+        <form action="{:url('category/new_cat')}" method="post">
+          <p>请输入店家给您的密码浏览此分类内容：</p>
+          <div class="form-group">
+            <label for="exampleInputPassword1">输入密码：</label>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-default">确定</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <style type="text/css">
+    .rubbit_btn {
+      display: block;
+      width: 90px;
+      padding-top: 16px;
+    }
+  </style>
+
+
+
 </div>
 
 <a id="scrollUp" href="#top" style="position: fixed; z-index: 10;"><i class="fa fa-angle-up"></i></a>
@@ -56,13 +84,18 @@
   $(document).ready(function() {
     $(".menu ul li").menu();
 
+
     /* 添加当前页面menu高亮效果 2015-3-31 start */
 	$('a.page_menu').each(function(){
       //alert(window.location.href);
+      //var index="http://127.0.0.1/ecshop/mobile";
+      var re = new RegExp("mobile");;//最简单的正则表达式,将匹配mobile这个单词  
+      var index = window.location.href; 
+      var indexlength=index.search(re)+7;
       var current_url = window.location.href;
       var page_menu_href = $(this).attr('href');
-
-      if(current_url.indexOf(page_menu_href) >= 0) {
+      //if(current_url.indexOf(page_menu_href) >= 0) {
+      if(current_url.substr(indexlength) == page_menu_href) {
       	$('a.page_menu').parent().removeClass("currentPage");
       	$(this).parent().addClass("currentPage");
       }

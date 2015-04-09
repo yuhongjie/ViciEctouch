@@ -2015,6 +2015,11 @@ class UserController extends CommonController {
      * 邮件找回密码
      */
     public function get_password_email() {
+
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
+
         if (isset($_GET['code']) && isset($_GET['uid'])) { // 从邮件处获得的act
             $code = in($_GET['code']);
             $uid = intval($_GET['uid']);
@@ -2049,6 +2054,12 @@ class UserController extends CommonController {
      * 发送密码修改确认邮件
      */
     public function send_pwd_email() {
+
+
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
+
         $captcha = intval(C('captcha'));
         if (($captcha & CAPTCHA_LOGIN) && (!($captcha & CAPTCHA_LOGIN_FAIL) || (($captcha & CAPTCHA_LOGIN_FAIL) && $_SESSION['login_fail'] > 2))) {
             if (empty($_POST['captcha'])) {
@@ -2150,6 +2161,10 @@ class UserController extends CommonController {
      * 修改密码
      */
     public function edit_password() {
+
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
         // 修改密码处理
         if (IS_POST) {
             $old_password = isset($_POST['old_password']) ? in($_POST['old_password']) : null;

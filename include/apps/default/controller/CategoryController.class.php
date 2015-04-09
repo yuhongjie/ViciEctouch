@@ -40,10 +40,12 @@ class CategoryController extends CommonController {
         $this->cat_id = I('request.id');
     }
 
+
     /**
      * 分类产品信息列表
      */
     public function index() {
+
 
         /*liugu-ec添加导航*/
         // 自定义导航栏
@@ -88,14 +90,27 @@ class CategoryController extends CommonController {
         $this->assign('type', $this->type);
         /* 添加type参数 end */
 
+
+
+
         // 获取分类
         $this->assign('category', model('CategoryBase')->get_top_category());
+
         $count = model('Category')->category_get_count($this->children, $this->brand, $this->type, $this->price_min, $this->price_max, $this->ext);
 
         $goodslist = $this->category_get_goods();
+
         $this->assign('goods_list', $goodslist);
+
         $this->pageLimit(url('index', array('id' => $this->cat_id, 'brand' => $this->brand, 'price_max' => $this->price_max, 'price_min' => $this->price_min, 'filter_attr' => $this->filter_attr_str, 'sort' => $this->sort, 'order' => $this->order)), $this->size);
-        $this->assign('pager', $this->pageShow($count));
+
+        // 添加is_array判断解决Illegal string offset 'page_number' in page.lbi start
+        $tmp_pager = $this->pageShow($count);
+
+        if (is_array($tmp_pager)) {
+            $this->assign('pager', $tmp_pager);
+        }
+        // end
 
         /* 页面标题 */
         $page_info = get_page_title($this->cat_id);
@@ -113,8 +128,92 @@ class CategoryController extends CommonController {
         $this->assign('categories', model('CategoryBase')->get_categories_tree($this->cat_id));
 		$this->assign('show_marketprice', C('show_marketprice'));
         $this->display('category.dwt');
+
     }
 
+
+    public function new_cat() {
+        
+
+                /*liugu-ec添加导航*/
+                // 自定义导航栏
+                $navigator = model('Common')->get_navigator();
+                $this->assign('navigator', $navigator['middle']);
+                // end--liugu
+
+
+                $this->parameter();
+                if (I('get.id', 0) == 0 && CONTROLLER_NAME == 'category') {
+                    $arg = array(
+                        'id' => $this->cat_id,
+                        'brand' => $this->brand,
+                        'price_max' => $this->price_max,
+                        'price_min' => $this->price_min,
+                        'filter_attr' => $this->filter_attr_str,
+                        'page' => $this->page,
+                    );
+
+                    $url = url('Category/index', $arg);
+                    $this->redirect($url);
+                }
+                $this->assign('brand_id', $this->brand);
+                $this->assign('price_max', $this->price_max);
+                $this->assign('price_min', $this->price_min);
+                $this->assign('filter_attr', $this->filter_attr_str);
+                $this->assign('page', $this->page);
+                $this->assign('size', $this->size);
+                $this->assign('sort', $this->sort);
+                $this->assign('order', $this->order);
+                $this->assign('id', $this->cat_id);
+
+                // 获取分类
+                $this->assign('category', model('CategoryBase')->get_top_category());
+
+                $count = model('Category')->category_get_count($this->children, $this->brand, $this->type, $this->price_min, $this->price_max, $this->ext);
+
+                $goodslist = $this->category_get_goods();
+
+                $this->assign('goods_list', $goodslist);
+
+                $this->pageLimit(url('index', array('id' => $this->cat_id, 'brand' => $this->brand, 'price_max' => $this->price_max, 'price_min' => $this->price_min, 'filter_attr' => $this->filter_attr_str, 'sort' => $this->sort, 'order' => $this->order)), $this->size);
+
+                // 添加is_array判断解决Illegal string offset 'page_number' in page.lbi start
+                $tmp_pager = $this->pageShow($count);
+
+                if (is_array($tmp_pager)) {
+                    $this->assign('pager', $tmp_pager);
+                }
+                // end
+
+                /* 页面标题 */
+                $page_info = get_page_title($this->cat_id);
+                $this->assign('ur_here', $page_info['ur_here']);
+                $this->assign('page_title', $page_info['title']);
+
+                // 获得分类的相关信息
+                $cat = model('Category')->get_cat_info($this->cat_id);
+                if (!empty($cat['keywords'])) {
+                    if (!empty($cat['keywords'])) {
+                        $this->assign('keywords_list', explode(' ', $cat['keywords']));
+                    }
+                }
+
+                $this->assign('categories', model('CategoryBase')->get_categories_tree($this->cat_id));
+                $this->assign('show_marketprice', C('show_marketprice'));
+
+                 $password='mointe';
+                 $result=false;
+
+                if ($_POST['password']==$password) {
+                    $result=1;
+                    $s="index.php?m=default&c=category&id=18";
+                    header("Location:".$s."");
+                } else {
+                    $result=0;
+                }
+                $this->assign('result',$result);
+                $this->display('new_cat.dwt');
+    }
 
     /**
      * 处理search请求
@@ -166,6 +265,7 @@ class CategoryController extends CommonController {
             foreach ($row as $vo) {
                 $goods_ids[] = $vo['goods_id'];
             }
+  
             /**
              * 处理关键字查询次数
              */
@@ -188,6 +288,8 @@ class CategoryController extends CommonController {
             }
             $this->assign('keywords', $keywords);
         }
+
+
     }
 
     /**
@@ -649,6 +751,9 @@ class CategoryController extends CommonController {
             // 检查是否已经存在于用户的收藏夹
             if ($_SESSION['user_id']) {
                 unset($where);
+
+
+
                 // 用户自己有没有收藏过
                 $where['goods_id'] = $row['goods_id'];
                 $where['user_id'] = $_SESSION['user_id'];

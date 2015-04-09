@@ -1,3 +1,4 @@
+
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
 <!-- website wrapper starts -->
 <div class="websiteWrapper"> 
@@ -37,21 +38,8 @@
       <div class="selectWrapper">
        <!-- #BeginLibraryItem "/library/cat_nav.lbi" --><!-- #EndLibraryItem --> 
       </div>
-      <div class="list-title">
-        <div class="bread-nav">
-        <!-- #BeginLibraryItem "/library/category_sort.lbi" --><!-- #EndLibraryItem --> 
-        </div>
-        <div class="view-mode">
-           <a class="list <!-- {if $display == 'list'}  --> active <!-- {/if} -->" href="{:url('category/index', array('id'=>$this->_var['id'],'display'=>'list'))}&type={$type}" > 
-            <i class=" icon-th-list"></i>
-          </a> 
-          <a class="grid <!-- {if $display == 'grid'}  --> active <!-- {/if} -->" href="{:url('category/index', array('id'=>$this->_var['id'],'display'=>'grid'))}&type={$type}">
-            <i class=" icon-th-large"></i>
-          </a>   
-        </div> 
-      </div>
-      <!-- portfolio items wrapper starts -->
-        <!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem --> 
+ 
+     <p style="color:red;padding:0 0 20px;">密码不正确!</p>
       <!-- portfolio items wrapper ends --> 
     </div>
     <!-- portfolio wrapper ends --> 
@@ -65,11 +53,8 @@
   <!-- page wrapper ends --> 
 </div>
 <!-- website wrapper ends -->
-<script type="text/javascript">
-if( {$show_asynclist} == 1){
-  get_asynclist('{:url('category/asynclist', array('id'=>$this->_var['id'], 'brand'=>$this->_var['brand_id'], 'price_min'=>$this->_var['price_min'], 'price_max'=>$this->_var['price_max'], 'filter_attr'=>$this->_var['filter_attr'], 'page'=>$this->_var['page'], 'sort'=>$this->_var['sort'], 'order'=>$this->_var['order'], 'keywords'=>$this->_var['keywords']))}' , '__TPL__/images/loader.gif');
- }
-</script>
+
 </body>
 </html>
+
 

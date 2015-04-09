@@ -14,9 +14,6 @@
         </div>
         <!-- main menu outer wrapper ends -->
         <!-- shopping cart wrapper start -->
-        <div id="shoppingCartWrapper" class="shoppingCartWrapper">
-         <!-- #BeginLibraryItem "/library/flow_cart2.lbi" --><!-- #EndLibraryItem -->
-        </div>
         <!-- shopping cart wrapper ends -->
         <!-- header outer wrapper starts -->
         <div class="headerOuterWrapper">
