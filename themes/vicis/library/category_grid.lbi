@@ -1,4 +1,4 @@
-  <!-- {if $display == 'list' } -->
+  <!-- {if $display == 'list'} -->
     <!-- list -->
       <!--{foreach name=goods_list from=$goods_list item=goods}-->
       <div class="portfolioOneItemWrapper"> 

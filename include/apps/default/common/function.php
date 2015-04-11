@@ -25,7 +25,7 @@ function is_wechat_browser()
  */
 function get_page_title($cat = 0, $str = '') {
     /* 初始化“页面标题”和“当前位置” */
-    $page_title = C('shop_title') . ' - ';
+    $page_title = C('shop_title') . ' - ' . 'Powered by ECTouch.cn';
     $ur_here = '<a href="' . __APP__ . '">' . L('home') . '</a>';
     /* 控制器名称 */
     $controller_name = strtolower(CONTROLLER_NAME);

@@ -1,24 +1,21 @@
-
+<style type="text/css">
+	#test{
+		display: none;
+	}
+	#test2{
+		display: none;
+	}
+</style>
 <!-- page numbers start -->
 <div class="pageNumbersOuterWrapper-page">
   <div class="pageNumbersWrapper">
-
     <!-- {if $pager.page_number} -->
       <!-- {foreach from=$pager.page_number key=key item=num} -->
         <a class="pageNumber {if $pager.page == $key}currentPageNumber{/if}" href="{$num}&type={$type}&keywords={$keywords}">{$key}</a> 
     <!-- {/foreach} -->
     <!-- {/if} -->
-
-
-  <!-- {if $pager.page_count > 1} -->
-
-   <a href="{$pager.page_prev|default:#}" class="pageNumber">&laquo;</a> 
-   <a href="{$pager.page_next|default:#}" class="pageNumber">&raquo;</a> 
-
-  <!-- {else} -->
-
-  <!-- {/if} -->
-
+   <a id="{if $pager.page_count > 1} {else}test{/if}" href="{$pager.page_prev|default:#}" class="pageNumber">&laquo;</a> 
+   <a id="{if $pager.page_count >1 } {else}test2{/if}" href="{$pager.page_next|default:#}" class="pageNumber">&raquo;</a> 
  </div>
 </div>
 <!-- page numbers end -->

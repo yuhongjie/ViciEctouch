@@ -50,9 +50,37 @@
           </a>   
         </div> 
       </div>
+
+
+
+      <!-- {if $id!=18} -->
       <!-- portfolio items wrapper starts -->
         <!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem --> 
       <!-- portfolio items wrapper ends --> 
+      <!-- {else} -->
+
+      <!-- {if $go==1} -->
+       <!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem --> 
+      <!-- {else} -->
+      <form id="pass_form" action="{:url('category/index')}&id=18" method="post">
+        <div class="form-group">
+          <label for="exampleInputPassword1">输入密码：</label>
+          <input style="height: 30px; display: inline;" type="password" name="password" class="" id="exampleInputPassword1" placeholder="Password" required>
+          <input type="hidden" value="">
+          <input style="height: 30px;display: inline;" type="submit" class="btn btn-default" value="确定">
+        </div>
+      </form>
+      <!-- {if $result==1} -->
+      <script>
+        document.getElementById("pass_form").style.display='none';
+      </script>
+      <!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem --> 
+      <!-- {else} -->
+        <p style="color: red;">{$pswerr}</p>
+      <!-- {/if} -->
+      <!-- {/if} -->
+
+      <!-- {/if} -->
     </div>
     <!-- portfolio wrapper ends --> 
     

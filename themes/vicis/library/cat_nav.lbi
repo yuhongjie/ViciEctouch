@@ -22,9 +22,9 @@
                 </li>
 
               <!--{else}-->
-                <!-- {if $cat.id!=18} -->
-                  <li><a href="{:url('category/index',array('id'=>$this->_var['cat']['id']))}">
-                    {$cat.name|escape:html}
+                <!-- {if $id!=18} -->
+                <li><a href="{:url('category/index',array('id'=>$this->_var['cat']['id']))}">
+                  {$cat.name|escape:html}
                 </a></li>
                 <!-- {/if} -->
 

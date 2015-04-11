@@ -2,39 +2,16 @@
 
 <div class="footerWrapper">
   <span class="copyright">
+  <a href="{:url('category/index')}&id=18">Rabbit Hole</a><br>
     Copyright © 2015&nbsp;
-    <a href="#" target="_blank">
+    <a href="index.php" target="_blank">
       微茜糕点
     </a>
     &nbsp;All rights reserved.
+
+
+    
   </span>
-
-  <!-- Small modal -->
-  <a style="wid" class="btn rubbit_btn " data-toggle="modal" data-target=".bs-example-modal-sm">Rubbit Hole</a>
-
-  <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-      <div style="padding:15px;" class="modal-content">
-        <form action="{:url('category/new_cat')}" method="post">
-          <p>请输入店家给您的密码浏览此分类内容：</p>
-          <div class="form-group">
-            <label for="exampleInputPassword1">输入密码：</label>
-            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-          </div>
-          <button type="submit" class="btn btn-default">确定</button>
-        </form>
-      </div>
-    </div>
-  </div>
-  <style type="text/css">
-    .rubbit_btn {
-      display: block;
-      width: 90px;
-      padding-top: 16px;
-    }
-  </style>
-
-
 
 </div>
 

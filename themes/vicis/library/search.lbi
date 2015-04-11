@@ -1,10 +1,9 @@
 <div class="shopSearchFormWrapper">
-   <form action="{:url('category/index')}<!-- {if $id} -->&id={$id}<!-- {/if} --><!-- {if $keywords} -->&keywords={$keywords}<!-- {/if} -->"  method="post" id="searchForm" name="searchForm">
+   <form action="{:url('category/index')}<!-- {if $id} -->&id={$id}<!-- {/if} -->"  method="post" id="searchForm" name="searchForm">
     <fieldset>
       <input id="keywordBox" type="text" name="keywords" value="" id="shopSearchField" class="shopSearchField fieldWithIcon shopSearchFieldIcon"
       name="shopSearchField" placeholder="" />
-
-      <input name="" type="submit" value=""  class="gosearch">
+      <input name="" type="submit" value=""  onclick="return check('keywordBox')" class="gosearch">
     </fieldset>
   </form>
 </div>

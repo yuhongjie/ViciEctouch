@@ -66,6 +66,7 @@ class CategoryController extends CommonController {
                 'price_min' => $this->price_min,
                 'filter_attr' => $this->filter_attr_str,
                 'page' => $this->page,
+
             );
 
             $url = url('Category/index', $arg);
@@ -96,13 +97,13 @@ class CategoryController extends CommonController {
         // 获取分类
         $this->assign('category', model('CategoryBase')->get_top_category());
 
-        $count = model('Category')->category_get_count($this->children, $this->brand, $this->type, $this->price_min, $this->price_max, $this->ext);
+        $count = model('Category')->category_get_count($this->children, $this->brand, $this->type, $this->price_min, $this->price_max, $this->ext,$this->keywords);
 
         $goodslist = $this->category_get_goods();
 
         $this->assign('goods_list', $goodslist);
 
-        $this->pageLimit(url('index', array('id' => $this->cat_id, 'brand' => $this->brand, 'price_max' => $this->price_max, 'price_min' => $this->price_min, 'filter_attr' => $this->filter_attr_str, 'sort' => $this->sort, 'order' => $this->order)), $this->size);
+        $this->pageLimit(url('index', array('id' => $this->cat_id, 'brand' => $this->brand,'keywords' => $this->keywords, 'price_max' => $this->price_max, 'price_min' => $this->price_min, 'filter_attr' => $this->filter_attr_str,'keywords' => $this->keywords, 'sort' => $this->sort, 'order' => $this->order)), $this->size);
 
         // 添加is_array判断解决Illegal string offset 'page_number' in page.lbi start
         $tmp_pager = $this->pageShow($count);
@@ -123,7 +124,50 @@ class CategoryController extends CommonController {
             if (!empty($cat['keywords'])) {
                 $this->assign('keywords_list', explode(' ', $cat['keywords']));
             }
+
+
         }
+
+
+        //session_start();
+        //$_SESSION['passwd'] = $_POST['password'];
+
+        //print_r($_SESSION['passwd']);
+
+        //隐藏分区处理
+        //
+         $password=htmlspecialchars($cat[cat_desc]);
+         $result;
+         $pswerr="请正确输入密码";
+         // foreach ( $cat as $value){
+         //    echo $value;
+         // }
+         //$statu = 0;
+         //
+         
+         // print_r($_SESSION['passwd']." ");
+         // print_r($password);
+        //if(isset ($_SESSION['passwd']) && (htmlspecialchars($_SESSION['passwd'])==$password)) {
+        if(isset ($_SESSION['passwd'])) {
+            $go = 1;
+            //return;
+         }
+        else if (I('post.password')==$password) {
+            $result=1;
+            $_SESSION['passwd'] = $_POST['password'];
+           // $statu=1;
+
+        } else {
+            //echo "<script>alert('密码不正确。');</script>";
+            $result=0;
+            
+            // $statu=1;
+        }
+        $this->assign('go',$go);
+        $this->assign('result',$result);
+        $this->assign('pswerr',$pswerr);
+        //end
+        
 
         $this->assign('categories', model('CategoryBase')->get_categories_tree($this->cat_id));
 		$this->assign('show_marketprice', C('show_marketprice'));
@@ -131,89 +175,6 @@ class CategoryController extends CommonController {
 
     }
 
-
-    public function new_cat() {
-        
-
-                /*liugu-ec添加导航*/
-                // 自定义导航栏
-                $navigator = model('Common')->get_navigator();
-                $this->assign('navigator', $navigator['middle']);
-                // end--liugu
-
-
-                $this->parameter();
-                if (I('get.id', 0) == 0 && CONTROLLER_NAME == 'category') {
-                    $arg = array(
-                        'id' => $this->cat_id,
-                        'brand' => $this->brand,
-                        'price_max' => $this->price_max,
-                        'price_min' => $this->price_min,
-                        'filter_attr' => $this->filter_attr_str,
-                        'page' => $this->page,
-                    );
-
-                    $url = url('Category/index', $arg);
-                    $this->redirect($url);
-                }
-                $this->assign('brand_id', $this->brand);
-                $this->assign('price_max', $this->price_max);
-                $this->assign('price_min', $this->price_min);
-                $this->assign('filter_attr', $this->filter_attr_str);
-                $this->assign('page', $this->page);
-                $this->assign('size', $this->size);
-                $this->assign('sort', $this->sort);
-                $this->assign('order', $this->order);
-                $this->assign('id', $this->cat_id);
-
-                // 获取分类
-                $this->assign('category', model('CategoryBase')->get_top_category());
-
-                $count = model('Category')->category_get_count($this->children, $this->brand, $this->type, $this->price_min, $this->price_max, $this->ext);
-
-                $goodslist = $this->category_get_goods();
-
-                $this->assign('goods_list', $goodslist);
-
-                $this->pageLimit(url('index', array('id' => $this->cat_id, 'brand' => $this->brand, 'price_max' => $this->price_max, 'price_min' => $this->price_min, 'filter_attr' => $this->filter_attr_str, 'sort' => $this->sort, 'order' => $this->order)), $this->size);
-
-                // 添加is_array判断解决Illegal string offset 'page_number' in page.lbi start
-                $tmp_pager = $this->pageShow($count);
-
-                if (is_array($tmp_pager)) {
-                    $this->assign('pager', $tmp_pager);
-                }
-                // end
-
-                /* 页面标题 */
-                $page_info = get_page_title($this->cat_id);
-                $this->assign('ur_here', $page_info['ur_here']);
-                $this->assign('page_title', $page_info['title']);
-
-                // 获得分类的相关信息
-                $cat = model('Category')->get_cat_info($this->cat_id);
-                if (!empty($cat['keywords'])) {
-                    if (!empty($cat['keywords'])) {
-                        $this->assign('keywords_list', explode(' ', $cat['keywords']));
-                    }
-                }
-
-                $this->assign('categories', model('CategoryBase')->get_categories_tree($this->cat_id));
-                $this->assign('show_marketprice', C('show_marketprice'));
-
-                 $password='mointe';
-                 $result=false;
-
-                if ($_POST['password']==$password) {
-                    $result=1;
-                    $s="index.php?m=default&c=category&id=18";
-                    header("Location:".$s."");
-                } else {
-                    $result=0;
-                }
-                $this->assign('result',$result);
-                $this->display('new_cat.dwt');
-    }
 
     /**
      * 处理search请求
