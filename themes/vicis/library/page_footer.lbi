@@ -1,16 +1,21 @@
 
 
 <div class="footerWrapper">
+
   <span class="copyright">
-  <a href="{:url('category/index')}&id=18">Rabbit Hole</a><br>
+  <a href="{:url('category/index')}&id=18">Rabbit Hole</a> 
+  <input id='rabbit_exit' style="display: none;" type="button" name='exit' value="exit" onclick="window.location='{:url('category/rabbit_exit')}';"><br>
+
+ <!-- {if ($result==1 || $go==1) && $id==18 } -->
+  <script>
+      document.getElementById("rabbit_exit").style.display='inline';
+  </script>
+  <!-- {/if} -->
     Copyright © 2015&nbsp;
     <a href="index.php" target="_blank">
       微茜糕点
     </a>
     &nbsp;All rights reserved.
-
-
-    
   </span>
 
 </div>

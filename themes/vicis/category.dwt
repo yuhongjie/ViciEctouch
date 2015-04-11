@@ -79,7 +79,6 @@
         <p style="color: red;">{$pswerr}</p>
       <!-- {/if} -->
       <!-- {/if} -->
-
       <!-- {/if} -->
     </div>
     <!-- portfolio wrapper ends --> 

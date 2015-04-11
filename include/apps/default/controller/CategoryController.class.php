@@ -143,8 +143,8 @@ class CategoryController extends CommonController {
          //    echo $value;
          // }
          //$statu = 0;
-         //
-         
+
+          //echo $_POST['password'];
          // print_r($_SESSION['passwd']." ");
          // print_r($password);
         //if(isset ($_SESSION['passwd']) && (htmlspecialchars($_SESSION['passwd'])==$password)) {
@@ -163,6 +163,13 @@ class CategoryController extends CommonController {
             
             // $statu=1;
         }
+
+
+
+        
+
+
+       
         $this->assign('go',$go);
         $this->assign('result',$result);
         $this->assign('pswerr',$pswerr);
@@ -175,7 +182,15 @@ class CategoryController extends CommonController {
 
     }
 
+    function rabbit_exit() {
+        //注销登录
+        $msg = '成功退出！';
+        $this -> $result=0;
+        unset($_SESSION['passwd']);
+        ecs_header("Location: " . url('category/index') .'&id=2'. "\n");
+    }
 
+   
     /**
      * 处理search请求
      */
@@ -188,6 +203,8 @@ class CategoryController extends CommonController {
          $this->assign('categories', model('CategoryBase')->get_categories_tree($this->cat_id));
          $this->display('search.dwt');
     }
+
+
 
 
     /**
