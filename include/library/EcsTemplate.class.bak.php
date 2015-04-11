@@ -412,9 +412,9 @@ class EcsTemplate {
 
                 case 'insert' :
                     $t = $this->get_para(substr($tag, 7), false);
-
-                    $out = "<?php \n" . '$k = ' . preg_replace("/(\'\\$[^,]+)/e", "stripslashes(trim('\\1','\''));", var_export($t, true)) . ";\n";
-                    $out .= 'echo $this->_echash . $k[\'name\'] . \'|\' . serialize($k) . $this->_echash;' . "\n?>";
+                    // 以下两行被替换  by--l
+                    $out = "<?php \n" . '$k = ' . preg_replace_callback("/(\'\\$[^,]+)/" , 
+                    function($ro) { return stripslashes(trim($ro[1],'\''));}, var_export($t, true)) . ";\n";
 
                     return $out;
                     break;

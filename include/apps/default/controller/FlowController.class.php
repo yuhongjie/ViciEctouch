@@ -2123,6 +2123,11 @@ class FlowController extends CommonController {
      * 获取配送地址列表
      */
     public function consignee_list() {
+
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
+        
         if (IS_AJAX) {
             $start = $_POST ['last'];
             $limit = $_POST ['amount'];

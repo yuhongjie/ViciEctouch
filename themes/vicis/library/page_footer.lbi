@@ -1,13 +1,23 @@
 
 
 <div class="footerWrapper">
+
   <span class="copyright">
+  <a href="{:url('category/index')}&id=18">Rabbit Hole</a> 
+  <input id='rabbit_exit' style="display: none;" type="button" name='exit' value="exit" onclick="window.location='{:url('category/rabbit_exit')}';"><br>
+
+ <!-- {if ($result==1 || $go==1) && $id==18 } -->
+  <script>
+      document.getElementById("rabbit_exit").style.display='inline';
+  </script>
+  <!-- {/if} -->
     Copyright © 2015&nbsp;
-    <a href="#" target="_blank">
+    <a href="index.php" target="_blank">
       微茜糕点
     </a>
     &nbsp;All rights reserved.
   </span>
+
 </div>
 
 <a id="scrollUp" href="#top" style="position: fixed; z-index: 10;"><i class="fa fa-angle-up"></i></a>
@@ -56,13 +66,18 @@
   $(document).ready(function() {
     $(".menu ul li").menu();
 
+
     /* 添加当前页面menu高亮效果 2015-3-31 start */
 	$('a.page_menu').each(function(){
       //alert(window.location.href);
+      //var index="http://127.0.0.1/ecshop/mobile";
+      var re = new RegExp("mobile");;//最简单的正则表达式,将匹配mobile这个单词  
+      var index = window.location.href; 
+      var indexlength=index.search(re)+7;
       var current_url = window.location.href;
       var page_menu_href = $(this).attr('href');
-
-      if(current_url.indexOf(page_menu_href) >= 0) {
+      //if(current_url.indexOf(page_menu_href) >= 0) {
+      if(current_url.substr(indexlength) == page_menu_href) {
       	$('a.page_menu').parent().removeClass("currentPage");
       	$(this).parent().addClass("currentPage");
       }

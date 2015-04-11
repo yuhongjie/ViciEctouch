@@ -39,16 +39,16 @@ a, p > a {
 }
 @media (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2) {
 .portfolioOneExpandButton, .portfolioFilterableExpandButton, .singleProjectExpandButton {
-	background-image: url(../../images/skins/pink/portfolioExpandButtonBg-x2.png);
+	background-image: url(../../images/skins/pink/portfolioExpandButtonBg.png);
 }
 .portfolioOneDetailsButton, .portfolioFilterableDetailsButton, .singleProjectDetailsButton {
-	background-image: url(../../images/skins/pink/portfolioDetailsButtonBg-x2.png);
+	background-image: url(../../images/skins/pink/portfolioDetailsButtonBg.png);
 }
 .smallPostMoreButton {
-	background-image: url(../../images/skins/pink/smallPostReadMoreButtonBg-x2.png);
+	background-image: url(../../images/skins/pink/smallPostReadMoreButtonBg.png);
 }
 .accordionButton .accordionButtonIcon {
-	background-image: url(../../images/skins/pink/accordionButtonBg-x2.png);
+	background-image: url(../../images/skins/pink/accordionButtonBg.png);
 }
 .headerDecoration, .footerDecoration {
 	background-image: url(../../images/skins/pink/headerFooterDecoBg-x2.png);

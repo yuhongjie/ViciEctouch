@@ -11,7 +11,7 @@
   <div class="pageNumbersWrapper">
     <!-- {if $pager.page_number} -->
       <!-- {foreach from=$pager.page_number key=key item=num} -->
-        <a class="pageNumber {if $pager.page == $key}currentPageNumber{/if}" href="{$num}&type={$type}">{$key}</a> 
+        <a class="pageNumber {if $pager.page == $key}currentPageNumber{/if}" href="{$num}&type={$type}&keywords={$keywords}">{$key}</a> 
     <!-- {/foreach} -->
     <!-- {/if} -->
    <a id="{if $pager.page_count > 1} {else}test{/if}" href="{$pager.page_prev|default:#}" class="pageNumber">&laquo;</a> 

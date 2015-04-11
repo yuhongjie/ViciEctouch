@@ -40,10 +40,12 @@ class CategoryController extends CommonController {
         $this->cat_id = I('request.id');
     }
 
+
     /**
      * 分类产品信息列表
      */
     public function index() {
+
 
         /*liugu-ec添加导航*/
         // 自定义导航栏
@@ -64,6 +66,7 @@ class CategoryController extends CommonController {
                 'price_min' => $this->price_min,
                 'filter_attr' => $this->filter_attr_str,
                 'page' => $this->page,
+
             );
 
             $url = url('Category/index', $arg);
@@ -88,14 +91,27 @@ class CategoryController extends CommonController {
         $this->assign('type', $this->type);
         /* 添加type参数 end */
 
+
+
+
         // 获取分类
         $this->assign('category', model('CategoryBase')->get_top_category());
-        $count = model('Category')->category_get_count($this->children, $this->brand, $this->type, $this->price_min, $this->price_max, $this->ext);
+
+        $count = model('Category')->category_get_count($this->children, $this->brand, $this->type, $this->price_min, $this->price_max, $this->ext,$this->keywords);
 
         $goodslist = $this->category_get_goods();
+
         $this->assign('goods_list', $goodslist);
-        $this->pageLimit(url('index', array('id' => $this->cat_id, 'brand' => $this->brand, 'price_max' => $this->price_max, 'price_min' => $this->price_min, 'filter_attr' => $this->filter_attr_str, 'sort' => $this->sort, 'order' => $this->order)), $this->size);
-        $this->assign('pager', $this->pageShow($count));
+
+        $this->pageLimit(url('index', array('id' => $this->cat_id, 'brand' => $this->brand,'keywords' => $this->keywords, 'price_max' => $this->price_max, 'price_min' => $this->price_min, 'filter_attr' => $this->filter_attr_str,'keywords' => $this->keywords, 'sort' => $this->sort, 'order' => $this->order)), $this->size);
+
+        // 添加is_array判断解决Illegal string offset 'page_number' in page.lbi start
+        $tmp_pager = $this->pageShow($count);
+
+        if (is_array($tmp_pager)) {
+            $this->assign('pager', $tmp_pager);
+        }
+        // end
 
         /* 页面标题 */
         $page_info = get_page_title($this->cat_id);
@@ -108,14 +124,73 @@ class CategoryController extends CommonController {
             if (!empty($cat['keywords'])) {
                 $this->assign('keywords_list', explode(' ', $cat['keywords']));
             }
+
+
         }
+
+
+        //session_start();
+        //$_SESSION['passwd'] = $_POST['password'];
+
+        //print_r($_SESSION['passwd']);
+
+        //隐藏分区处理
+        //
+         $password=htmlspecialchars($cat[cat_desc]);
+         $result;
+         $pswerr="请正确输入密码";
+         // foreach ( $cat as $value){
+         //    echo $value;
+         // }
+         //$statu = 0;
+
+          //echo $_POST['password'];
+         // print_r($_SESSION['passwd']." ");
+         // print_r($password);
+        //if(isset ($_SESSION['passwd']) && (htmlspecialchars($_SESSION['passwd'])==$password)) {
+        if(isset ($_SESSION['passwd'])) {
+            $go = 1;
+            //return;
+         }
+        else if (I('post.password')==$password) {
+            $result=1;
+            $_SESSION['passwd'] = $_POST['password'];
+           // $statu=1;
+
+        } else {
+            //echo "<script>alert('密码不正确。');</script>";
+            $result=0;
+            
+            // $statu=1;
+        }
+
+
+
+        
+
+
+       
+        $this->assign('go',$go);
+        $this->assign('result',$result);
+        $this->assign('pswerr',$pswerr);
+        //end
+        
 
         $this->assign('categories', model('CategoryBase')->get_categories_tree($this->cat_id));
 		$this->assign('show_marketprice', C('show_marketprice'));
         $this->display('category.dwt');
+
     }
 
+    function rabbit_exit() {
+        //注销登录
+        $msg = '成功退出！';
+        $this -> $result=0;
+        unset($_SESSION['passwd']);
+        ecs_header("Location: " . url('category/index') .'&id=2'. "\n");
+    }
 
+   
     /**
      * 处理search请求
      */
@@ -128,6 +203,8 @@ class CategoryController extends CommonController {
          $this->assign('categories', model('CategoryBase')->get_categories_tree($this->cat_id));
          $this->display('search.dwt');
     }
+
+
 
 
     /**
@@ -166,6 +243,7 @@ class CategoryController extends CommonController {
             foreach ($row as $vo) {
                 $goods_ids[] = $vo['goods_id'];
             }
+  
             /**
              * 处理关键字查询次数
              */
@@ -188,6 +266,8 @@ class CategoryController extends CommonController {
             }
             $this->assign('keywords', $keywords);
         }
+
+
     }
 
     /**
@@ -649,6 +729,9 @@ class CategoryController extends CommonController {
             // 检查是否已经存在于用户的收藏夹
             if ($_SESSION['user_id']) {
                 unset($where);
+
+
+
                 // 用户自己有没有收藏过
                 $where['goods_id'] = $row['goods_id'];
                 $where['user_id'] = $_SESSION['user_id'];
