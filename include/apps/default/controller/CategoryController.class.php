@@ -15,6 +15,7 @@
 /* 访问控制 */
 defined('IN_ECTOUCH') or die('Deny Access');
 
+
 class CategoryController extends CommonController {
 
     private $cat_id = 0; // 分类id
@@ -40,13 +41,15 @@ class CategoryController extends CommonController {
         $this->cat_id = I('request.id');
     }
 
-
     /**
      * 分类产品信息列表
      */
+    
+    
+
     public function index() {
 
-
+         
         /*liugu-ec添加导航*/
         // 自定义导航栏
         $navigator = model('Common')->get_navigator();
@@ -134,7 +137,7 @@ class CategoryController extends CommonController {
 
         //print_r($_SESSION['passwd']);
 
-        //隐藏分区处理
+        //隐藏分类Rabbit Hole处理
         //
          $password=htmlspecialchars($cat[cat_desc]);
          $result;
@@ -159,16 +162,9 @@ class CategoryController extends CommonController {
 
         } else {
             //echo "<script>alert('密码不正确。');</script>";
-            $result=0;
-            
+            $result=0;      
             // $statu=1;
         }
-
-
-
-        
-
-
        
         $this->assign('go',$go);
         $this->assign('result',$result);
@@ -182,15 +178,20 @@ class CategoryController extends CommonController {
 
     }
 
+
+    /**
+     * Rabbit Hole
+     */
+
     function rabbit_exit() {
         //注销登录
         $msg = '成功退出！';
         $this -> $result=0;
+        $GLOBALS['b'] = '';
         unset($_SESSION['passwd']);
-        ecs_header("Location: " . url('category/index') .'&id=2'. "\n");
+        ecs_header("Location: " . url('/index') . "\n");
     }
 
-   
     /**
      * 处理search请求
      */
@@ -634,7 +635,16 @@ class CategoryController extends CommonController {
      */
     private function category_get_goods() {
         $display = $GLOBALS['display'];
-        $where = "g.is_on_sale = 1 AND g.is_alone_sale = 1 AND " . "g.is_delete = 0 ";
+        //添加查询条件，屏蔽id为18的隐藏分类 --by liugu
+        //添加if判断，如果已经存在$_SESSION['passwd']，说明用户已经正确输入密码，去除屏蔽，但是这样做结果是用户输入密码进入看不到，刷新才会看到
+        if (isset ($_SESSION['passwd'])) {
+           $where = "g.is_on_sale = 1 AND g.is_alone_sale = 1 AND " . "g.is_delete = 0"; 
+       } else {
+           $where = "g.is_on_sale = 1 AND g.is_alone_sale = 1 AND " . "g.is_delete = 0  AND "." g.cat_id != 18 ";
+       }
+        
+
+
         if ($this->keywords != '') {
             $where .= " AND (( 1 " . $this->keywords . " ) ) ";
         } else {
@@ -672,7 +682,7 @@ class CategoryController extends CommonController {
         $start = ($this->page - 1) * $this->size;
         $sort = $this->sort == 'sales_volume' ? 'xl.sales_volume' : $this->sort;
         /* 获得商品列表 */
-        $sql = 'SELECT g.goods_id, g.goods_name, g.goods_name_style, g.market_price, g.is_new, g.is_best, g.is_hot, g.shop_price AS org_price, ' . "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, g.promote_price, g.goods_type, " . 'g.promote_start_date, g.promote_end_date, g.goods_brief, g.goods_thumb , g.goods_img, xl.sales_volume ' . 'FROM ' . $this->model->pre . 'goods AS g ' . ' LEFT JOIN ' . $this->model->pre . 'touch_goods AS xl ' . ' ON g.goods_id=xl.goods_id ' . ' LEFT JOIN ' . $this->model->pre . 'member_price AS mp ' . "ON mp.goods_id = g.goods_id AND mp.user_rank = '$_SESSION[user_rank]' " . "WHERE $where $this->ext ORDER BY $sort $this->order LIMIT $start , $this->size";
+       $sql = 'SELECT g.goods_id, g.goods_name, g.goods_name_style, g.market_price, g.is_new, g.is_best, g.is_hot, g.shop_price AS org_price, ' . "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, g.promote_price, g.goods_type, " . 'g.promote_start_date, g.promote_end_date, g.goods_brief, g.goods_thumb , g.goods_img, xl.sales_volume ' . 'FROM ' . $this->model->pre . 'goods AS g ' . ' LEFT JOIN ' . $this->model->pre . 'touch_goods AS xl ' . ' ON g.goods_id=xl.goods_id ' . ' LEFT JOIN ' . $this->model->pre . 'member_price AS mp ' . "ON mp.goods_id = g.goods_id AND mp.user_rank = '$_SESSION[user_rank]' " . "WHERE $where $this->ext ORDER BY $sort $this->order LIMIT $start , $this->size";
         $res = $this->model->query($sql);
         $arr = array();
         foreach ($res as $row) {
@@ -744,6 +754,7 @@ class CategoryController extends CommonController {
             $arr[$row['goods_id']]['comment_count'] = model('Comment')->get_goods_comment($row['goods_id'], 0);  //商品总评论数量 
             $arr[$row['goods_id']]['favorable_count'] = model('Comment')->favorable_comment($row['goods_id'], 0);  //获得商品好评百分比
         }
+
         return $arr;
     }
 

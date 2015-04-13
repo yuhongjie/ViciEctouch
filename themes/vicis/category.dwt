@@ -72,6 +72,7 @@
       </form>
       <!-- {if $result==1} -->
       <script>
+        window.location.reload();
         document.getElementById("pass_form").style.display='none';
       </script>
       <!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem --> 

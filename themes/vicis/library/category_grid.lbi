@@ -15,7 +15,8 @@
   <div class="portfolioTwoItemsWrapper"> 
   <!--{foreach name=goods_list from=$goods_list item=goods}-->
    <!-- portfolio item starts  -->
-      <div class="portfolioTwoItemWrapper"> <a href="{$goods.url}" class="portfolioTwoItemImageWrapper"><img src="{$goods.goods_thumb}" alt="{$goods.name}"></a>
+      <div class="portfolioTwoItemWrapper"> 
+      <a href="{$goods.url}" class="portfolioTwoItemImageWrapper"><img src="{$goods.goods_thumb}" alt="{$goods.name}"></a>
         <div class="portfolioTwoItemInfoWrapper">
           <h4 class="portfolioTwoItemTitle">{$goods.name}[{$goods.shop_price}]</h4>
         </div>
