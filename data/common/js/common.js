@@ -832,13 +832,13 @@ function openSpeDiv(message, goods_id, parent) {
     newDiv.id = _id;
     newDiv.style.position = "absolute";
     newDiv.style.zIndex = "10000";
-    newDiv.style.width = "300px";
+    newDiv.style.width = "260px";
     newDiv.style.height = "260px";
     newDiv.style.top = (parseInt(scrollPos + 200)) + "px";
-    newDiv.style.left = (parseInt(document.body.offsetWidth) - 200) / 2 + "px"; // 屏幕居中
+    newDiv.style.left = (parseInt(document.body.offsetWidth) - 220) / 2 + "px"; // 屏幕居中 --(未居中啊)
     newDiv.style.overflow = "auto";
     newDiv.style.background = "#FFF";
-    newDiv.style.border = "3px solid #59B0FF";
+    newDiv.style.border = "2px solid #73CBC2";
     newDiv.style.padding = "5px";
 
     //生成层内内容
@@ -897,14 +897,14 @@ function openSpeDiv(message, goods_id, parent) {
                     + val_arr + "' />";
         }
     }
-    newDiv.innerHTML += "<br /><center>[<a href='javascript:submit_div("
+    newDiv.innerHTML += "<br /><p style='margin-left:15px;'>[<a href='javascript:submit_div("
             + goods_id
             + ","
             + parent
             + ")' class='f6' >"
             + btn_buy
             + "</a>]&nbsp;&nbsp;[<a href='javascript:cancel_div()' class='f6' >"
-            + is_cancel + "</a>]</center>";
+            + is_cancel + "</a>]</p>";
     document.body.appendChild(newDiv);
 
     // mask图层

@@ -1,4 +1,5 @@
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+
 <div class="con"> 
   <header class="ect-header ect-margin-tb ect-margin-lr"> <a href="{:url('category/top_all')}" class="pull-left ect-icon ect-icon1 ect-icon-cate1"></a>
     <div class="ect-header-div">
@@ -39,4 +40,32 @@
 <script type="text/javascript">
 get_asynclist("{:url('index/ajax_goods', array('type'=>'best'))}" , '__TPL__/images/loader.gif');
 </script>
+<script language="javascript">
+  /*banner滚动图片*/
+    TouchSlide({
+      slideCell : "#focus",
+      titCell : ".hd ul", // 开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+      mainCell : ".bd ul",
+      effect : "left",
+      autoPlay : true, // 自动播放
+      autoPage : true, // 自动分页
+      delayTime: 200, // 毫秒；切换效果持续时间（执行一次效果用多少毫秒）
+      interTime: 2500, // 毫秒；自动运行间隔（隔多少毫秒后执行下一个效果）
+      switchLoad : "_src" // 切换加载，真实图片路径为"_src"
+    });
+  /*弹出评论层并隐藏其他层*/
+/*  function openSearch(){
+    if($(".con").is(":visible")){
+      $(".con").hide(); 
+      $(".search").show();
+    }
+  }
+  function closeSearch(){
+    if($(".con").is(":hidden")){
+      $(".con").show(); 
+      $(".search").hide();
+    }
+  }*/
+
+</script> 
 </body></html>

@@ -34,7 +34,7 @@
         <!-- page content wrapper starts -->
         <div class="pageContentWrapper">
           <!-- page title starts -->
-          <h3 class="infopageTitle">
+          <h3 class="infopageTitle" style="margin-top:100px;margin-bottom:100px">
             {$message.content}
           </h3>
           <!-- page title ends -->

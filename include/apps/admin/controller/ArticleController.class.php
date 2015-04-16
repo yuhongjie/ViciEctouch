@@ -76,17 +76,31 @@ class ArticleController extends AdminController {
      */
     public function edit() {
         $id = I('id');
+
+        // 文章保存操作
         if (IS_POST) {
             $data = I('data');
             $data['content'] = I('post.content');
             //更新数据库
             $touch_result = $this->model->table('touch_article')->where('article_id=' . $id)->find();
             if (!empty($touch_result)) {
+                
+
+                // BUG修复 - 保留文章用户协议没有对应的分类导致404
+                if($data['article_cat'] == -1) {
+                    unset($data['article_cat']);
+                }
+                // end
+
                 $this->model->table('touch_article')->data($data)->where('article_id=' . $id)->update();
             }
             clear_all_files();
-            $this->message(L('articleedit_succeed'), url('index'));
+            //BUG修复 通知消息 文章标题显示为 %s 
+            //$this->message(str_replace("%s", $data['title'], L('articleedit_succeed')), url('index'));
+            $this->message(sprintf( L('articleedit_succeed'), $data['title']), url('index'));
         }
+
+        // 显示文章编辑
         $article = $this->model->table('touch_article')->field('*')->where(array('article_id' => $id))->find();
         $article['content'] = html_out($article['content']);
         /* 模板赋值 */

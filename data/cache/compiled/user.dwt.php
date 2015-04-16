@@ -19,21 +19,16 @@
         
         
         <div class="headerOuterWrapper">
-          <div class="headerWrapper">
-            <a href="<?php echo url('user/index');?>" class="accountButton">
-            </a>
-            <a href="<?php echo url('flow/cart');?>" class="shoppingCartButton">
-            </a>
-            <a href="" class="mainMenuButton">
-            </a>
+          <div class="headerWrapper"> 
+            <a href="<?php echo url('user/index');?>" class="accountButton"></a>
+            <a href="<?php echo url('flow/cart');?>" class="shoppingCartButton"></a>
+            <a href="" class="mainMenuButton"></a>
           </div>
-          <div class="headerDecoration">
-          </div>
+          <div class="headerDecoration"></div>
           
-          <a href="" class="mainLogo">
-            <img src="__TPL__/images/common/mainLogo.png" alt="" />
-          </a>
-          
+           
+          <a href="index.php" class="mainLogo"><img src="__TPL__/images/common/mainLogo.png" alt="" /></a> 
+           
         </div>
         
         

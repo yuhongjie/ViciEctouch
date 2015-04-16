@@ -1,6 +1,6 @@
 <div class="menu">
   <ul>
-    <li class="father-li"><a class="" href="javascript:void(0)">产品分类</a>
+    <li class="father-li"><a class="" href="javascript:void(0)">类别</a>
       <ul style="display:black;">    
             <!--{foreach from=$categories item=cat name=no}-->
 

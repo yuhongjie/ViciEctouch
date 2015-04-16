@@ -12,7 +12,7 @@ if ($this->_foreach['recommend_products']['total'] > 0):
           <?php echo $this->_var['goods']['short_style_name']; ?>
         </span>
         <a href="<?php echo $this->_var['goods']['url']; ?>" class="homePurchaseButton">
-          (<?php if ($this->_var['goods']['promote_price'] != ""): ?>
+          <?php if ($this->_var['goods']['promote_price'] != ""): ?>
 
          <?php echo $this->_var['goods']['promote_price']; ?>
 
@@ -20,7 +20,7 @@ if ($this->_foreach['recommend_products']['total'] > 0):
 
          <?php echo $this->_var['goods']['shop_price']; ?>
 
-         <?php endif; ?>) 购买
+         <?php endif; ?>购买
         </a>
       </div>
     </div>

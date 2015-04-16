@@ -22,7 +22,7 @@
        <label style="margin-bottom:13px;" for="advancedSearchTermsField">
         区域地址:
       </label>
-      <div class="form-select drop-downWrapper">
+      <div class="form-select drop-downWrapper l-form-select">
         <select name="country" class="drop-downText" style="  width: 100%; border-radius: 0;" id="selCountries_{$sn}" onchange="region.changed(this, 1, 'selProvinces_{$sn}')">
           <option value="0">
             {$lang.please_select}{$name_of_region[0]}
@@ -34,7 +34,7 @@
           <!-- {/foreach} -->
         </select>
       </div>
-      <div class="form-select drop-downWrapper">
+      <div class="form-select drop-downWrapper l-form-select">
         <select name="province" class="drop-downText" style="  width: 100%; border-radius: 0;" id="selProvinces_{$sn}" onchange="region.changed(this, 2, 'selCities_{$sn}')">
           <option value="0">
             {$lang.please_select}{$name_of_region[1]}
@@ -46,7 +46,7 @@
           <!-- {/foreach} -->
         </select>
       </div>
-      <div class="form-select drop-downWrapper">
+      <div class="form-select drop-downWrapper l-form-select">
         <select name="city" class="drop-downText" style="  width: 100%; border-radius: 0;" id="selCities_{$sn}" onchange="region.changed(this, 3, 'selDistricts_{$sn}')">
           <option value="0">
             {$lang.please_select}{$name_of_region[2]}
@@ -58,7 +58,7 @@
           <!-- {/foreach} -->
         </select>
       </div>
-      <div class="form-select drop-downWrapper">
+      <div class="form-select drop-downWrapper l-form-select">
         <select name="district" class="drop-downText" style="  width: 100%; border-radius: 0;" id="selDistricts_{$sn}" {if !$district_list.$sn}style="display:none"
         {/if}>
           <option value="0">

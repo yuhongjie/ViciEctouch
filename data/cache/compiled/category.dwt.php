@@ -13,47 +13,6 @@
      
     
     
-    <form id="shoppingCartWrapper" class="shoppingCartWrapper" action="#" method="post">
-      <fieldset>
-        
-        <div class="shoppingCartProductWrapper"> <a  href="" class="shoppingCartProductImageWrapper"><img src="__TPL__/images/content/shoppingCartProductImage-1.jpg" class="shoppingCartProductImage" alt=""></a>
-          <div class="shoppingCartProductInfoWrapper"> <a href="" class="shoppingCartProductTitle">Product One</a>
-            <div class="shoppingCartProductButtonsWrapper">
-              <input type="text" id="shoppingCartProductNumber-1" class="shoppingCartProductNumber" name="product-1" value="1">
-              <span class="shoppingCartProductPrice">$25</span><a href="" class="shoppingCartRemoveProductButton"></a> </div>
-          </div>
-        </div>
-         
-        
-        
-        <div class="shoppingCartProductWrapper"> <a href="" class="shoppingCartProductImageWrapper"><img src="__TPL__/images/content/shoppingCartProductImage-2.jpg" class="shoppingCartProductImage" alt=""></a>
-          <div class="shoppingCartProductInfoWrapper"> <a href="" class="shoppingCartProductTitle">Product Two</a>
-            <div class="shoppingCartProductButtonsWrapper">
-              <input type="text" id="shoppingCartProductNumber-2" class="shoppingCartProductNumber" name="product-2" value="2">
-              <span class="shoppingCartProductPrice">$50</span><a href="" class="shoppingCartRemoveProductButton"></a> </div>
-          </div>
-        </div>
-         
-        
-        
-        <div class="shoppingCartProductWrapper"> <a  href="" class="shoppingCartProductImageWrapper"><img src="__TPL__/images/content/shoppingCartProductImage-3.jpg" class="shoppingCartProductImage" alt=""></a>
-          <div class="shoppingCartProductInfoWrapper"> <a href="" class="shoppingCartProductTitle">Product Three</a>
-            <div class="shoppingCartProductButtonsWrapper">
-              <input type="text" id="shoppingCartProductNumber-3" class="shoppingCartProductNumber" name="product-3" value="1">
-              <span class="shoppingCartProductPrice">$110</span><a href="" class="shoppingCartRemoveProductButton"></a> </div>
-          </div>
-        </div>
-         
-        
-        
-        <div class="shoppingCartInfoWrapper"> <span class="shoppingCartProductsNumber">Products: 3</span> <span class="shoppingCartProductsTotal">Total: $235</span> </div>
-        
-        
-        <div class="shoppingCartButtonsWrapper"><a href="" class="shoppingCartEmptyButton">Empty</a>
-          <input type="submit" value="Checkout" id="shoppingCartCheckoutButton" class="shoppingCartCheckoutButton">
-        </div>
-      </fieldset>
-    </form>
      
     
     
@@ -66,7 +25,7 @@
       <div class="headerDecoration"></div>
       
        
-      <a href="" class="mainLogo"><img src="__TPL__/images/common/mainLogo.png" alt="" /></a> 
+      <a href="index.php" class="mainLogo"><img src="__TPL__/images/common/mainLogo.png" alt="" /></a> 
        
     </div>
      
@@ -84,22 +43,45 @@
           <?php echo $this->fetch('library/ur_here.lbi'); ?> 
         </div>
         <div class="view-mode">
-           <a class="list <?php if ($this->_var['display'] == 'list'): ?> active <?php endif; ?>" href="<?php echo url('category/index', array('id'=>$this->_var['id'],'display'=>'list'));?>&type=<?php echo $this->_var['type']; ?>" > 
+           <a class="list <?php if ($this->_var['display'] == 'list'): ?> active <?php endif; ?>" href="<?php echo url('category/index', array('id'=>$this->_var['id'],'price_min'=>$this->_var['price_min'],'price_max'=>$this->_var['price_max'],'sort'=>$this->_var['sort'],'type'=>$this->_var['type'],'keywords'=>$this->_var['keywords'],'display'=>'list'));?>" > 
             <i class=" icon-th-list"></i>
           </a> 
-          <a class="grid <?php if ($this->_var['display'] == 'grid'): ?> active <?php endif; ?>" href="<?php echo url('category/index', array('id'=>$this->_var['id'],'display'=>'grid'));?>&type=<?php echo $this->_var['type']; ?>">
+          <a class="grid <?php if ($this->_var['display'] == 'grid'): ?> active <?php endif; ?>" href="<?php echo url('category/index', array('id'=>$this->_var['id'],'price_min'=>$this->_var['price_min'],'price_max'=>$this->_var['price_max'],'sort'=>$this->_var['sort'],'display'=>'grid'));?>&type=<?php echo $this->_var['type']; ?>&keywords=<?php echo $this->_var['keywords']; ?>">
             <i class=" icon-th-large"></i>
           </a>   
         </div> 
       </div>
 
-      
-        <em><?php echo $this->_var['career']; ?></em>
-      
-       
+
+
+      <?php if ($this->_var['id'] != 18): ?>
       
         <?php echo $this->fetch('library/goods_list.lbi'); ?> 
        
+      <?php else: ?>
+
+      <?php if ($this->_var['go'] == 1): ?>
+       <?php echo $this->fetch('library/goods_list.lbi'); ?> 
+      <?php else: ?>
+      <form id="pass_form" action="<?php echo url('category/index');?>&id=18" method="post">
+        <div class="form-group">
+          <label for="exampleInputPassword1">请输入密码：</label>
+          <input style="height: 30px; display: inline;" type="password" name="password" class="" id="exampleInputPassword1" placeholder="" required>
+          <input type="hidden" value="">
+          <input style="height: 30px;display: inline;" type="submit" class="btn btn-default" value="确定">
+        </div>
+      </form>
+      <?php if ($this->_var['result'] == 1): ?>
+      <script>
+        window.location.reload();
+        document.getElementById("pass_form").style.display='none';
+      </script>
+      <?php echo $this->fetch('library/goods_list.lbi'); ?> 
+      <?php else: ?>
+        <p style="color: red;"><?php echo $this->_var['pswerr']; ?></p>
+      <?php endif; ?>
+      <?php endif; ?>
+      <?php endif; ?>
     </div>
      
     

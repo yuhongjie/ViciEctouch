@@ -245,7 +245,10 @@ class EcsTemplate {
                 $source = str_replace('%%%SMARTYSP' . $curr_sp . '%%%', '<?php echo \'' . str_replace("'", "\'", $sp_match[1][$curr_sp]) . '\'; ?>' . "\n", $source);
             }
         }
-        return preg_replace_callback("/{([^\}\{\n]*)}/", function($r) { return $this->select($r[1]); }, $source);
+        // sprite
+        return preg_replace_callback("/{([^\}\{\n]*)}/", function($r) { return $this->select($r[1]); }, 
+            $source);
+        // return preg_replace("/{([^\}\{\n]*)}/e", "\$this->select('\\1');", $source);
     }
 
     /**
@@ -413,7 +416,12 @@ class EcsTemplate {
                 case 'insert' :
                     $t = $this->get_para(substr($tag, 7), false);
 
-                    $out = "<?php \n" . '$k = ' . preg_replace("/(\'\\$[^,]+)/e", "stripslashes(trim('\\1','\''));", var_export($t, true)) . ";\n";
+                    // sprite
+                    $out = "<?php \n" . '$k = ' . preg_replace_callback("/(\'\\$[^,]+)/" , 
+                        function($ro) { return stripslashes(trim($ro[1],'\''));}, var_export($t, true)) . ";\n";
+
+                    // $out = "<?php \n" . '$k = ' . preg_replace("/(\'\\$[^,]+)/e", "stripslashes(trim('\\1','\''));", var_export($t, true)) . ";\n";
+                    
                     $out .= 'echo $this->_echash . $k[\'name\'] . \'|\' . serialize($k) . $this->_echash;' . "\n?>";
 
                     return $out;
@@ -470,7 +478,11 @@ class EcsTemplate {
      */
     function get_val($val) {
         if (strrpos($val, '[') !== false) {
-            $val = preg_replace("/\[([^\[\]]*)\]/eis", "'.'.str_replace('$','\$','\\1')", $val);
+            // sprite
+            $val = preg_replace_callback("/\[([^\[\]]*)\]/is", 
+                function($ro) {return '.'.str_replace('$','\$',$ro[1]);}, $val);
+            
+            // $val = preg_replace("/\[([^\[\]]*)\]/eis", "'.'.str_replace('$','\$','\\1')", $val);
         }
 
         if (strrpos($val, '|') !== false) {
@@ -908,7 +920,11 @@ class EcsTemplate {
             /* 将模板中所有library替换为链接 */
             $pattern = '/<!--\s#BeginLibraryItem\s\"\/(.*?)\"\s-->.*?<!--\s#EndLibraryItem\s-->/se';
             $replacement = "'{include file='.strtolower('\\1'). '}'";
-            $source = preg_replace($pattern, $replacement, $source);
+            // sprite
+            $pattern = '/<!--\s#BeginLibraryItem\s\"\/(.*?)\"\s-->.*?<!--\s#EndLibraryItem\s-->/s';
+            $source = preg_replace_callback($pattern, function($ro)
+                {return '{include file='.strtolower($ro[1]). '}';}, $source);
+            // $source = preg_replace($pattern, $replacement, $source);
 
             /* 检查有无动态库文件，如果有为其赋值 */
             $dyna_libs = model('Common')->get_dyna_libs($GLOBALS['_CFG']['template'], $this->_current_file);

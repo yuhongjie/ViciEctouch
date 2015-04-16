@@ -14,21 +14,20 @@
      
     
     
-   <div id="shoppingCartWrapper" class="shoppingCartWrapper">
-    <?php echo $this->fetch('library/flow_cart2.lbi'); ?>
-   </div>
      
     
     
     <div class="headerOuterWrapper">
-      <div class="headerWrapper">
-        <a href="<?php echo url('user/index');?>" class="accountButton">
-        </a>
-        <a href="<?php echo url('flow/cart');?>" class="shoppingCartButton">
-        </a>
-        <a href="" class="mainMenuButton">
-        </a>
+      <div class="headerWrapper"> 
+        <a href="<?php echo url('user/index');?>" class="accountButton"></a>
+        <a href="<?php echo url('flow/cart');?>" class="shoppingCartButton"></a>
+        <a href="" class="mainMenuButton"></a>
       </div>
+      <div class="headerDecoration"></div>
+      
+       
+      <a href="index.php" class="mainLogo"><img src="__TPL__/images/common/mainLogo.png" alt="" /></a> 
+       
     </div>
      
     
@@ -36,7 +35,7 @@
     <div class="pageContentWrapper"> 
       
       
-      <h3 class="pageTitle" style="margin-top:20px;"><?php echo $this->_var['goods']['goods_style_name']; ?></h3>
+      <h3 class="pageTitle" style="margin-top:20px;">甜点自述</h3>
        
       
       
@@ -49,7 +48,7 @@ if ($this->_foreach['no']['total'] > 0):
     foreach ($_from AS $this->_var['picture']):
         $this->_foreach['no']['iteration']++;
 ?> 
-          <?php if ($this->_foreach['no']['iteration'] > 1): ?>
+          <?php if ($this->_foreach['no']['iteration'] > 1 && $this->_foreach['no']['iteration'] <= 3): ?>
           <img src="<?php echo $this->_var['picture']['img_url']; ?>" class="singleProductGalleryItem" alt="<?php echo $this->_var['picture']['img_desc']; ?>"> 
           <?php endif; ?> 
           <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?> 
@@ -64,7 +63,7 @@ if ($this->_foreach['no']['total'] > 0):
     foreach ($_from AS $this->_var['picture']):
         $this->_foreach['no']['iteration']++;
 ?> 
-          <?php if ($this->_foreach['no']['iteration'] > 1): ?>
+          <?php if ($this->_foreach['no']['iteration'] > 1 && $this->_foreach['no']['iteration'] <= 3): ?>
           <li><a href="#"><img src="<?php echo $this->_var['picture']['img_url']; ?>" alt="<?php echo $this->_var['picture']['img_desc']; ?>" /></a></li>
           <?php endif; ?> 
           <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?> 

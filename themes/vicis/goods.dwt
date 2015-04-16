@@ -35,7 +35,7 @@
     <div class="pageContentWrapper"> 
       
       <!-- page title starts -->
-      <h3 class="pageTitle" style="margin-top:20px;">{$goods.goods_style_name}</h3>
+      <h3 class="pageTitle" style="margin-top:20px;">甜点自述</h3>
       <!-- page title ends --> 
       
       <!-- product gallery wrapper starts -->
@@ -44,7 +44,7 @@
           <img src="{$goods.goods_img}" class="singleProductGalleryItem currentSingleProductGalleryItem" alt="{$goods.goods_name}"> 
           <!--{if $pictures}--> 
           <!-- {foreach from=$pictures item=picture name=no}--> 
-          <!-- {if $smarty.foreach.no.iteration > 1}  -->
+          <!-- {if $smarty.foreach.no.iteration > 1 && $smarty.foreach.no.iteration <= 3}  -->
           <img src="{$picture.img_url}" class="singleProductGalleryItem" alt="{$picture.img_desc}"> 
           <!-- {/if}--> 
           <!--{/foreach}--> 
@@ -55,7 +55,7 @@
 
           <!--{if $pictures}--> 
           <!-- {foreach from=$pictures item=picture name=no}--> 
-          <!-- {if $smarty.foreach.no.iteration > 1}  -->
+          <!-- {if $smarty.foreach.no.iteration > 1 && $smarty.foreach.no.iteration <= 3}  -->
           <li><a href="#"><img src="{$picture.img_url}" alt="{$picture.img_desc}" /></a></li>
           <!-- {/if}--> 
           <!--{/foreach}--> 

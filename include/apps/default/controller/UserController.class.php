@@ -680,6 +680,10 @@ class UserController extends CommonController {
             exit();
         }
 
+
+        // 添加订单商品总数初始值
+        $goods_number = 0;
+
         // 订单商品
         $goods_list = model('Order')->order_goods($order_id);
         foreach ($goods_list as $key => $value) {
@@ -688,8 +692,9 @@ class UserController extends CommonController {
             $goods_list[$key]['subtotal'] = price_format($value['subtotal'], false);
             $goods_list[$key]['tags'] = model('ClipsBase')->get_tags($value['goods_id']);
             $goods_list[$key]['goods_thumb'] = get_image_path($order_id, $value['goods_thumb']);
-            //添加订单商品数量--by guliu
-            $goods_numbe = sizeof($goods_list);
+            //添加订单商品数量
+            $goods_number  += $goods_list[$key]['goods_number'];
+            
         }
         // 设置能否修改使用余额数
         if ($order['order_amount'] > 0) {
@@ -726,7 +731,7 @@ class UserController extends CommonController {
         $this->assign('title', L('order_detail'));
         $this->assign('order', $order);
         $this->assign('goods_list', $goods_list);
-        $this->assign('goods_numbe', $goods_numbe);
+        $this->assign('goods_number', $goods_number);
         $this->display('user_order_detail.dwt');
     }
 
@@ -1493,11 +1498,17 @@ class UserController extends CommonController {
         $count = $this->model->table('collect_goods')->where('user_id = ' . $this->user_id)->order('add_time desc')->count();
         $filter['page'] = '{page}';
         $offset = $this->pageLimit(url('collection_list', $filter), 5);
+
+        // 添加is_array判断解决Illegal string offset 'page_number' in page.lbi start
+        $tmp_pager = $this->pageShow($count);
+
+        if (is_array($tmp_pager)) {
+            $this->assign('pager', $tmp_pager);
+        }
+        // end
         $offset_page = explode(',', $offset);
         $collection_list = model('ClipsBase')->get_collection_goods($this->user_id, $offset_page[1], $offset_page[0]);
-
         $this->assign('title', L('label_collection'));
-        $this->assign('pager', $this->pageShow($count));
         $this->assign('collection_list', $collection_list);
         $this->display('user_collection_list.dwt');
     }
@@ -2015,6 +2026,11 @@ class UserController extends CommonController {
      * 邮件找回密码
      */
     public function get_password_email() {
+
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
+
         if (isset($_GET['code']) && isset($_GET['uid'])) { // 从邮件处获得的act
             $code = in($_GET['code']);
             $uid = intval($_GET['uid']);
@@ -2049,6 +2065,12 @@ class UserController extends CommonController {
      * 发送密码修改确认邮件
      */
     public function send_pwd_email() {
+
+
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
+
         $captcha = intval(C('captcha'));
         if (($captcha & CAPTCHA_LOGIN) && (!($captcha & CAPTCHA_LOGIN_FAIL) || (($captcha & CAPTCHA_LOGIN_FAIL) && $_SESSION['login_fail'] > 2))) {
             if (empty($_POST['captcha'])) {
@@ -2150,6 +2172,10 @@ class UserController extends CommonController {
      * 修改密码
      */
     public function edit_password() {
+
+        // 自定义导航栏
+        $navigator = model('Common')->get_navigator();
+        $this->assign('navigator', $navigator['middle']);
         // 修改密码处理
         if (IS_POST) {
             $old_password = isset($_POST['old_password']) ? in($_POST['old_password']) : null;

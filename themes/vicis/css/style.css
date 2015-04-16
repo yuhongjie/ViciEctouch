@@ -92,8 +92,8 @@ tr:hover > td {
 .websiteWrapper {
 }
 .pageWrapper {
-	margin-top: 36px;
-	margin-bottom: 36px;
+	margin-top: 20px;
+	 margin-bottom: 20px; 
 }
 .pageContentWrapper {
 	background-color: #fff;
@@ -340,9 +340,9 @@ input.shoppingCartProductNumber {
 	float: left;
 	border-radius: 3px;
 	padding: 0px;
-	height: 25px;
+	height: 24px;
 	line-height: 22px;
-	width: 25px;
+	width: 50px;
 	margin: 0px;
 	text-align: center;
 }
@@ -442,16 +442,16 @@ input.buttonCommenButton {
 	background:url(../images/skins/default/headerFooterDecoBg.png) center 0px repeat-x;
 }
 .mainLogo {
-	width: 104px;
-	height: 53px;
+	width: 100px;
+	height: 76px;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 .mainLogo > img {
-	width: 104px;
-	height: 53px;
+	width: 100px;
+	height: 76px;
 }
 .shopSearchFormWrapper {
 	margin-bottom: 0px;
@@ -1859,7 +1859,8 @@ input.fieldHasError, textarea.fieldHasError {
 .footerWrapper > .copyright {
 	float: left;
 	color: #fff;
-	margin-top: 18px;
+	padding: 10px 0;
+
 }
 .footerLinksWrapper {
 	float: right;
@@ -2087,12 +2088,12 @@ display: none;
   max-width: 640px;
 }
 .ect-wrapper div a {
-  padding-right: 10px;
+  /*padding-right: 10px;*/
   display: inline;
   height: 3em;
   line-height: 3em;
-  border-right: 1px #e3e3e3 solid;
-  margin-right: 10px;
+  border-right: none;
+  /*margin-right: 10px;*/
 }
 
 /*分页*/

@@ -43,17 +43,45 @@
           <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem --> 
         </div>
         <div class="view-mode">
-           <a class="list <!-- {if $display == 'list'}  --> active <!-- {/if} -->" href="{:url('category/index', array('id'=>$this->_var['id'],'display'=>'list'))}&type={$type}" > 
+           <a class="list <!-- {if $display == 'list'}  --> active <!-- {/if} -->" href="{:url('category/index', array('id'=>$this->_var['id'],'price_min'=>$this->_var['price_min'],'price_max'=>$this->_var['price_max'],'sort'=>$this->_var['sort'],'type'=>$this->_var['type'],'keywords'=>$this->_var['keywords'],'display'=>'list'))}" > 
             <i class=" icon-th-list"></i>
           </a> 
-          <a class="grid <!-- {if $display == 'grid'}  --> active <!-- {/if} -->" href="{:url('category/index', array('id'=>$this->_var['id'],'display'=>'grid'))}&type={$type}">
+          <a class="grid <!-- {if $display == 'grid'}  --> active <!-- {/if} -->" href="{:url('category/index', array('id'=>$this->_var['id'],'price_min'=>$this->_var['price_min'],'price_max'=>$this->_var['price_max'],'sort'=>$this->_var['sort'],'display'=>'grid'))}&type={$type}&keywords={$keywords}">
             <i class=" icon-th-large"></i>
           </a>   
         </div> 
       </div>
+
+
+
+      <!-- {if $id!=18} -->
       <!-- portfolio items wrapper starts -->
         <!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem --> 
       <!-- portfolio items wrapper ends --> 
+      <!-- {else} -->
+
+      <!-- {if $go==1} -->
+       <!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem --> 
+      <!-- {else} -->
+      <form id="pass_form" action="{:url('category/index')}&id=18" method="post">
+        <div class="form-group">
+          <label for="exampleInputPassword1">请输入密码：</label>
+          <input style="height: 30px; display: inline;" type="password" name="password" class="" id="exampleInputPassword1" placeholder="" required>
+          <input type="hidden" value="">
+          <input style="height: 30px;display: inline;" type="submit" class="btn btn-default" value="确定">
+        </div>
+      </form>
+      <!-- {if $result==1} -->
+      <script>
+        window.location.reload();
+        document.getElementById("pass_form").style.display='none';
+      </script>
+      <!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem --> 
+      <!-- {else} -->
+        <p style="color: red;">{$pswerr}</p>
+      <!-- {/if} -->
+      <!-- {/if} -->
+      <!-- {/if} -->
     </div>
     <!-- portfolio wrapper ends --> 
     

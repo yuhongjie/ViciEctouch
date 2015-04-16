@@ -17,7 +17,7 @@
    <!-- portfolio item starts  -->
       <div class="portfolioTwoItemWrapper"> <a href="{$goods.url}" class="portfolioTwoItemImageWrapper"><img src="{$goods.goods_thumb}" alt="{$goods.name}"></a>
         <div class="portfolioTwoItemInfoWrapper">
-          <h4 class="portfolioTwoItemTitle">{$goods.name}[{$goods.shop_price}]</h4>
+          <h4 class="portfolioTwoItemTitle">{$goods.name|truncate:4}[{$goods.shop_price}]</h4>
         </div>
       </div>
     <!-- portfolio item ends -->

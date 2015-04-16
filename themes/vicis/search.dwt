@@ -52,7 +52,7 @@
             <!-- advanced search form wrapper starts -->
             <div class="advancedSearchFormWrapper">
               <form action="{:url('category/index')}" method="post" id="advancedSearchForm" name='search_form' class="advancedSearchForm">
-                <fieldset>
+                <fieldset class="l-form-select">
                   <div class="input-control">
                   <label for="keywords">关键词：</label>
                       <input style="height:36px; width:100%;" type="text" name="keywords">
@@ -60,7 +60,7 @@
                   <label for="advancedSearchTermsField">
                     价格区间:
                   </label>
-                    <select name="price" style="width:100%;">
+                    <select name="price" style="width:100%;height:36px; ">
                       <option value="0,100">
                         0-100
                       </option>
@@ -71,7 +71,7 @@
                       <label for="advancedSearchTermsField">
                     排序:
                   </label>
-                    <select name="sort" style="width:100%;">
+                    <select name="sort" style="width:100%;height:36px; ">
                       <option  value="shop_price">
                         价格
                       </option>

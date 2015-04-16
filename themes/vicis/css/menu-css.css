@@ -24,7 +24,7 @@ background-color: #E5F4F7;
 .menu ul li ul li a:hover {
 color: #5AB0CB;
 }
-.menu ul li ul li a {background:none;font-size:12px;height:25px;color:#000;padding-left:0px; }
+.menu ul li ul li a {background:none;font-size:16px;height:25px;color:#000;padding-left:0px; }
 .father-li>a {
 	border:1px solid #F3F3F3;
 	border-radius: 2px;

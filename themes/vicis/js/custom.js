@@ -132,7 +132,7 @@ jQuery(document).ready(function($){
 
 	//liugu-详情页取消图片高度自适应
 	
-	/*function adaptSingleProductGallery(){
+	function adaptSingleProductGallery(){
 	
 		$('.singleProductGallery').css('height', $('.singleProductGallery .currentSingleProductGalleryItem').outerHeight());
 		
@@ -143,7 +143,7 @@ jQuery(document).ready(function($){
 		
 		adaptSingleProductGallery();
 		
-	});*/
+	});
 	// gallery functions end
 	
 	
@@ -358,7 +358,7 @@ jQuery(document).ready(function($){
 
 		//liugu- 
 		
-		// adaptSingleProductGallery();
+		adaptSingleProductGallery();
 									
 	});
 	// window resize functions end

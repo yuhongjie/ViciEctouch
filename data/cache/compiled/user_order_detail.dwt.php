@@ -15,15 +15,15 @@
     
     
     <div class="headerOuterWrapper">
-      <div class="headerWrapper">
-       <a href="<?php echo url('user/index');?>" class="accountButton"></a>
-       <a href="<?php echo url('flow/cart');?>" class="shoppingCartButton"></a>
-       <a href="" class="mainMenuButton"></a>
-     </div>
+      <div class="headerWrapper"> 
+        <a href="<?php echo url('user/index');?>" class="accountButton"></a>
+        <a href="<?php echo url('flow/cart');?>" class="shoppingCartButton"></a>
+        <a href="" class="mainMenuButton"></a>
+      </div>
       <div class="headerDecoration"></div>
       
        
-      <a href="" class="mainLogo"><img src="__TPL__/images/common/mainLogo.png" alt="" /></a> 
+      <a href="index.php" class="mainLogo"><img src="__TPL__/images/common/mainLogo.png" alt="" /></a> 
        
     </div>
      
@@ -99,7 +99,7 @@
 
 
         
-        <div class="checkoutInfoWrapper" style="height:100px;"> <span class="checkoutProductsNumber">商品: <?php echo $this->_var['goods_numbe']; ?>&nbsp件</span> <span class="checkoutProductsTotal">
+        <div class="checkoutInfoWrapper" style="height:100px;"> <span class="checkoutProductsNumber">商品: <?php echo $this->_var['goods_number']; ?>&nbsp件</span> <span class="checkoutProductsTotal">
 
         <p class="ect-margin-tb"><?php echo $this->_var['lang']['goods_all_price']; ?>：<b class="ect-colory"> 
           <?php if ($this->_var['order']['extension_code'] == "group_buy"): ?><?php echo $this->_var['lang']['gb_deposit']; ?><?php endif; ?><?php echo $this->_var['order']['formated_goods_amount']; ?></b>
@@ -162,6 +162,15 @@
         <?php if ($this->_var['order']['shipping_id'] > 0): ?>
          <p><?php echo $this->_var['lang']['shipping']; ?>：<?php echo $this->_var['order']['shipping_name']; ?></p>
          <?php endif; ?>
+        <p><?php echo $this->_var['lang']['payment']; ?>：<?php echo $this->_var['order']['pay_name']; ?></p>
+      </div>
+
+      <div class="textBreakBottom"></div>
+      <div class="l-bblock">
+        <h4><?php echo $this->_var['lang']['order_postscript']; ?> </h4>
+
+            <p><?php echo $this->_var['order']['postscript']; ?></p>
+
       </div>
 
 

@@ -45,6 +45,7 @@ class CategoryController extends CommonController {
      */
     public function index() {
 
+
         /*liugu-ec添加导航*/
         // 自定义导航栏
         $navigator = model('Common')->get_navigator();
@@ -88,14 +89,28 @@ class CategoryController extends CommonController {
         $this->assign('type', $this->type);
         /* 添加type参数 end */
 
+
+
+
         // 获取分类
         $this->assign('category', model('CategoryBase')->get_top_category());
-        $count = model('Category')->category_get_count($this->children, $this->brand, $this->type, $this->price_min, $this->price_max, $this->ext);
+
+        $count = model('Category')->category_get_count($this->children, $this->brand, $this->type, $this->price_min, $this->price_max, $this->keywords, $this->ext);
 
         $goodslist = $this->category_get_goods();
+
         $this->assign('goods_list', $goodslist);
+
         $this->pageLimit(url('index', array('id' => $this->cat_id, 'brand' => $this->brand, 'price_max' => $this->price_max, 'price_min' => $this->price_min, 'filter_attr' => $this->filter_attr_str, 'sort' => $this->sort, 'order' => $this->order)), $this->size);
-        $this->assign('pager', $this->pageShow($count));
+
+        // echo $count;
+        // 添加is_array判断解决Illegal string offset 'page_number' in page.lbi start
+        $tmp_pager = $this->pageShow($count);
+
+        if (is_array($tmp_pager)) {
+            $this->assign('pager', $tmp_pager);
+        }
+        // end
 
         /* 页面标题 */
         $page_info = get_page_title($this->cat_id);
@@ -110,11 +125,66 @@ class CategoryController extends CommonController {
             }
         }
 
+
+        //session_start();
+        //$_SESSION['passwd'] = $_POST['password'];
+
+        //print_r($_SESSION['passwd']);
+
+        //隐藏分类Rabbit Hole处理
+        //
+         $password=htmlspecialchars($cat[cat_desc]);
+         $result;
+         $pswerr="请正确输入密码";
+         // foreach ( $cat as $value){
+         //    echo $value;
+         // }
+         //$statu = 0;
+
+          //echo $_POST['password'];
+         // print_r($_SESSION['passwd']." ");
+         // print_r($password);
+        //if(isset ($_SESSION['passwd']) && (htmlspecialchars($_SESSION['passwd'])==$password)) {
+        if(isset ($_SESSION['passwd'])) {
+            $go = 1;
+            //return;
+         }
+        else if (I('post.password')==$password) {
+            $result=1;
+            $_SESSION['passwd'] = $_POST['password'];
+           // $statu=1;
+
+        } else {
+            //echo "<script>alert('密码不正确。');</script>";
+            $result=0;      
+            // $statu=1;
+        }
+       
+        $this->assign('go',$go);
+        $this->assign('result',$result);
+        $this->assign('pswerr',$pswerr);
+        //end
+        
+
         $this->assign('categories', model('CategoryBase')->get_categories_tree($this->cat_id));
 		$this->assign('show_marketprice', C('show_marketprice'));
         $this->display('category.dwt');
+
     }
 
+
+    /**
+     * Rabbit Hole
+     */
+
+    function rabbit_exit() {
+        //注销登录
+        $msg = '成功退出！';
+        $this -> $result=0;
+        $GLOBALS['b'] = '';
+        unset($_SESSION['passwd']);
+        ecs_header("Location: " . url('/index') . "\n");
+    }
 
     /**
      * 处理search请求
@@ -554,7 +624,16 @@ class CategoryController extends CommonController {
      */
     private function category_get_goods() {
         $display = $GLOBALS['display'];
-        $where = "g.is_on_sale = 1 AND g.is_alone_sale = 1 AND " . "g.is_delete = 0 ";
+        //添加查询条件，屏蔽id为18的隐藏分类 --by liugu
+        //添加if判断，如果已经存在$_SESSION['passwd']，说明用户已经正确输入密码，去除屏蔽，但是这样做结果是用户输入密码进入看不到，刷新才会看到
+        if (isset ($_SESSION['passwd'])) {
+           $where = "g.is_on_sale = 1 AND g.is_alone_sale = 1 AND " . "g.is_delete = 0"; 
+       } else {
+           $where = "g.is_on_sale = 1 AND g.is_alone_sale = 1 AND " . "g.is_delete = 0  AND "." g.cat_id != 18 ";
+       }
+        
+
+
         if ($this->keywords != '') {
             $where .= " AND (( 1 " . $this->keywords . " ) ) ";
         } else {

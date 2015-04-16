@@ -93,7 +93,7 @@
 
 
         <!-- checkout info wrapper starts -->
-        <div class="checkoutInfoWrapper" style="height:100px;"> <span class="checkoutProductsNumber">商品: {$goods_numbe}&nbsp件</span> <span class="checkoutProductsTotal">
+        <div class="checkoutInfoWrapper" style="height:100px;"> <span class="checkoutProductsNumber">商品: {$goods_number}&nbsp件</span> <span class="checkoutProductsTotal">
 
         <p class="ect-margin-tb">{$lang.goods_all_price}：<b class="ect-colory"> 
           <!-- {if $order.extension_code eq "group_buy"} -->{$lang.gb_deposit}<!-- {/if} -->{$order.formated_goods_amount}</b>

@@ -19,27 +19,22 @@
          
         
         <div class="headerOuterWrapper">
-          <div class="headerWrapper">
-            <a href="<?php echo url('user/index');?>" class="accountButton">
-            </a>
-            <a href="<?php echo url('flow/cart');?>" class="shoppingCartButton">
-            </a>
-            <a href="" class="mainMenuButton">
-            </a>
+          <div class="headerWrapper"> 
+            <a href="<?php echo url('user/index');?>" class="accountButton"></a>
+            <a href="<?php echo url('flow/cart');?>" class="shoppingCartButton"></a>
+            <a href="" class="mainMenuButton"></a>
           </div>
-          <div class="headerDecoration">
-          </div>
+          <div class="headerDecoration"></div>
           
-          <a href="" class="mainLogo">
-            <img src="__TPL__/images/common/mainLogo.png" alt="" />
-          </a>
-          
+           
+          <a href="index.php" class="mainLogo"><img src="__TPL__/images/common/mainLogo.png" alt="" /></a> 
+           
         </div>
         
         
         <div class="pageContentWrapper">
           
-          <h3 class="infopageTitle">
+          <h3 class="infopageTitle" style="margin-top:100px;margin-bottom:100px">
             <?php echo $this->_var['message']['content']; ?>
           </h3>
           

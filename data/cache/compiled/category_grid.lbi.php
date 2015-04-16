@@ -25,7 +25,7 @@ if ($this->_foreach['goods_list']['total'] > 0):
    
       <div class="portfolioTwoItemWrapper"> <a href="<?php echo $this->_var['goods']['url']; ?>" class="portfolioTwoItemImageWrapper"><img src="<?php echo $this->_var['goods']['goods_thumb']; ?>" alt="<?php echo $this->_var['goods']['name']; ?>"></a>
         <div class="portfolioTwoItemInfoWrapper">
-          <h4 class="portfolioTwoItemTitle"><?php echo $this->_var['goods']['name']; ?>[<?php echo $this->_var['goods']['shop_price']; ?>]</h4>
+          <h4 class="portfolioTwoItemTitle"><?php echo sub_str($this->_var['goods']['name'],4); ?>[<?php echo $this->_var['goods']['shop_price']; ?>]</h4>
         </div>
       </div>
     

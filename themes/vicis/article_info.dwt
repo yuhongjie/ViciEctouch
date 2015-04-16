@@ -46,7 +46,7 @@
         <div class="postExcerptWrapper">
          {$article.content}
         </div>
-        <div class="smallPostInfoWrapper"></div>
+      
       </div>
       <!-- small blog post ends --> 
     </div>

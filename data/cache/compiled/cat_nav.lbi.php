@@ -1,6 +1,6 @@
 <div class="menu">
   <ul>
-    <li class="father-li"><a class="" href="javascript:void(0)">产品分类</a>
+    <li class="father-li"><a class="" href="javascript:void(0)">类别</a>
       <ul style="display:black;">    
             <?php $_from = $this->_var['categories']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'cat');$this->_foreach['no'] = array('total' => count($_from), 'iteration' => 0);
 if ($this->_foreach['no']['total'] > 0):
